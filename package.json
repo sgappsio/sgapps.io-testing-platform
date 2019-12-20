@@ -1,0 +1,20 @@
+{
+  "name": "sgapps.io-testing-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "jsdoc": "./node_modules/update-markdown-jsdoc/index.js -f index.js -r readme.md -S -s API",
+    "test": "node test.js"
+  },
+  "author": "Sergiu Gordienco",
+  "license": "Apache License v2.0",
+  "dependencies": {
+    "application-prototype": "^1.24.3",
+    "puppeteer": "^2.0.0",
+    "puppeteer-firefox": "^0.5.0"
+  },
+  "devDependencies": {
+    "update-markdown-jsdoc": "^1.0.11"
+  }
+}
