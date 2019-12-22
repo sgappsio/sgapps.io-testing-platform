@@ -1,9 +1,6 @@
 global.ApplicationPrototype = require('application-prototype').application;
-const puppeteerFirefox = require('puppeteer-firefox');
+global.ApplicationBuilder   = require('application-prototype').builder;
 const puppeteer = require('puppeteer');
-const fs = require('fs');
-const asyncOperations = require('application-prototype/constructors/async');
-
 
 /**
  * @typedef {import('puppeteer').Browser} PuppeteerInstance
@@ -13,8 +10,56 @@ const asyncOperations = require('application-prototype/constructors/async');
 //  * @constructs TestingScenario
 //  */
 function TestingScenario() {
-	this.headless   = true;
-	this.operations = [];
+	let _headless   = true;
+	let _name       = "";
+	/**
+	 * Indicates if Browser should run in headless mode
+	 * @param {Boolean} [isHeadLess] if parameter isn ot passed function will return current `isHeadLess` value
+	 * @returns {TestingScenario}
+	 */
+	this.isHeadLess = function (isHeadLess) {
+		if (typeof(isHeadLess) === "boolean") {
+			_headless = isHeadLess;
+			return this;
+		}
+		return _headless;
+	};
+
+	/**
+	 * Specify or get Current Scenario Name
+	 * @param {String} [name] if parameter isn ot passed function will return current `name`
+	 * @returns {TestingScenario}
+	 */
+	this.ScenarioName = function (name) {
+		if (name && typeof(name) === "string") {
+			_name = name;
+			return this;
+		}
+		return _name;
+	};
+
+	this.operations = (function () {
+		let list    = [];
+		let methods = {
+			push : function (operation) {
+				if (Array.isArray(operation)) {
+					operation.forEach(item => methods.push(item));
+				} else {
+					operation.labels = operation.labels || [];
+					operation.message = operation.message || '';
+					list.push(operation);
+				}
+			},
+			last : function () {
+				return list[list.length - 1] || null
+			},
+			list : function () {
+				return list.map(operation => operation)
+			}
+		};
+
+		return methods;
+	})();
 
 
 	/**
@@ -69,7 +114,7 @@ function TestingScenario() {
 							resolve(page);
 						}, reject);
 					}
-				}, reject);
+				}, reject).catch(reject);
 		});
 	};
 
@@ -84,6 +129,8 @@ function TestingScenario() {
 TestingScenario.prototype.getPage = function (index) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'getPage',
+		params    : arguments,
 		operation : function (instance) {
 			return _self._getPage(instance, index);
 		}
@@ -109,6 +156,8 @@ TestingScenario.prototype.getPage = function (index) {
 TestingScenario.prototype.setViewport = function (options) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'setViewport',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(function (page) {
@@ -146,6 +195,8 @@ TestingScenario.prototype.goto = function (url, options) {
 
 	let _self = this;
 	_self.operations.push({
+		name      : 'goto',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(function (page) {
@@ -168,6 +219,8 @@ TestingScenario.prototype.goto = function (url, options) {
  */
 TestingScenario.prototype.wait = function (timeMs) {
 	this.operations.push({
+		name      : 'wait',
+		params    : arguments,
 		operation : function () {
 			return new Promise((resolve) => {
 				setTimeout(() => {
@@ -189,6 +242,8 @@ TestingScenario.prototype.wait = function (timeMs) {
 TestingScenario.prototype.pageEventWait = function (eventName, handler) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'pageEventWait',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -216,6 +271,8 @@ TestingScenario.prototype.pageEventWait = function (eventName, handler) {
 TestingScenario.prototype.waitForFileChooser = function (files, selector) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'waitForFileChooser',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -256,6 +313,8 @@ TestingScenario.prototype.waitForFunction = function (pageFunction, options) {
 	options.polling = options.polling || 'raf';
 	let _self = this;
 	_self.operations.push({
+		name      : 'waitForFunction',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -288,6 +347,8 @@ TestingScenario.prototype.waitForNavigation = function (options) {
 	options = options || {};
 	let _self = this;
 	_self.operations.push({
+		name      : 'waitForNavigation',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -317,6 +378,8 @@ TestingScenario.prototype.waitForSelector = function (selector, options) {
 	options = options || {};
 	let _self = this;
 	_self.operations.push({
+		name      : 'waitForSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -345,34 +408,8 @@ TestingScenario.prototype.waitForXPath = function (xpath, options) {
 	options = options || {};
 	let _self = this;
 	_self.operations.push({
-		operation : function (instance) {
-			return new Promise((resolve, reject) => {
-				_self._getPage(instance).then(page => {
-					page.waitForXPath(xpath, options).then(resolve, reject);
-				}, reject);
-			});
-		}
-	});
-
-	return this;
-};
-
-/**
- * @typedef TestingScenarioWaitForXPathOptions
- * @property {Boolean} [visible=false] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Boolean} [hidden=false] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Number} [timeout=30000] maximum time to wait for in milliseconds, Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
- */
-/**
- * Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.
- * @param {String} xpath A xpath of an element to wait for
- * @param {TestingScenarioWaitForXPathOptions} options Optional waiting parameters
- * @returns {TestingScenario}
- */
-TestingScenario.prototype.waitForXPath = function (xpath, options) {
-	options = options || {};
-	let _self = this;
-	_self.operations.push({
+		name      : 'waitForXPath',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -393,6 +430,8 @@ TestingScenario.prototype.waitForXPath = function (xpath, options) {
 TestingScenario.prototype.userAgent = function (handler) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'userAgent',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				let promise = instance.userAgent();
@@ -414,6 +453,8 @@ TestingScenario.prototype.userAgent = function (handler) {
 TestingScenario.prototype.clearPermissionOverrides = function () {
 	let _self = this;
 	_self.operations.push({
+		name      : 'clearPermissionOverrides',
+		params    : arguments,
 		operation : function (instance) {
 			return instance.defaultBrowserContext().clearPermissionOverrides();
 		}
@@ -434,6 +475,8 @@ TestingScenario.prototype.clearPermissionOverrides = function () {
 TestingScenario.prototype.overridePermissions = function (origin, permissions) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'overridePermissions',
+		params    : arguments,
 		operation : function (instance) {
 			return instance.defaultBrowserContext().overridePermissions(origin, permissions);
 		}
@@ -455,6 +498,8 @@ TestingScenario.prototype.overridePermissions = function (origin, permissions) {
 TestingScenario.prototype.pageClose = function (options, index) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'pageClose',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance, index)
@@ -476,6 +521,8 @@ TestingScenario.prototype.pageClose = function (options, index) {
 TestingScenario.prototype.pageSetLabel = function (label) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'pageSetLabel',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance)
@@ -519,6 +566,8 @@ TestingScenario.prototype.pageSetLabel = function (label) {
 TestingScenario.prototype.pageReload = function (index, options) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'pageReload',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance, index)
@@ -540,6 +589,8 @@ TestingScenario.prototype.pageReload = function (index, options) {
 TestingScenario.prototype.pageContent = function (handler) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'pageContent',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance)
@@ -573,6 +624,8 @@ TestingScenario.prototype.clickOnSelector = function (selector, options) {
 	options = options || {};
 	let _self = this;
 	_self.operations.push({
+		name      : 'clickOnSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -600,6 +653,8 @@ TestingScenario.prototype.typeOnSelector = function (selector, text, options) {
 	options = options || {};
 	let _self = this;
 	_self.operations.push({
+		name      : 'typeOnSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -622,6 +677,8 @@ TestingScenario.prototype.typeOnSelector = function (selector, text, options) {
 TestingScenario.prototype.tapOnSelector = function (selector) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'tapOnSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -642,6 +699,8 @@ TestingScenario.prototype.tapOnSelector = function (selector) {
 TestingScenario.prototype.focusOnSelector = function (selector) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'focusOnSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -662,6 +721,8 @@ TestingScenario.prototype.focusOnSelector = function (selector) {
 TestingScenario.prototype.hoverOnSelector = function (selector) {
 	let _self = this;
 	_self.operations.push({
+		name      : 'hoverOnSelector',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -681,9 +742,12 @@ TestingScenario.prototype.hoverOnSelector = function (selector) {
  * @param {Object} [variables={}] context passed to `pageFunction`
  * @returns {TestingScenario}
  */
-TestingScenario.prototype.evaluate = function (pageFunction, handler, variables) {
+TestingScenario.prototype.evaluate = function (pageFunction, handler, variables, meta) {
+	meta = meta || {};
 	let _self = this;
 	_self.operations.push({
+		name      : meta.name || 'evaluate',
+		params    : meta.args || arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -709,26 +773,26 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables)
  * If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.
  *
  * @example <caption>Example usage of string `pageFunction`.</caption>
- * test.evaluateOnSelector('a[href]', 'element.click()');
+ * test.evaluateOnSelectorAll('a[href]', 'element.click()');
  *
  * @example <caption>Example usage of string `pageFunction` with `handler`</caption>
- * test.evaluateOnSelector('input[type="text"]', 'element.value', function (value) {
+ * test.evaluateOnSelectorAll('input[type="text"]', 'element.value', function (value) {
  *     console.log(value);
  * });
  *
  * @example <caption>Example usage of string `pageFunction` and `context`</caption>
- * test.evaluateOnSelector('input[type="email"]', 'element.value = value', 'user.email@example.com');
+ * test.evaluateOnSelectorAll('input[type="email"]', 'element.value = value', 'user.email@example.com');
  *
  * @example <caption>Example usage of string `pageFunction` with handler and `context`</caption>
- * test.evaluateOnSelector('input[type="checkbox"]', 'element.value = value; element.checked', function (isChecked) {
+ * test.evaluateOnSelectorAll('input[type="checkbox"]', 'element.value = value; element.checked', function (isChecked) {
  *     console.log('isChecked')
  * } 'On');
  *
  * @example <caption>Example usage of `pageFunction`.</caption>
- * test.evaluateOnSelector('a[href]', function (element) { element.click() });
+ * test.evaluateOnSelectorAll('a[href]', function (element) { element.click() });
  *
  * @example <caption>Example usage of `pageFunction` with `handler`</caption>
- * test.evaluateOnSelector(
+ * test.evaluateOnSelectorAll(
  *     'input[type="text"]',
  *     function (element) {
  *         return element.value;
@@ -738,7 +802,7 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables)
  * );
  *
  * @example <caption>Example usage of `pageFunction` and `context`</caption>
- * test.evaluateOnSelector(
+ * test.evaluateOnSelectorAll(
  *     'input[type="email"]',
  *     function (element, value) {
  *         element.value = value;
@@ -747,7 +811,7 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables)
  * );
  *
  * @example <caption>Example usage of `pageFunction` with handler and `context`</caption>
- * test.evaluateOnSelector(
+ * test.evaluateOnSelectorAll(
  *     'input[type="checkbox"]',
  *     function (element, value) {
  *         element.value = value;
@@ -794,6 +858,10 @@ TestingScenario.prototype.evaluateOnSelectorAll = function (selector, pageFuncti
 		selector: selector,
 		value: value,
 		pageFunction: pageFunction
+	},
+	{
+		name : 'evaluateOnSelectorAll',
+		args : arguments
 	});
 };
 
@@ -836,6 +904,10 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
 		selector: selector,
 		value: value,
 		pageFunction: pageFunction
+	},
+	{
+		name : 'evaluateOnSelectorOnlyOne',
+		args : arguments
 	});
 };
 
@@ -871,6 +943,8 @@ TestingScenario.prototype.pageEmulate = function (config) {
 		}
 	}
 	_self.operations.push({
+		name      : 'pageEmulate',
+		params    : arguments,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
@@ -883,22 +957,72 @@ TestingScenario.prototype.pageEmulate = function (config) {
 	return this;
 };
 
-// .TestName(String)
-// .ScenarioName(String)
+/**
+ * Add a specific message to last operation
+ * @param {String} message
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.message = function (message) {
+	if (typeof(message) === "string") {
+		this.operations.last().message = message;
+	}
+	return this;
+};
 
-// .OperationDeactivate(); // add specific label '__Deactivated'
-// .deactivate(); // add specific label '__Deactivated'
+TestingScenario.prototype.it = TestingScenario.prototype.message;
 
-// .OperationLabels(String[]);
-// .OperationLabelsAdd(String[]);
-// .OperationLabelsRemove(String[]);
+/**
+ * Add labels to operation
+ * @param {String[]} labels
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.operationLabels = function (...labels) {
+	let operation = this.operations.last()
+	labels.filter(label => {
+		return label && typeof(label) === "string";
+	}).forEach(label => {
+		if (operation.labels.indexOf(label) === -1) {
+			operation.labels.push(label);
+		}
+	})
+	return this;
+};
+
+/**
+ * Remove labels from operation
+ * @param {String[]} labels
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.operationLabelsRemove = function (...labels) {
+	let operation = this.operations.last()
+	labels.filter(label => {
+		return label && typeof(label) === "string";
+	}).forEach(label => {
+		if (operation.labels.indexOf(label) !== -1) {
+			operation.labels = operation.labels.filter(
+				item => item !== label
+			);
+		}
+	})
+	return this;
+};
+
+
+/**
+ * activate or deactivate operation by adding or removing operation label `"__Deactivated"`
+ * @param {Boolean} status - if status is true than operation will be deactivated
+ */
+TestingScenario.prototype.deactivate = function (status) {
+	if (typeof(status) === "boolean") {
+		this.operationLabels('__Deactivated');
+	}
+}
 // .OperationJumpTo(OperationLabel);
 // .OperationRun(OperationLabel); // run
 // .describe()
 // .describeClose()
 // .group()
 // .groupClose()
-// .it() // message aplied only for next operarion
 
 
 // applyOnInstance(handler);
@@ -917,7 +1041,7 @@ TestingScenario.prototype.pageEmulate = function (config) {
 //? page.setRequestInterception(value)
 //? page.setUserAgent(userAgent)
 
-// page.isClosed() Booblean
+// page.isClosed() Boolean
 // page.title() String
 // page.url() String
 // page.viewport() Object
@@ -976,15 +1100,15 @@ puppeteer.launch().then(async browser => {
 //? puppeteer.errors
 
 
-
+/**
+ * Fork or Clone Testing Scenario
+ */
 TestingScenario.prototype.fork = function () {
-	this.operations;
-
 	let _scenario = new TestingScenario();
 
 	_scenario.headless = this.headless;
 
-	_scenario.operations.concat(this.operations);
+	_scenario.operations.push(this.operations.list());
 
 	return _scenario;
 };
@@ -996,6 +1120,8 @@ TestingScenario.prototype.close = function () {
 	let _self = this;
 
 	_self.operations.push({
+		name      : 'close',
+		params    : arguments,
 		operation : function (instance) {
 			return instance.close();
 		}
@@ -1017,129 +1143,36 @@ TestingScenario.prototype.close = function () {
  * @param {TestingScenarioPageEmulateDeviceName} [devices]
  */
 TestingScenario.prototype.run = function (device, device2, device3, device4, device5, device6, device7, device8, ...otherDevices) {
+	let _path = require('path');
+	let _self = this;
 	let devices    = Array.prototype.slice.call(arguments);
+	new ApplicationBuilder({
+		onready : async function () {
+			let app = this;
 
-	let operations = this.operations;
-	let _self      = this;
-	let instanceHandler = function (instance, done) {
-		asyncOperations.forEach(
-			operations,
-			function (next, item) {
-				item.operation(instance).then(function () {
-					next();
-				}, (err) => {
-					console.log(err);
-					throw Error(err);
-					process.exit(1);
-				});
-			},
-			done
-		).on('error', (err) => {
-			console.log(err);
-			process.exit(1);
-		});
-	};
+			app.debugEnabled(true);
+			app.consoleOptions({
+				file: false,
+				contextName: false
+			})
 
-	if (!devices.length) {
-		devices.push({ type: "chrome", emulate: null });
-	} else {
-		devices = devices.map(item => {
-			if (item === "chrome") {
-				return { type: "chrome", emulate: null };
-			} else if (item === "firefox") {
-				return { type: "firefox", emulate: null };
-			} else if (typeof(item) === "string") {
-				if (item.match(/^(chrome|ch|c)\:/)) {
-					item = item.replace(/^.*?\:/, '');
-					if (!(item in puppeteer.devices)) {
-						console.warn("Device Ignored", item);
-						return null;
-					}
-					return { type: "chrome", emulate: item };
-				} else if (item.match(/^(firefox|ff|f)\:/)) {
-					item = item.replace(/^.*?\:/, '');
-					if (!(item in puppeteer.devices)) {
-						console.warn("Device Ignored", item);
-						return null;
-					}
-					return { type: "firefox", emulate: item };
-				} else {
-					if (!(item in puppeteer.devices)) {
-						console.warn("Device Ignored", item);
-						return null;
-					} else {
-						return { type: "chrome", emulate: item };
-					}
-				}
-			} else {
-				console.warn("Device Ignored", item);
-				return null;
-			}
-		}).filter(item => item);
-	}
+			app.modulePath(
+				_path.join(
+					'./node_modules',
+					'application-prototype',
+					'constructors'
+				)
+			);
+			let libLoader = await app.require('lib');
+			libLoader();
 
-	asyncOperations.forEach(
-		devices,
-		function (_deviceDone, device, index) {
-			console.log("Testing on device", device);
-			let deviceDone = () => {
-				let err;
-				try {
-					instance.close();
-				} catch (err) {};
-				_deviceDone();
-			};
-			(device.type === "firefox" ? puppeteerFirefox : puppeteer).launch(
-				{
-					headless: !!_self.headless
-				}
-			).then(function (/** @type {import('puppeteer').Browser} */ instance) {
-				_self._getPage(instance)
-					.then(page => {
-						console.log("Page Detected", page._getLabelName);
-						console.log("Emulate", device.emulate);
-						let config = device.emulate;
-						if (typeof(config) === "string") {
-							if (config in puppeteer.devices) {
-								config = puppeteer.devices[config];
-							} else {
-								config = undefined;
-								console.warn("Incorrect device name, choose one from: ", ...Object.keys(puppeteer.devices))
-							}
-						} else {
-							config = config || undefined;
-						}
-						if (config) {
-							page.emulate(config)
-							.then(
-								() => {
-									instanceHandler(instance, () => {
-										deviceDone();
-									});
-								}, function (err) {
-									console.warn("Unable to emulate ", device);
-									deviceDone();
-								}
-							);
-						} else {
-							instanceHandler(instance, () => {
-								deviceDone();
-							});
-						}
-					}, err => {
-						console.error('Unable to obtain page');
-						deviceDone();
-					});
-			}, (err) => {
-				console.log(err);
-				process.exit(1);
-			});
-		},
-		function () {
-			console.log('Done');
+			app.modulePath(_path.join('.', 'modules'));
+
+			let runner  = await app.require('runner');
+
+			runner(devices, _self);
 		}
-	).on('error', console.error);
-	
+	});
 };
 
 module.exports = TestingScenario;
