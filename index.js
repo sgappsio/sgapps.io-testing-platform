@@ -1300,7 +1300,8 @@ TestingScenario.prototype.run = function (device, device2, device3, device4, dev
 
 			app.modulePath(
 				_path.join(
-					'./node_modules',
+					__dirname,
+					'node_modules',
 					'application-prototype',
 					'constructors'
 				)
@@ -1308,7 +1309,7 @@ TestingScenario.prototype.run = function (device, device2, device3, device4, dev
 			let libLoader = await app.require('lib');
 			libLoader();
 
-			app.modulePath(_path.join('.', 'modules'));
+			app.modulePath(_path.join(__dirname, 'modules'));
 
 			let runner  = await app.require('runner');
 
