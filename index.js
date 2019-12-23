@@ -1299,12 +1299,7 @@ TestingScenario.prototype.run = function (device, device2, device3, device4, dev
 			})
 
 			app.modulePath(
-				_path.join(
-					__dirname,
-					'node_modules',
-					'application-prototype',
-					'constructors'
-				)
+				'@constructors://'
 			);
 			let libLoader = await app.require('lib');
 			libLoader();
