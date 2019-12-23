@@ -12,9 +12,10 @@ const puppeteer = require('puppeteer');
 function TestingScenario() {
 	let _headless   = true;
 	let _name       = "";
+	let _verbose    = false;
 	/**
 	 * Indicates if Browser should run in headless mode
-	 * @param {Boolean} [isHeadLess] if parameter isn ot passed function will return current `isHeadLess` value
+	 * @param {Boolean} [isHeadLess] if parameter is not passed function will return current `isHeadLess` value
 	 * @returns {TestingScenario}
 	 */
 	this.isHeadLess = function (isHeadLess) {
@@ -26,8 +27,21 @@ function TestingScenario() {
 	};
 
 	/**
+	 * Indicates if tests should run in verbose mode
+	 * @param {Boolean} [isHeadLess] if parameter is not passed function will return current `isVerbose` value
+	 * @returns {TestingScenario}
+	 */
+	this.isVerbose = function (isVerbose) {
+		if (typeof(isVerbose) === "boolean") {
+			_verbose = isVerbose;
+			return this;
+		}
+		return _verbose;
+	};
+
+	/**
 	 * Specify or get Current Scenario Name
-	 * @param {String} [name] if parameter isn ot passed function will return current `name`
+	 * @param {String} [name] if parameter is not passed function will return current `name`
 	 * @returns {TestingScenario}
 	 */
 	this.ScenarioName = function (name) {
@@ -969,8 +983,6 @@ TestingScenario.prototype.message = function (message) {
 	return this;
 };
 
-TestingScenario.prototype.it = TestingScenario.prototype.message;
-
 /**
  * Add labels to operation
  * @param {String[]} labels
@@ -1011,20 +1023,150 @@ TestingScenario.prototype.operationLabelsRemove = function (...labels) {
 /**
  * activate or deactivate operation by adding or removing operation label `"__Deactivated"`
  * @param {Boolean} status - if status is true than operation will be deactivated
+ * @returns {TestingScenario}
  */
 TestingScenario.prototype.deactivate = function (status) {
 	if (typeof(status) === "boolean") {
 		this.operationLabels('__Deactivated');
 	}
+	return this;
 }
+
+/**
+ * Describe a section of testing scenario
+ * @param {String} message the message that will describe the Scenario Section
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.describe = function (message) {
+	this.wait();
+	this.operationLabels('__Describe');
+	this.message(message);
+
+	return this;
+}
+
+/**
+ * Close Describe section of testing scenario
+ * @param {String} message message on succeed
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.describeClose = function (message) {
+	this.wait();
+	this.operationLabels('__DescribeClose');
+	this.message(message);
+
+	return this;
+}
+
+/**
+ * Describe a group of testing scenario similar to `TestingScenario.describe`
+ * @param {String} message the name of group the Scenario Section
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.group = function (message) {
+	this.wait();
+	this.operationLabels('__ScenarioGroup');
+	this.message(message);
+
+	return this;
+}
+
+/**
+ * Close Group section of testing scenario
+ * @param {String} message message on succeed
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.groupClose = function (message) {
+	this.wait();
+	this.operationLabels('__ScenarioGroupClose');
+	this.message(message);
+
+	return this;
+}
+
+/**
+ * Inject other testing Scenario on specific step
+ * @param {TestingScenario} Scenario
+ */
+TestingScenario.prototype.injectScenario = function (Scenario) {
+	this.operations.push(Scenario.operations.list());
+}
+
+/**
+ * @callback TestingScenarioItHandlerCallback
+ * @param {Function} done - function that should be executed when check id done
+ * @param {Function} evaluate - function executed in Browser's context that return an result
+ * @param {import('./').assert} assert - assert API
+ * @param {import('./').expect} expect - expect API
+ */
+/**
+ * Assert some functionality from test
+ * 
+ * @example
+ * 
+ * test.goto('http://example.com')
+ *    .describe('Testing Page')
+ *        .describe('Testing Title')
+ *            .it((done, evaluate, assert, expect) => {
+ *                let title = evaluate('document.title');
+ *                expect(title).to().be().eq('Page Title', 'default page title - message shown on error');
+ *                done();
+ *            })
+ *        .describeClose()
+ *        // check if using some browsers api
+ *        .describe('Testing Title')
+ *            .it(async (done, evaluate, assert, expect) => {
+ *                let title = await evaluate(
+ *                    () => {
+ *                        return document.title
+ *                    }
+ *                );
+ *                assert.isNotNull(title);
+ *                done();
+ *            })
+ *        .describeClose()
+ *    .describeClose()
+ * 
+ * @param {TestingScenarioItHandlerCallback} handler
+ * @param {String} message
+ * @returns {TestingScenario}
+ */
+TestingScenario.prototype.it = function (handler, message) {
+	let _self = this;
+	_self.operations.push({
+		name      : 'it',
+		message   : message || '',
+		params    : arguments,
+		operation : function (instance) {
+			return new Promise((resolve, reject) => {
+				_self._getPage(instance).then(page => {
+					let evaluate = function (pageFunction, ...args) {
+						return page.evaluate(pageFunction, ...args);
+					};
+					evaluate.toString = function () { return 'function () { }' };
+					evaluate.toSource = function () { return 'function () { }' };
+					let done = function (err) {
+						if (err) {
+							reject(err);
+						} else {
+							resolve();
+						}
+					};
+					eval('handler = ' + handler.toString().replace('{', '{\ntry {').replace(/\}([^\}]*$)/, '} catch (err) { done(err) }\n}$1'));
+
+					handler(
+						done, evaluate, assert, expect
+					);
+				}, reject).catch(reject);
+			});
+		}
+	});
+
+	return this;
+}
+
 // .OperationJumpTo(OperationLabel);
 // .OperationRun(OperationLabel); // run
-// .describe()
-// .describeClose()
-// .group()
-// .groupClose()
-
-
 // applyOnInstance(handler);
 // applyOnPage(handler, pageIndex);
 
@@ -1175,4 +1317,287 @@ TestingScenario.prototype.run = function (device, device2, device3, device4, dev
 	});
 };
 
+
+function AssertError(message, name) {
+	if (this === global) return new AssertError(message, name);
+	this.name    = name;
+	this.message = message;
+	this.stack   = '';
+
+	return this;
+}
+AssertError.prototype = new Error;
+/**
+ * @param {*} expectValue 
+ * @param {*} value 
+ * @param {String} message 
+ */
+function assert(expectValue, value, message, isNegated, comparingFunction) {
+	let logArguments = require('./modules/reporter').logArguments;
+	let condition = (
+		comparingFunction ? comparingFunction(expectValue, value) : ( expectValue === value )
+	);
+	if (isNegated) condition = !condition;
+
+	message = message || "Assertion Error Message";
+	message = message.replace('{{expectValue}}', logArguments([expectValue]) + '\033[31m')
+	message = message.replace('{{value}}', logArguments([value]) + '\033[31m')
+
+	if (!condition) {
+		let err = Error('📌  \033[31;1mAssert Error\033[0;31m ' + message
+			+ ';\033[0m\n\t\033[32;1m' + ( isNegated ? 'not ' : '' ) + 'expected value: \033[0m'
+			+ logArguments([expectValue])
+			+ '\n\t\033[33;1mcurrent value: \033[0m'
+			+ logArguments([value])
+		);
+
+		err.stack = '';
+
+		throw err;
+	}
+}
+
+assert.equal = function (expectValue, value, message) {
+	return new assert(expectValue, value, message, false, (a, b) => a == b);
+}
+
+assert.notEqual = function (expectValue, value, message) {
+	return new assert(expectValue, value, message, false, (a, b) => a != b);
+}
+
+assert.strictEqual = function (expectValue, value, message) {
+	return new assert(expectValue, value, message, false, (a, b) => a === b);
+}
+
+assert.notStrictEqual = function (expectValue, value, message) {
+	return new assert(expectValue, value, message, false, (a, b) => a !== b);
+}
+
+assert.typeof = function (expectValue, value, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(typeof(expectValue), value, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m to be {{value}}"), false, (a, b) => a === b);
+}
+
+assert.notTypeof = function (expectValue, value, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(typeof(expectValue), value, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m not to be {{value}}"), false, (a, b) => a != b);
+}
+
+assert.lengthOf = function (expectValue, value, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(expectValue.length, value, (message || "Expect length of " + logArguments(expectValue) + "\\33[31m to be {{value}}"), false);
+}
+
+assert.notLengthOf = function (expectValue, value, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(expectValue.length, value, (message || "Expect length of " + logArguments(expectValue) + "\\33[31m not to be {{value}}"), false);
+}
+
+assert.isOk = function (expectValue, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(!!expectValue, true, (message || "Expect " + logArguments(expectValue) + "\\33[31m is somehow {{value}}"), false);
+}
+
+
+assert.isNotOk = function (expectValue, message) {
+	let logArguments = require('./modules/reporter').logArguments;
+	return new assert(!!expectValue, false, (message || "Expect " + logArguments(expectValue) + "\\33[31m is somehow {{value}}"), false);
+}
+
+assert.isAtLeast = function (expectValue, value, message) {
+	return new assert(
+		expectValue,
+		value,
+		(message || "Expect {{expectValue}} is greater or equal to {{value}}"),
+		false,
+		(a, b) => { return a >= b }
+	);
+}
+
+assert.isBelow = function (expectValue, value, message) {
+	return new assert(
+		expectValue,
+		value,
+		(message || "Expect {{expectValue}} is strictly less than {{value}}"),
+		false,
+		(a, b) => { return a < b }
+	);
+}
+
+assert.isAtMost = function (expectValue, value, message) {
+	return new assert(
+		expectValue,
+		value,
+		(message || "Expect {{expectValue}} is less than or equal to {{value}}"),
+		false,
+		(a, b) => { return a < b }
+	);
+}
+
+
+assert.isTrue = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		true,
+		(message || "Expect {{expectValue}} is {{value}}")
+	);
+}
+
+
+assert.isNotTrue = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		true,
+		(message || "Expect {{expectValue}} is not {{value}}"),
+		true
+	);
+}
+
+assert.isFalse = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		false,
+		(message || "Expect {{expectValue}} is {{value}}")
+	);
+}
+
+assert.isNotFalse = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		false,
+		(message || "Expect {{expectValue}} is not {{value}}"),
+		true
+	);
+}
+
+assert.isNull = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		null,
+		(message || "Expect {{expectValue}} is {{value}}"),
+		false
+	);
+}
+
+assert.isNotNull = function (expectValue, message) {
+	return new assert(
+		expectValue,
+		null,
+		(message || "Expect {{expectValue}} is not {{value}}"),
+		true
+	);
+}
+
+/**
+ * @class
+ * @param {*} value
+ */
+function expect(value) {
+	if (global === this) return new expect(value);
+	this.value = value;
+	return this;
+};
+
+/**
+ * @returns {expectTo}
+ */
+expect.prototype.to = function () {
+	return new expectTo(this.value);
+};
+
+/** @class */
+function expectTo(value) { this.value = value; return this; };
+
+/**
+ * @returns {expectToBe}
+ */
+expectTo.prototype.be = function () {
+	return new expectToBe(this.value);
+};
+
+/** @class */
+function expectToBe(value) { this.value = value; return this; };
+
+/**
+ * @typedef {("string"|"number"|"boolean"|"function"|"object"|"array"|"null"|"NaN"|"NUMBER_FINITE"|"NUMBER_SAFE_INTEGER"|"INFINITY"|"POSITIVE_INFINITY"|"NEGATIVE_INFINITY")} ExpectedType
+ */
+/**
+ * @name Expect.to.be.a
+ * @param {ExpectedType} type
+ * @param {String} message what to show wen conditions are not meet
+ * @returns {expectValueDescribe}
+ */
+expectToBe.prototype.a = function (type, message, isNegated) {
+	let value = this.value;
+	let assertFunction = (expectValue, value, message) => {
+		if (isNegated) message = message.replace("Expected to be ", "NotExpected to be ");
+		return assert(expectValue, value, message, isNegated);
+	}
+	switch (type) {
+		case "string":
+		case "number":
+		case "boolean":
+		case "function":
+		case "object":
+			assertFunction(type, typeof(value), message || "Expected to be {{expectValue}} instead of {{value}}");
+		break;
+		case "array":
+			assertFunction(true, Array.isArray(value), message || "Expected to be an Array");
+		break;
+		case "null":
+			assertFunction(true, (value === null), message || "Expected to be an Array");
+		break;
+		case "NaN":
+			assertFunction(true, (Number.isNaN(value)), message || "Expected to be a NaN");
+		break;
+		case "NUMBER_FINITE":
+			assertFunction(true, (Number.isFinite(value)), message || "Expected to be a NaN");
+		break;
+		case "NUMBER_SAFE_INTEGER":
+			assertFunction(true, (Number.isFinite(value)), message || "Expected to be a safe integer");
+		break;
+		case "INFINITY":
+			assertFunction(true, (!Number.isFinite(value)), message || "Expected to be a number INFINITY");
+		break;
+		case "POSITIVE_INFINITY":
+			assertFunction(true, (!Number.isFinite(value) && value > 0), message || "Expected to be a number POSITIVE_INFINITY");
+		break;
+		case "NEGATIVE_INFINITY":
+			assertFunction(true, (!Number.isFinite(value) && value < 0), message || "Expected to be a number NEGATIVE_INFINITY");
+		break;
+	}
+	return new expectValueDescribe(this.value); 
+}
+
+/**
+ * @name Expect.to.be.notA
+ * @param {ExpectedType} type
+ * @param {String} message what to show wen conditions are not meet
+ * @returns {expectValueDescribe}
+ */
+expectToBe.prototype.notA = function (type, message) {
+	return expectToBe.prototype.a(type, message, true);
+}
+
+/**
+ * @name Expect.to.be.instanceOf
+ * @param {(Object|Error|*)} instanceType
+ * @param {String} message what to show wen conditions are not meet
+ * @returns {expectValueDescribe}
+ */
+expectToBe.prototype.instanceOf = function (instance, message) {
+	assert(true, (this.value && (this.value instanceof instance)), message || "Expected to be instance of " + (instance + ''));
+	return new expectValueDescribe(this.value);
+}
+
+
+//! TODO
+/** @class */
+function expectValueDescribe(value) { this.value = value; return this; };
+
+
+TestingScenario.expect = function (value) {
+	return new expect(value);
+};
+TestingScenario.assert = assert;
 module.exports = TestingScenario;

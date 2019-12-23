@@ -13,7 +13,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 
 	let operations = Scenario.operations.list();
 
-	console.log('\t- \033[33;1m' + devices.length + '\033[0m Devices\n');
+	console.log('\t- \033[33;1m' + devices.length + '\033[0m Devices');
 	console.log('\t- \033[33;1m' + operations.length + '\033[0m Operations');
 
 	console.log('');
@@ -29,37 +29,111 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 	asyncOperations.forEach(
 		devices,
 		function (_deviceDone, device, index) {
+			console.log('');
+			console.log('');
 			console.log("🐚  \033[34;1mTesting \033[0m", device);
 			let _isInterrupted = false;
 
 			let instanceHandler = function (instance, done) {
+				let indent = 0;
+				let indentValue = function (isLast) {
+					let n = -1, s = '';
+					isLast
+					while (n++ < indent) {
+						if (n === indent) {
+							s+= "├───";
+						} else {
+							s+= "│   ";
+						}
+					}
+					if (isLast) {
+						s = s.replace('├', '└');
+					}
+					return s;
+				};
 				asyncOperations.forEach(
 					operations,
-					function (next, item, index) {
+					function (next, item, index, arr) {
+						let isLast = (
+							((arr[index + 1] || {}).labels || []).indexOf('__DescribeClose') !== -1
+							||
+							((arr[index + 1] || {}).labels || []).indexOf('__ScenarioGroupClose') !== -1
+						);
+
+						if (!isLast && !Scenario.isVerbose()) {
+							let found = false;
+							for (let i=index + 1;i<arr.length;i++) {
+								if (
+									arr[i].labels.indexOf('__DescribeClose') !== -1
+									||
+									arr[i].labels.indexOf('__ScenarioGroupClose') !== -1
+								) {
+									if (!found) {
+										isLast = true;
+									}
+									break;
+								} else if (arr[i].message) {
+									break;
+								}
+							}
+						}
 						if (_isInterrupted) {
 							_skipped++;
 							return next();
 						}
-						let params = Array.prototype.slice.call(item.params);
-						console.log('\t' + (index + 1) + '. \033[32m' + item.name + ' \033[36m(\033[0m', reporter.logArguments(item.params),'\033[36m)\033[0m');
-						item.operation(instance).then(function () {
-							next();
-						}, (err) => {
-							_isInterrupted = true;
-							_failed++;
-							_errors.push(err);
-							Application.consoleOptions({ file: true });
-							console.error(err);
-							Application.consoleOptions({ file: false });
-							next();
-						}).catch((err) => {
-							_isInterrupted = true;
-							_failed++;
-							_errors.push(err);
-							Application.consoleOptions({ file: true });
-							console.error(err);
-							Application.consoleOptions({ file: false });
-						});
+						if (item.labels.indexOf('__Describe') !== -1) {
+							console.log(indentValue(isLast) + (indent ? '📑' : '📒') + '  \033[32;1m' + item.message || 'Describe');
+							indent++;
+						} else if (item.labels.indexOf('__DescribeClose') !== -1) {
+							indent--;
+						} else if (item.labels.indexOf('__ScenarioGroup') !== -1) {
+							console.log(indentValue(isLast) + (indent ? '📂' : '💼') + '  \033[32;1m' + item.message || 'Scenario Group');
+							indent++;
+						} else if (item.labels.indexOf('__ScenarioGroupClose') !== -1) {
+							indent--;
+						} else if (item.labels.indexOf('__Deactivated') !== -1) {
+							if (item.message) {
+								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \033[2;1mDeactivated: \033[0;2m ' + item.message);
+							} else {
+								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \033[2;1mDeactivated: \033[0;2m ' + (index + 1) + '. \033[32m' + item.name + ' \033[0;36m(\033[0m', reporter.logArguments(item.params),'\033[36m)\033[0m');
+							}
+							return next();
+						} else if (item.message) {
+							console.log(indentValue(isLast) + '🔖  ' + item.message);
+						}
+						if (Scenario.isVerbose()) {
+							console.log(indentValue(isLast) + '' + (index + 1) + '. \033[32m' + item.name + ' \033[36m(\033[0m', reporter.logArguments(item.params),'\033[36m)\033[0m');
+						}
+						
+						try {
+							item.operation(instance).then(function () {
+								next();
+							}, (err) => {
+								_isInterrupted = true;
+								_failed++;
+								_errors.push(err);
+								Application.consoleOptions({ file: true });
+								console.error(err);
+								Application.consoleOptions({ file: false });
+								next();
+							}).catch((err) => {
+								_isInterrupted = true;
+								_failed++;
+								_errors.push(err);
+								Application.consoleOptions({ file: true });
+								console.error(err);
+								Application.consoleOptions({ file: false });
+							});
+						} catch (err) {
+							(err) => {
+								_isInterrupted = true;
+								_failed++;
+								_errors.push(err);
+								Application.consoleOptions({ file: true });
+								console.error(err);
+								Application.consoleOptions({ file: false });
+							}
+						}
 					},
 					done
 				).on('error', (err) => {
@@ -71,7 +145,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 				});
 			};
 
-			let deviceDone = () => {
+			let deviceDone = (instance) => {
 				if (_isInterrupted) {
 					_fallenDevices.push(device);
 				}
@@ -83,7 +157,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 			};
 			(device.type === "firefox" ? puppeteerFirefox : puppeteer).launch(
 				{
-					headless: !!_self.headless
+					headless: !!_self.isHeadLess()
 				}
 			).then(function (/** @type {import('puppeteer').Browser} */ instance) {
 				_self._getPage(instance)
@@ -104,7 +178,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 							.then(
 								() => {
 									instanceHandler(instance, () => {
-										deviceDone();
+										deviceDone(instance);
 									});
 								}, function (err) {
 									_isInterrupted = true;
@@ -112,12 +186,25 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 									Application.consoleOptions({ file: true });
 									console.error('⛔ Unable to emulate device ; ' + err.message, device);
 									Application.consoleOptions({ file: false });
-									deviceDone();
+									deviceDone(instance);
+								}
+							).catch(
+								function (err) {
+									try {
+										_isInterrupted = true;
+										_errors.push(Error('⛔ Unable to emulate ' + JSON.stringify(device)));
+										Application.consoleOptions({ file: true });
+										console.error('⛔ Unable to emulate device ; ' + err.message, device);
+										Application.consoleOptions({ file: false });
+										deviceDone(instance);
+									} catch (err) {
+										console.error(err);
+									}
 								}
 							);
 						} else {
 							instanceHandler(instance, () => {
-								deviceDone();
+								deviceDone(instance);
 							});
 						}
 					}, err => {
@@ -126,7 +213,18 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 						Application.consoleOptions({ file: true });
 						console.error(err);
 						Application.consoleOptions({ file: false });
-						deviceDone();
+						deviceDone(instance);
+					}).catch(err => {
+						try {
+							_isInterrupted = true;
+							_errors.push(Error('⛔ Unable to obtain page ; ' + err.message));
+							Application.consoleOptions({ file: true });
+							console.error(err);
+							Application.consoleOptions({ file: false });
+							deviceDone(instance);
+						} catch (err) {
+							console.error(err);
+						}
 					});
 			}, (err) => {
 				_errors.push(err);
@@ -134,6 +232,16 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 				Application.consoleOptions({ file: true });
 				console.error(err);
 				Application.consoleOptions({ file: false });
+			}).catch((err) => {
+				try {
+					_errors.push(err);
+					_isInterrupted = true;
+					Application.consoleOptions({ file: true });
+					console.error(err);
+					Application.consoleOptions({ file: false });
+				} catch (err) {
+					console.error(err);
+				}
 			});
 		},
 		function () {

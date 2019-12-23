@@ -1,70 +1,68 @@
 let TestScenario = require('./index');
-
+// let expect       = TestScenario.expect;
+let assert       = TestScenario.assert;
 
 let Scenario = new TestScenario();
-// Scenario.wait = function (ms) {
-// 	let TestScenario = Scenario;
-// 	TestScenario.operations.push({ operation: function () {
-// 		return new Promise(resolve => {
-// 			setTimeout(resolve, ms);
-// 		})
-// 	} });
-
-// 	return Scenario;
-// }
 
 Scenario
 	.isHeadLess(true)
+	.isVerbose(false) // enable to view detailed step logs
 	.getPage()
-	.goto('http://google.com', { waitUntil: "domcontentloaded" }, true, { a: true }, [1,2,3,"34", true], Scenario.getPage)
+	.goto('http://google.com', { waitUntil: "domcontentloaded" })
 	.wait(1000)
 	.describe('Testam ..A.')
 		.goto('http://yahoo.com', { waitUntil: "domcontentloaded" })
 		.wait(1000)
+		.it(async (done, evaluate, assert, expect) => {
+			let title = await evaluate('document.title');
+
+			expect(title).to().be().a("string");
+
+			assert.isNotNull(title);
+			done();
+		}, "checking title")
 		.goto('http://bing.com', { waitUntil: "domcontentloaded" })
 		.wait(1000)
 		.goto('http://jsdoc.app', { waitUntil: "domcontentloaded" })
 
 		.describe('Testam ..A.1.1.')
-			.goto('http://yahoo.com', { waitUntil: "domcontentloaded" })
+			.goto('https://sgapps.io', { waitUntil: "domcontentloaded" })
 			.wait(1000)
-			.goto('http://bing.com', { waitUntil: "domcontentloaded" })
+			.goto('https://github.com', { waitUntil: "domcontentloaded" })
 			.wait(1000)
-			.goto('http://jsdoc.app', { waitUntil: "domcontentloaded" })
+			.goto('http://npmjs.com', { waitUntil: "domcontentloaded" })
 			.wait(1000)
 		.describeClose()
 		.wait(1000)
 	.describeClose()
 	.describe('Testam ..A.')
-		.goto('http://yahoo.com', { waitUntil: "domcontentloaded" })
+		.goto('https://sgapps.io/contact', { waitUntil: "domcontentloaded" })
 		.wait(1000)
-		.goto('http://bing.com', { waitUntil: "domcontentloaded" })
+		.goto('https://bing.com/', { waitUntil: "domcontentloaded" })
 		.wait(1000)
+		.clickOnSelector('button#i2', {
+			button: "left",
+			delay: 0
+		})
+		.deactivate(true)
 		.goto('http://jsdoc.app', { waitUntil: "domcontentloaded" })
 		.wait(1000)
 	.describeClose()
-	// .waitForSelector('a', {
-	// 	visible: true,
-	// 	timeout: 100000
-	// })
-	// .clickOnSelector('button#i2', {
-	// 	button: "left",
-	// 	delay: 0
-	// })
-	// .wait(100)
-	// .clickOnSelector('button#i2', {
-	// 	button: "left",
-	// 	delay: 0
-	// })
+	.waitForSelector('a', {
+		visible: true,
+		timeout: 100000
+	})
+	.deactivate(true)
 	.close();
 
 
-let Scenario2 = Scenario.fork();
+// let Scenario2 = Scenario.fork();
 
+// assert.isFalse('some value');
 
 Scenario.run(
 	"iPad Pro",
 	"Galaxy Note 3",
-	"firefox:Nexus 10 landscape",
+	"Nexus 10 landscape",
 	"iPhone 6 Plus"
 );
