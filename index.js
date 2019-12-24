@@ -1336,14 +1336,14 @@ function assert(expectValue, value, message, isNegated, comparingFunction) {
 	if (isNegated) condition = !condition;
 
 	message = message || "Assertion Error Message";
-	message = message.replace('{{expectValue}}', logArguments([expectValue]) + '\033[31m')
-	message = message.replace('{{value}}', logArguments([value]) + '\033[31m')
+	message = message.replace('{{expectValue}}', logArguments([expectValue]) + '\x1b[31m')
+	message = message.replace('{{value}}', logArguments([value]) + '\x1b[31m')
 
 	if (!condition) {
-		let err = Error('📌  \033[31;1mAssert Error\033[0;31m ' + message
-			+ ';\033[0m\n\t\033[32;1m' + ( isNegated ? 'not ' : '' ) + 'expected value: \033[0m'
+		let err = Error('📌  \x1b[31;1mAssert Error\x1b[0;31m ' + message
+			+ ';\x1b[0m\n\t\x1b[32;1m' + ( isNegated ? 'not ' : '' ) + 'expected value: \x1b[0m'
 			+ logArguments([expectValue])
-			+ '\n\t\033[33;1mcurrent value: \033[0m'
+			+ '\n\t\x1b[33;1mcurrent value: \x1b[0m'
 			+ logArguments([value])
 		);
 
