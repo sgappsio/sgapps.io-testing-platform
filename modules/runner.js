@@ -3,7 +3,7 @@ let puppeteer        = Application.NodeInterface().require('puppeteer');
 
 module.exports = async (devices, /** @type {import('../index')} */ Scenario, callback) => {
 
-	console.info('🐙 \033[1m SGApps.IO - Testing Platform » Running Tests');
+	console.info('🐙 \x1b[1m SGApps.IO - Testing Platform » Running Tests');
 
 	let devicesChecker   = await module.require('./devices');
 	let reporter         = await Application.require('./reporter');
@@ -13,8 +13,8 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 
 	let operations = Scenario.operations.list();
 
-	console.log('\t- \033[33;1m' + devices.length + '\033[0m Devices');
-	console.log('\t- \033[33;1m' + operations.length + '\033[0m Operations');
+	console.log('\t- \x1b[33;1m' + devices.length + '\x1b[0m Devices');
+	console.log('\t- \x1b[33;1m' + operations.length + '\x1b[0m Operations');
 
 	console.log('');
 
@@ -31,7 +31,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 		function (_deviceDone, device, index) {
 			console.log('');
 			console.log('');
-			console.log("🐚  \033[34;1mTesting \033[0m", device);
+			console.log("🐚  \x1b[34;1mTesting \x1b[0m", device);
 			let _isInterrupted = false;
 
 			let instanceHandler = function (instance, done) {
@@ -82,27 +82,27 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 							return next();
 						}
 						if (item.labels.indexOf('__Describe') !== -1) {
-							console.log(indentValue(isLast) + (indent ? '📑' : '📒') + '  \033[32;1m' + item.message || 'Describe');
+							console.log(indentValue(isLast) + (indent ? '📑' : '📒') + '  \x1b[32;1m' + item.message || 'Describe');
 							indent++;
 						} else if (item.labels.indexOf('__DescribeClose') !== -1) {
 							indent--;
 						} else if (item.labels.indexOf('__ScenarioGroup') !== -1) {
-							console.log(indentValue(isLast) + (indent ? '📂' : '💼') + '  \033[32;1m' + item.message || 'Scenario Group');
+							console.log(indentValue(isLast) + (indent ? '📂' : '💼') + '  \x1b[32;1m' + item.message || 'Scenario Group');
 							indent++;
 						} else if (item.labels.indexOf('__ScenarioGroupClose') !== -1) {
 							indent--;
 						} else if (item.labels.indexOf('__Deactivated') !== -1) {
 							if (item.message) {
-								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \033[2;1mDeactivated: \033[0;2m ' + item.message);
+								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \x1b[2;1mDeactivated: \x1b[0;2m ' + item.message);
 							} else {
-								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \033[2;1mDeactivated: \033[0;2m ' + (index + 1) + '. \033[32m' + item.name + ' \033[0;36m(\033[0m', reporter.logArguments(item.params),'\033[36m)\033[0m');
+								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \x1b[2;1mDeactivated: \x1b[0;2m ' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[0;36m(\x1b[0m', reporter.logArguments(item.params),'\x1b[36m)\x1b[0m');
 							}
 							return next();
 						} else if (item.message) {
 							console.log(indentValue(isLast) + '🔖  ' + item.message);
 						}
 						if (Scenario.isVerbose()) {
-							console.log(indentValue(isLast) + '' + (index + 1) + '. \033[32m' + item.name + ' \033[36m(\033[0m', reporter.logArguments(item.params),'\033[36m)\033[0m');
+							console.log(indentValue(isLast) + '' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[36m(\x1b[0m', reporter.logArguments(item.params),'\x1b[36m)\x1b[0m');
 						}
 						
 						try {
@@ -248,18 +248,18 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 		},
 		function () {
 			if (_errors.length) {
-				console.info('\033[31;1m' + _failed + ' Tests failed\033[0m');
+				console.info('\x1b[31;1m' + _failed + ' Tests failed\x1b[0m');
 				if (_skipped)
-					console.info('\033[33;1m' + _skipped + ' skipped\033[0m');
+					console.info('\x1b[33;1m' + _skipped + ' skipped\x1b[0m');
 
 				if (_fallenDevices.length)
-				console.info('\033[31;1mUnsupported devices: \033[0m', _fallenDevices);
+				console.info('\x1b[31;1mUnsupported devices: \x1b[0m', _fallenDevices);
 			} else if (_warns || _skipped) {
-					console.log('\033[33;1m' + _warns + ' Tests failed\033[0m');
+					console.log('\x1b[33;1m' + _warns + ' Tests failed\x1b[0m');
 				if (_skipped)
-					console.info('\033[33;1m' + _skipped + ' skipped\033[0m');
+					console.info('\x1b[33;1m' + _skipped + ' skipped\x1b[0m');
 			} else {
-				console.info('\033[32;1m Done tests for ' + devices.length + ' devices passed\033[0m');
+				console.info('\x1b[32;1m Done tests for ' + devices.length + ' devices passed\x1b[0m');
 			}
 
 			if (callback) {

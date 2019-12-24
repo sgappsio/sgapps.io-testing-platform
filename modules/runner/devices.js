@@ -10,7 +10,7 @@ module.exports = function (devices) {
 	}
 
 	if (!devices.length) {
-		console.info("ℹ Choosing default Browser \033[32m\"Chrome Browser\"");
+		console.info("ℹ Choosing default Browser \x1b[32m\"Chrome Browser\"");
 		devices.push({ type: "chrome", emulate: null });
 	} else {
 		devices = devices.map(item => {
@@ -22,20 +22,20 @@ module.exports = function (devices) {
 				if (item.match(/^(chrome|ch|c)\:/)) {
 					item = item.replace(/^.*?\:/, '');
 					if (!(item in puppeteer.devices)) {
-						console.warn("\033[31;1m‼\033[0;33m Device ignored - unknown name \033[32m\"" + item + "\"");
+						console.warn("\x1b[31;1m‼\x1b[0;33m Device ignored - unknown name \x1b[32m\"" + item + "\"");
 						return null;
 					}
 					return { type: "chrome", emulate: item };
 				} else if (item.match(/^(firefox|ff|f)\:/)) {
 					item = item.replace(/^.*?\:/, '');
 					if (!(item in puppeteer.devices)) {
-						console.warn("\033[31;1m‼\033[0;33m Device ignored - unknown name \033[32m\"" + item + "\"");
+						console.warn("\x1b[31;1m‼\x1b[0;33m Device ignored - unknown name \x1b[32m\"" + item + "\"");
 						return null;
 					}
 					return { type: "firefox", emulate: item };
 				} else {
 					if (!(item in puppeteer.devices)) {
-						console.warn("\033[31;1m‼\033[0;33m Device ignored - unknown name \033[32m\"" + item + "\"");
+						console.warn("\x1b[31;1m‼\x1b[0;33m Device ignored - unknown name \x1b[32m\"" + item + "\"");
 						return null;
 					} else {
 						return { type: "chrome", emulate: item };
@@ -66,7 +66,7 @@ module.exports = function (devices) {
 				}
 				return device;
 			} else {
-				console.warn("\033[31;1m‼\033[0;33m Device ignored - config \033[31m{" + item + "}");
+				console.warn("\x1b[31;1m‼\x1b[0;33m Device ignored - config \x1b[31m{" + item + "}");
 				return null;
 			}
 		}).filter(item => item);

@@ -154,14 +154,15 @@ TestingScenario.prototype.getPage = function (index) {
 }
 
 /**
- * @typedef TestingScenarioSetViewportOptions
- * @property {Number} [width=1920] device width in pixels
- * @property {Number} [height=1080] device height in pixels
- * @property {Number} [deviceScaleFactor=1] Device Scale Factor
- * @property {Boolean} [hasTouch=false] Emulate touch instead of click
- * @property {Boolean} [isLandscape=true] is device in landscape mode
- * @property {isMobile} [isMobile=false] is mobile device
+ * @typedef {Object} TestingScenarioSetViewportOptions
+ * @property {Number} [width] device width in pixels. Default value is `1920`
+ * @property {Number} [height] device height in pixels. Default value is `1080`
+ * @property {Number} [deviceScaleFactor] Device Scale Factor. Default value is `1`
+ * @property {Boolean} [hasTouch] Emulate touch instead of click. Default value is `false`
+ * @property {Boolean} [isLandscape] is device in landscape mode. Default value is `true`
+ * @property {isMobile} [isMobile] is mobile device. Default value is `false`
  */
+
 /**
  * Applying specific viewport for device
  * @param {TestingScenarioSetViewportOptions} options
@@ -192,11 +193,12 @@ TestingScenario.prototype.setViewport = function (options) {
 };
 
 /**
- * @typedef TestingScenarioGotoOptions
- * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil='domcontentloaded'] When to consider navigation succeeded, defaults to `'load'`. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
- * @property {Number} [timeout=30] Maximum navigation time in milliseconds, defaults to 30 seconds, pass 0 to disable timeout. The default value can be changed by using the page.setDefaultNavigationTimeout(timeout) or page.setDefaultTimeout(timeout) methods.
+ * @typedef {Object} TestingScenarioGotoOptions
+ * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil] When to consider navigation succeeded, defaults to `'load'`. Given an array of event strings, navigation is considered to be successful after all events have been fired. Default value is `'domcontentloaded'`
+ * @property {Number} [timeout] Maximum navigation time in milliseconds, defaults to 30 seconds, pass 0 to disable timeout. The default value can be changed by using the page.setDefaultNavigationTimeout(timeout) or page.setDefaultTimeout(timeout) methods. Default value is `30`
  * @property {String} [referer] Referer header value. If provided it will take preference over the referer header value set by page.setExtraHTTPHeaders().
  */
+
 /**
  * Opens an URL
  * @param {String} url URL to navigate page to. The url should include scheme, e.g. https://.
@@ -310,11 +312,11 @@ TestingScenario.prototype.waitForFileChooser = function (files, selector) {
 
 
 /**
- * @typedef TestingScenarioWaitForFunctionOptions
- * @property {('raf'|'polling'|'mutation')} [polling='raf'] An interval at which the pageFunction is executed, defaults to raf. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values:
+ * @typedef {Object} TestingScenarioWaitForFunctionOptions
+ * @property {('raf'|'polling'|'mutation')} [polling] An interval at which the pageFunction is executed, defaults to `'raf'`. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values:
     - `raf` - to constantly execute pageFunction in requestAnimationFrame callback. This is the tightest polling mode which is suitable to observe styling changes.
     - `mutation` - to execute pageFunction on every DOM mutation.
- * @property {Number} [timeout=30000] maximum time to wait for in milliseconds, Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
+ * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * wait until browser will pageFunction will return true value
@@ -342,15 +344,15 @@ TestingScenario.prototype.waitForFunction = function (pageFunction, options) {
 };
 
 /**
- * @typedef TestingScenarioWaitForNavigationOptions
- * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil='load'] When to consider navigation succeeded, defaults to load. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
+ * @typedef {Object} TestingScenarioWaitForNavigationOptions
+ * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil] When to consider navigation succeeded, defaults to `'load'`. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
 
 - `load` - consider navigation to be finished when the load event is fired.
 - `domcontentloaded` - consider navigation to be finished when the DOMContentLoaded event is fired.
 - `networkidle0` - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
 - `networkidle2` - consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.
  *
- * @property {Number} [timeout=30000] maximum time to wait for in milliseconds, Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
+ * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * wait specific navigation state
@@ -377,10 +379,10 @@ TestingScenario.prototype.waitForNavigation = function (options) {
 
 
 /**
- * @typedef TestingScenarioWaitForSelectorOptions
- * @property {Boolean} [visible=false] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Boolean} [hidden=false] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Number} [timeout=30000] maximum time to wait for in milliseconds, Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
+ * @typedef {Object} TestingScenarioWaitForSelectorOptions
+ * @property {Boolean} [visible] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
+ * @property {Boolean} [hidden] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
+ * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * Wait for the selector to appear in page. If at the moment of calling the method the selector already exists, the method will return immediately. If the selector doesn't appear after the timeout milliseconds of waiting, the function will throw.
@@ -407,10 +409,10 @@ TestingScenario.prototype.waitForSelector = function (selector, options) {
 };
 
 /**
- * @typedef TestingScenarioWaitForXPathOptions
- * @property {Boolean} [visible=false] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Boolean} [hidden=false] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
- * @property {Number} [timeout=30000] maximum time to wait for in milliseconds, Defaults to 30000 (30 seconds). Pass 0 to disable timeout.
+ * @typedef {Object} TestingScenarioWaitForXPathOptions
+ * @property {Boolean} [visible] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
+ * @property {Boolean} [hidden] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
+ * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.
@@ -500,7 +502,7 @@ TestingScenario.prototype.overridePermissions = function (origin, permissions) {
 };
 
 /**
- * @typedef TestingScenarioPageCloseOptions
+ * @typedef {Object} TestingScenarioPageCloseOptions
  * @property {Boolean} runBeforeUnload Defaults to `false`. Whether to run the before unload page handlers.
  */
 /**
@@ -562,7 +564,7 @@ TestingScenario.prototype.pageSetLabel = function (label) {
  * @typedef {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} TestingScenarioPageReloadOptionsWaitUntil
  */
 /**
- * @typedef TestingScenarioPageReloadOptions
+ * @typedef {Object} TestingScenarioPageReloadOptions
  * @property {Number} timeout Maximum navigation time in milliseconds, defaults to `30` seconds, pass `0` to disable timeout.
  * @property {(TestingScenarioPageReloadOptionsWaitUntil|TestingScenarioPageReloadOptionsWaitUntil[])} waitUntil When to consider navigation succeeded, defaults to load. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
 
@@ -623,7 +625,7 @@ TestingScenario.prototype.pageContent = function (handler) {
 };
 
 /**
- * @typedef TestingScenarioClickOnSelectorOptions
+ * @typedef {Object} TestingScenarioClickOnSelectorOptions
  * @property {("left"|"right"|"middle")} button Defaults to `left`.
  * @property {Number} clickCount defaults to `1`.
  * @property {Number} delay Time to wait between mousedown and mouseup in milliseconds. Defaults to `0`.
@@ -653,7 +655,7 @@ TestingScenario.prototype.clickOnSelector = function (selector, options) {
 };
 
 /**
- * @typedef TestingScenarioTypeOnSelectorOptions
+ * @typedef {Object} TestingScenarioTypeOnSelectorOptions
  * @property {Number} delay Time to wait between key presses in milliseconds. Defaults to 0.
  */
 /**
@@ -926,7 +928,7 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
 };
 
 /**
- * @typedef TestingScenarioPageEmulateConfigViewport
+ * @typedef {Object} TestingScenarioPageEmulateConfigViewport
  * @property {Number} width  page width in pixels.
  * @property {Number} height  page height in pixels.
  * @property {Number} deviceScaleFactor  Specify device scale factor (can be thought of as dpr). Defaults to 1.
@@ -935,24 +937,26 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
  * @property {Boolean} isLandscape  Specifies if viewport is in landscape mode. Defaults to false.
  */
 /**
- * @typedef TestingScenarioPageEmulateConfig
+ * @typedef {Object} TestingScenarioPageEmulateConfig
  * @property {TestingScenarioPageEmulateConfigViewport} viewport viewport options
  * @property {String} userAgent user agent definition
  */
 /**
  * @typedef {("Blackberry PlayBook"|"Blackberry PlayBook landscape"|"BlackBerry Z30"|"BlackBerry Z30 landscape"|"Galaxy Note 3"|"Galaxy Note 3 landscape"|"Galaxy Note II"|"Galaxy Note II landscape"|"Galaxy S III"|"Galaxy S III landscape"|"Galaxy S5"|"Galaxy S5 landscape"|"iPad"|"iPad landscape"|"iPad Mini"|"iPad Mini landscape"|"iPad Pro"|"iPad Pro landscape"|"iPhone 4"|"iPhone 4 landscape"|"iPhone 5"|"iPhone 5 landscape"|"iPhone 6"|"iPhone 6 landscape"|"iPhone 6 Plus"|"iPhone 6 Plus landscape"|"iPhone 7"|"iPhone 7 landscape"|"iPhone 7 Plus"|"iPhone 7 Plus landscape"|"iPhone 8"|"iPhone 8 landscape"|"iPhone 8 Plus"|"iPhone 8 Plus landscape"|"iPhone SE"|"iPhone SE landscape"|"iPhone X"|"iPhone X landscape"|"iPhone XR"|"iPhone XR landscape"|"JioPhone 2"|"JioPhone 2 landscape"|"Kindle Fire HDX"|"Kindle Fire HDX landscape"|"LG Optimus L70"|"LG Optimus L70 landscape"|"Microsoft Lumia 550"|"Microsoft Lumia 950"|"Microsoft Lumia 950 landscape"|"Nexus 10"|"Nexus 10 landscape"|"Nexus 4"|"Nexus 4 landscape"|"Nexus 5"|"Nexus 5 landscape"|"Nexus 5X"|"Nexus 5X landscape"|"Nexus 6"|"Nexus 6 landscape"|"Nexus 6P"|"Nexus 6P landscape"|"Nexus 7"|"Nexus 7 landscape"|"Nokia Lumia 520"|"Nokia Lumia 520 landscape"|"Nokia N9"|"Nokia N9 landscape"|"Pixel 2"|"Pixel 2 landscape"|"Pixel 2 XL"|"Pixel 2 XL landscape")} TestingScenarioPageEmulateDeviceName
  */
+
 /**
- * @typedef TestingScenarioPageEmulateDeviceConfig
- * @property {("chrome"|"firefox"|"ch"|"c"|"ff"|"f")} [type="chrome"] Browser Type Firefox or Chrome
- * @property {TestingScenarioPageEmulateDeviceName} [emulate=null] emulate device name, if not set will run as in simple browser
+ * @typedef {Object} TestingScenarioPageEmulateDeviceConfig
+ * @property {("chrome"|"firefox"|"ch"|"c"|"ff"|"f")} [type] Browser Type Firefox or Chrome, Default value is `"chrome"`
+ * @property {TestingScenarioPageEmulateDeviceName} [emulate] emulate device name, if not set will run as in simple browser, Default value is `null`.
  * @property {TestingScenarioPageEmulateDeviceConfigOptions} [options] Browser's options, Set of configurable options to set on the browser.
  */
+
 /**
- * @typedef TestingScenarioPageEmulateDeviceConfigOptions
+ * @typedef {Object} TestingScenarioPageEmulateDeviceConfigOptions
  * @property {boolean} ignoreHTTPSErrors Whether to ignore HTTPS errors during navigation. Defaults to `false`.
- * @property {boolean} headless Whether to run browser in [headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
- * @property {string} executablePath Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd). **BEWARE**: Puppeteer is only [guaranteed to work](https://github.com/GoogleChrome/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy) with the bundled Chromium, use at your own risk.
+ * @property {boolean} headless Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
+ * @property {string} executablePath Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd).
  * @property {number} slowMo Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.
  * @property {TestingScenarioSetViewportOptions} defaultViewport Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
  * @property {String[]} args Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).
@@ -1621,4 +1625,5 @@ TestingScenario.expect = function (value) {
 	return new expect(value);
 };
 TestingScenario.assert = assert;
+
 module.exports = TestingScenario;
