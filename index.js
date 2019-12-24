@@ -943,6 +943,31 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
  * @typedef {("Blackberry PlayBook"|"Blackberry PlayBook landscape"|"BlackBerry Z30"|"BlackBerry Z30 landscape"|"Galaxy Note 3"|"Galaxy Note 3 landscape"|"Galaxy Note II"|"Galaxy Note II landscape"|"Galaxy S III"|"Galaxy S III landscape"|"Galaxy S5"|"Galaxy S5 landscape"|"iPad"|"iPad landscape"|"iPad Mini"|"iPad Mini landscape"|"iPad Pro"|"iPad Pro landscape"|"iPhone 4"|"iPhone 4 landscape"|"iPhone 5"|"iPhone 5 landscape"|"iPhone 6"|"iPhone 6 landscape"|"iPhone 6 Plus"|"iPhone 6 Plus landscape"|"iPhone 7"|"iPhone 7 landscape"|"iPhone 7 Plus"|"iPhone 7 Plus landscape"|"iPhone 8"|"iPhone 8 landscape"|"iPhone 8 Plus"|"iPhone 8 Plus landscape"|"iPhone SE"|"iPhone SE landscape"|"iPhone X"|"iPhone X landscape"|"iPhone XR"|"iPhone XR landscape"|"JioPhone 2"|"JioPhone 2 landscape"|"Kindle Fire HDX"|"Kindle Fire HDX landscape"|"LG Optimus L70"|"LG Optimus L70 landscape"|"Microsoft Lumia 550"|"Microsoft Lumia 950"|"Microsoft Lumia 950 landscape"|"Nexus 10"|"Nexus 10 landscape"|"Nexus 4"|"Nexus 4 landscape"|"Nexus 5"|"Nexus 5 landscape"|"Nexus 5X"|"Nexus 5X landscape"|"Nexus 6"|"Nexus 6 landscape"|"Nexus 6P"|"Nexus 6P landscape"|"Nexus 7"|"Nexus 7 landscape"|"Nokia Lumia 520"|"Nokia Lumia 520 landscape"|"Nokia N9"|"Nokia N9 landscape"|"Pixel 2"|"Pixel 2 landscape"|"Pixel 2 XL"|"Pixel 2 XL landscape")} TestingScenarioPageEmulateDeviceName
  */
 /**
+ * @typedef TestingScenarioPageEmulateDeviceConfig
+ * @property {("chrome"|"firefox"|"ch"|"c"|"ff"|"f")} [type="chrome"] Browser Type Firefox or Chrome
+ * @property {TestingScenarioPageEmulateDeviceName} [emulate=null] emulate device name, if not set will run as in simple browser
+ * @property {TestingScenarioPageEmulateDeviceConfigOptions} [options] Browser's options, Set of configurable options to set on the browser.
+ */
+/**
+ * @typedef TestingScenarioPageEmulateDeviceConfigOptions
+ * @property {boolean} ignoreHTTPSErrors Whether to ignore HTTPS errors during navigation. Defaults to `false`.
+ * @property {boolean} headless Whether to run browser in [headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
+ * @property {string} executablePath Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd). **BEWARE**: Puppeteer is only [guaranteed to work](https://github.com/GoogleChrome/puppeteer/#q-why-doesnt-puppeteer-vxxx-work-with-chromium-vyyy) with the bundled Chromium, use at your own risk.
+ * @property {number} slowMo Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.
+ * @property {TestingScenarioSetViewportOptions} defaultViewport Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
+ * @property {String[]} args Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).
+ * @property {(boolean|String[])} ignoreDefaultArgs If `true`, then do not use [`puppeteer.defaultArgs()`](#puppeteerdefaultargs-options). If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to `false`.
+ * @property {boolean} handleSIGINT Close the browser process on Ctrl-C. Defaults to `true`.
+ * @property {boolean} handleSIGTERM Close the browser process on SIGTERM. Defaults to `true`.
+ * @property {boolean} handleSIGHUP Close the browser process on SIGHUP. Defaults to `true`.
+ * @property {number} timeout Maximum time in milliseconds to wait for the browser instance to start. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.
+ * @property {boolean} dumpio Whether to pipe the browser process stdout and stderr into `process.stdout` and `process.stderr`. Defaults to `false`.
+ * @property {string} userDataDir Path to a [User Data Directory](https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md).
+ * @property {Object} env Specify environment variables that will be visible to the browser. Defaults to `process.env`.
+ * @property {boolean} devtools Whether to auto-open a DevTools panel for each tab. If this option is `true`, the `headless` option will be set `false`.
+ * @property {boolean} pipe Connects to the browser over a pipe instead of a WebSocket. Defaults to `false`.
+ */
+/**
  * Emulates specific configuration of device
  * @param {(TestingScenarioPageEmulateConfig|TestingScenarioPageEmulateDeviceName)} config 
  * @returns {TestingScenario}
@@ -1274,15 +1299,15 @@ TestingScenario.prototype.close = function () {
 
 /**
  * Run your tests under specific environment
- * @param {TestingScenarioPageEmulateDeviceName} device
- * @param {TestingScenarioPageEmulateDeviceName} [device2]
- * @param {TestingScenarioPageEmulateDeviceName} [device3]
- * @param {TestingScenarioPageEmulateDeviceName} [device4]
- * @param {TestingScenarioPageEmulateDeviceName} [device5]
- * @param {TestingScenarioPageEmulateDeviceName} [device6]
- * @param {TestingScenarioPageEmulateDeviceName} [device7]
- * @param {TestingScenarioPageEmulateDeviceName} [device8]
- * @param {TestingScenarioPageEmulateDeviceName} [devices]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} device
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device2]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device3]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device4]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device5]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device6]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device7]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device8]
+ * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [devices]
  */
 TestingScenario.prototype.run = function (device, device2, device3, device4, device5, device6, device7, device8, ...otherDevices) {
 	let _path = require('path');

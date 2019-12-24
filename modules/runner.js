@@ -155,10 +155,12 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 				} catch (err) {};
 				_deviceDone();
 			};
+			let options = device.options || {};
+			if (!("headless" in options)) {
+				options.headless = !!_self.isHeadLess();
+			};
 			(device.type === "firefox" ? puppeteerFirefox : puppeteer).launch(
-				{
-					headless: !!_self.isHeadLess()
-				}
+				options
 			).then(function (/** @type {import('puppeteer').Browser} */ instance) {
 				_self._getPage(instance)
 					.then(page => {

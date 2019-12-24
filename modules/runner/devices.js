@@ -41,6 +41,30 @@ module.exports = function (devices) {
 						return { type: "chrome", emulate: item };
 					}
 				}
+			} else if (item && typeof(item) === "object") {
+				let device = { type: "chrome" };
+				if (item.options) device.options = item.options;
+				if (item.emulate) {
+					if (typeof(item.emulate) === "string" && (item.emulate in puppeteer.devices)) {
+						device.emulate = item.emulate;
+					} else {
+						console.warn("Unknown Device for Emulation [", item.emulate, "]");
+					}
+				}
+				if (item.type) {
+					if (typeof(item.type) === "string") {
+						if (item.type.match(/^(firefox|ff|f)\:/)) {
+							device.type = "firefox";
+						} else if (item.type.match(/^(chrome|ch|c)\:/)) {
+							device.type = "chrome";
+						} else {
+							console.warn("Device Type Ignored, Device type unknown [", item.type, "]");
+						}
+					} else {
+						console.warn("Device Type Ignored, Device type should be a String [", item.type, "]");
+					}
+				}
+				return device;
 			} else {
 				console.warn("\033[31;1m‼\033[0;33m Device ignored - config \033[31m{" + item + "}");
 				return null;

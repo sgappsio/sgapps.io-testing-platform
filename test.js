@@ -61,8 +61,8 @@ Scenario
 // assert.isFalse('some value');
 
 Scenario.run(
-	"iPad Pro",
+	{ emulate: "iPad Pro", options: { ignoreHTTPSErrors: true, headless: false } },
 	"Galaxy Note 3",
-	"Nexus 10 landscape",
+	"chrome:Nexus 10 landscape",
 	"iPhone 6 Plus"
 );
