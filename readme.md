@@ -160,11 +160,13 @@ Scenario
 -   [TestingScenarioPageReloadOptionsWaitUntil](#testingscenariopagereloadoptionswaituntil)
 -   [TestingScenarioClickOnSelectorOptions](#testingscenarioclickonselectoroptions)
 -   [TestingScenarioTypeOnSelectorOptions](#testingscenariotypeonselectoroptions)
--   [TestingScenarioPageEmulateConfig](#testingscenariopageemulateconfig)
+-   [TestingScenarioPageEmulateConfigViewport](#testingscenariopageemulateconfigviewport)
 -   [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename)
 -   [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig)
+-   [TestingScenarioPageEmulateCallbackResult](#testingscenariopageemulatecallbackresult)
+-   [TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback)
 -   [TestingScenarioPageEmulateDeviceConfigOptions](#testingscenariopageemulatedeviceconfigoptions)
--   [TestingScenarioPageEmulateConfigViewport](#testingscenariopageemulateconfigviewport)
+-   [TestingScenarioPageEmulateConfig](#testingscenariopageemulateconfig)
 -   [TestingScenarioItHandlerCallback](#testingscenarioithandlercallback)
 -   [assert](#assert)
 -   [expect](#expect)
@@ -178,13 +180,13 @@ Scenario
 -   [Expect.to.be.instanceOf](#expecttobeinstanceof)
 -   [expectValueDescribe](#expectvaluedescribe)
 
-### [TestingScenario](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L12-L136)
+### [TestingScenario](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L12-L136)
 
 Type: `function ()`
 
 * * *
 
-#### [isHeadLess](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L21-L27)
+#### [isHeadLess](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L21-L27)
 
 Indicates if Browser should run in headless mode
 
@@ -194,7 +196,7 @@ Type: `function (isHeadLess): TestingScenario`
 
 * * *
 
-#### [isVerbose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L34-L40)
+#### [isVerbose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L34-L40)
 
 Indicates if tests should run in verbose mode
 
@@ -205,7 +207,7 @@ Type: `function (isVerbose, isHeadLess): TestingScenario`
 
 * * *
 
-#### [ScenarioName](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L47-L53)
+#### [ScenarioName](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L47-L53)
 
 Specify or get Current Scenario Name
 
@@ -215,7 +217,7 @@ Type: `function (name): TestingScenario`
 
 * * *
 
-#### [\_getPage](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L85-L133)
+#### [\_getPage](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L85-L133)
 
 Select from instance a page with specific index
 
@@ -227,7 +229,7 @@ Type: `function (instance, index, PuppeteerInstance)`
 
 * * *
 
-#### [getPage](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L143-L154)
+#### [getPage](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L143-L154)
 
 Select from instance a page with specific index
 
@@ -237,7 +239,7 @@ Type: `function (index): TestingScenario`
 
 * * *
 
-#### [setViewport](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L171-L193)
+#### [setViewport](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L171-L193)
 
 Applying specific viewport for device
 
@@ -247,7 +249,7 @@ Type: `function (options): TestingScenario`
 
 * * *
 
-#### [goto](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L208-L229)
+#### [goto](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L208-L229)
 
 Opens an URL
 
@@ -258,7 +260,7 @@ Type: `function (url, options): TestingScenario`
 
 * * *
 
-#### [wait](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L236-L250)
+#### [wait](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L236-L250)
 
 wait a priod of specified miliseconds
 
@@ -268,7 +270,7 @@ Type: `function (timeMs): TestingScenario`
 
 * * *
 
-#### [pageEventWait](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L258-L279)
+#### [pageEventWait](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L258-L279)
 
 Wait until a page will reach an event
 
@@ -279,7 +281,7 @@ Type: `function (eventName, handler): TestingScenario`
 
 * * *
 
-#### [waitForFileChooser](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L287-L311)
+#### [waitForFileChooser](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L287-L311)
 
 add a files to input[type="file"] in instance's page
 
@@ -290,7 +292,7 @@ Type: `function (files, selector): TestingScenario`
 
 * * *
 
-#### [waitForFunction](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L327-L344)
+#### [waitForFunction](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L327-L344)
 
 wait until browser will pageFunction will return true value
 
@@ -301,7 +303,7 @@ Type: `function (pageFunction, options): TestingScenario`
 
 * * *
 
-#### [waitForNavigation](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L362-L378)
+#### [waitForNavigation](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L362-L378)
 
 wait specific navigation state
 
@@ -311,7 +313,7 @@ Type: `function (options): TestingScenario`
 
 * * *
 
-#### [waitForSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L393-L409)
+#### [waitForSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L393-L409)
 
 Wait for the selector to appear in page. If at the moment of calling the method the selector already exists, the method will return immediately. If the selector doesn't appear after the timeout milliseconds of waiting, the function will throw.
 
@@ -322,7 +324,7 @@ Type: `function (selector, options): TestingScenario`
 
 * * *
 
-#### [waitForXPath](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L423-L439)
+#### [waitForXPath](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L423-L439)
 
 Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.
 
@@ -333,7 +335,7 @@ Type: `function (xpath, options): TestingScenario`
 
 * * *
 
-#### [userAgent](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L446-L462)
+#### [userAgent](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L446-L462)
 
 Handle User agent of instance
 
@@ -343,7 +345,7 @@ Type: `function (handler): TestingScenario`
 
 * * *
 
-#### [clearPermissionOverrides](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L469-L480)
+#### [clearPermissionOverrides](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L469-L480)
 
 Clears all permission overrides for the browser context.
 
@@ -351,7 +353,7 @@ Type: `function (): TestingScenario`
 
 * * *
 
-#### [overridePermissions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L491-L502)
+#### [overridePermissions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L491-L502)
 
 Override permissions for the browser context.
 
@@ -362,7 +364,7 @@ Type: `function (origin, permissions): TestingScenario`
 
 * * *
 
-#### [pageClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L514-L530)
+#### [pageClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L514-L530)
 
 Close a page from instance
 
@@ -373,7 +375,7 @@ Type: `function (options, index): TestingScenario`
 
 * * *
 
-#### [pageSetLabel](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L537-L554)
+#### [pageSetLabel](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L537-L554)
 
 Set page label, for easier selecting using .getPage(label)
 
@@ -383,7 +385,7 @@ Type: `function (label): TestingScenario`
 
 * * *
 
-#### [pageReload](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L582-L598)
+#### [pageReload](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L582-L598)
 
 Close a page from instance
 
@@ -394,7 +396,7 @@ Type: `function (index, options): TestingScenario`
 
 * * *
 
-#### [pageContent](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L605-L625)
+#### [pageContent](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L605-L625)
 
 Handle User agent of instance
 
@@ -404,7 +406,7 @@ Type: `function (handler)`
 
 * * *
 
-#### [clickOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L639-L655)
+#### [clickOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L639-L655)
 
 This method fetches an element with selector, scrolls it into view if needed, and then uses page.mouse to click in the center of the element. If there's no element matching selector, the method throws an error.
 
@@ -415,7 +417,7 @@ Type: `function (selector, options): TestingScenario`
 
 * * *
 
-#### [typeOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L668-L684)
+#### [typeOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L668-L684)
 
 Sends a `keydown`, `keypress/input`, and `keyup` event for each character in the text.
 
@@ -427,7 +429,7 @@ Type: `function (selector, text, options): TestingScenario`
 
 * * *
 
-#### [tapOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L693-L708)
+#### [tapOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L693-L708)
 
 This method fetches an element with `selector`, scrolls it into view if needed, and then uses `page.touchscreen` to tap in the center of the element. If there's no element matching `selector`, the method throws an error.
 
@@ -437,7 +439,7 @@ Type: `function (selector): TestingScenario`
 
 * * *
 
-#### [focusOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L715-L730)
+#### [focusOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L715-L730)
 
 This method fetches an element with `selector` and focuses it. If there's no element matching `selector`, the method throws an error.
 
@@ -447,7 +449,7 @@ Type: `function (selector): TestingScenario`
 
 * * *
 
-#### [hoverOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L737-L752)
+#### [hoverOnSelector](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L737-L752)
 
 This method fetches an element with `selector`, scrolls it into view if needed, and then uses page.mouse to hover over the center of the element. If there's no element matching `selector`, the method throws an error.
 
@@ -457,7 +459,7 @@ Type: `function (selector): TestingScenario`
 
 * * *
 
-#### [evaluate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L761-L786)
+#### [evaluate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L761-L786)
 
 If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.
 
@@ -470,7 +472,7 @@ Type: `function (pageFunction, handler, variables, meta): TestingScenario`
 
 * * *
 
-#### [evaluateOnSelectorAll](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L848-L882)
+#### [evaluateOnSelectorAll](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L848-L882)
 
 If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.
 
@@ -568,7 +570,7 @@ test.evaluateOnSelectorAll(
 
 * * *
 
-#### [evaluateOnSelectorOnlyOne](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L893-L928)
+#### [evaluateOnSelectorOnlyOne](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L893-L928)
 
 Similar with evaluateOnSelectorAll but throws an error if detected more than one element
 
@@ -581,7 +583,7 @@ Type: `function (selector, pageFunction, handler, value): TestingScenario`
 
 * * *
 
-#### [pageEmulate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L979-L1001)
+#### [pageEmulate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L993-L1015)
 
 Emulates specific configuration of device
 
@@ -591,7 +593,7 @@ Type: `function (config): TestingScenario`
 
 * * *
 
-#### [message](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1008-L1013)
+#### [message](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1022-L1027)
 
 Add a specific message to last operation
 
@@ -601,7 +603,7 @@ Type: `function (message): TestingScenario`
 
 * * *
 
-#### [operationLabels](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1020-L1030)
+#### [operationLabels](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1034-L1044)
 
 Add labels to operation
 
@@ -611,7 +613,7 @@ Type: `function (labels): TestingScenario`
 
 * * *
 
-#### [operationLabelsRemove](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1037-L1049)
+#### [operationLabelsRemove](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1051-L1063)
 
 Remove labels from operation
 
@@ -621,7 +623,7 @@ Type: `function (labels): TestingScenario`
 
 * * *
 
-#### [deactivate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1057-L1062)
+#### [deactivate](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1071-L1076)
 
 activate or deactivate operation by adding or removing operation label `"__Deactivated"`
 
@@ -631,7 +633,7 @@ Type: `function (status): TestingScenario`
 
 * * *
 
-#### [describe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1069-L1075)
+#### [describe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1083-L1089)
 
 Describe a section of testing scenario
 
@@ -641,7 +643,7 @@ Type: `function (message): TestingScenario`
 
 * * *
 
-#### [describeClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1082-L1088)
+#### [describeClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1096-L1102)
 
 Close Describe section of testing scenario
 
@@ -651,7 +653,7 @@ Type: `function (message): TestingScenario`
 
 * * *
 
-#### [group](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1095-L1101)
+#### [group](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1109-L1115)
 
 Describe a group of testing scenario similar to `TestingScenario.describe`
 
@@ -661,7 +663,7 @@ Type: `function (message): TestingScenario`
 
 * * *
 
-#### [groupClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1108-L1114)
+#### [groupClose](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1122-L1128)
 
 Close Group section of testing scenario
 
@@ -671,7 +673,7 @@ Type: `function (message): TestingScenario`
 
 * * *
 
-#### [injectScenario](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1120-L1122)
+#### [injectScenario](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1134-L1136)
 
 Inject other testing Scenario on specific step
 
@@ -681,7 +683,7 @@ Type: `function (Scenario)`
 
 * * *
 
-#### [it](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1163-L1195)
+#### [it](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1177-L1209)
 
 Assert some functionality from test
 
@@ -719,7 +721,7 @@ test.goto('http://example.com')
 
 * * *
 
-#### [fork](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1277-L1285)
+#### [fork](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1291-L1299)
 
 Timestamp <number> The timestamp when the metrics sample was taken.
 Documents <number> Number of documents in the page.
@@ -739,7 +741,7 @@ Type: `function ()`
 
 * * *
 
-#### [fork](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1277-L1285)
+#### [fork](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1291-L1299)
 
 Fork or Clone Testing Scenario
 
@@ -747,7 +749,7 @@ Type: `function ()`
 
 * * *
 
-#### [close](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1290-L1302)
+#### [close](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1304-L1316)
 
 Close device Instance
 
@@ -755,26 +757,26 @@ Type: `function ()`
 
 * * *
 
-#### [run](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1316-L1343)
+#### [run](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1330-L1369)
 
 Run your tests under specific environment
 
 Type: `function (device, device2, device3, device4, device5, device6, device7, device8, otherDevices, devices)`
 
--   `device` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))** 
--   `device2` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device3` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device4` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device5` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device6` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device7` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
--   `device8` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))** 
+-   `device2` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device3` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device4` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device5` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device6` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device7` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `device8` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
 -   `otherDevices` **...any** 
--   `devices` **([TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
+-   `devices` **([TestingScenarioPageEmulateCallback](#testingscenariopageemulatecallback) \| [TestingScenarioPageEmulateDeviceConfig](#testingscenariopageemulatedeviceconfig) \| [TestingScenarioPageEmulateDeviceName](#testingscenariopageemulatedevicename))?** 
 
 * * *
 
-### [TestingScenarioSetViewportOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L156-L164)
+### [TestingScenarioSetViewportOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L156-L164)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -787,7 +789,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioGotoOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L195-L200)
+### [TestingScenarioGotoOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L195-L200)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -797,7 +799,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioWaitForFunctionOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L314-L320)
+### [TestingScenarioWaitForFunctionOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L314-L320)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -807,7 +809,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioWaitForNavigationOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L346-L356)
+### [TestingScenarioWaitForNavigationOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L346-L356)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -819,7 +821,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioWaitForSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L381-L386)
+### [TestingScenarioWaitForSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L381-L386)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -829,7 +831,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioWaitForXPathOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L411-L416)
+### [TestingScenarioWaitForXPathOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L411-L416)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -839,13 +841,13 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioInstancePermissions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L482-L484)
+### [TestingScenarioInstancePermissions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L482-L484)
 
 Type: (`"geolocation"` \| `"midi"` \| `"midi-sysex"` \| `"notifications"` \| `"push"` \| `"camera"` \| `"microphone"` \| `"background-sync"` \| `"ambient-light-sensor"` \| `"accelerometer"` \| `"gyroscope"` \| `"magnetometer"` \| `"accessibility-events"` \| `"clipboard-read"` \| `"clipboard-write"` \| `"payment-handler"`)
 
 * * *
 
-### [TestingScenarioPageCloseOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L504-L507)
+### [TestingScenarioPageCloseOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L504-L507)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -853,7 +855,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioPageReloadOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L566-L575)
+### [TestingScenarioPageReloadOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L566-L575)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -865,7 +867,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioPageReloadOptionsWaitUntil](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L556-L565)
+### [TestingScenarioPageReloadOptionsWaitUntil](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L556-L565)
 
 When to consider navigation succeeded, defaults to load. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
 
@@ -878,7 +880,7 @@ Type: (`"load"` \| `"domcontentloaded"` \| `"networkidle0"` \| `"networkidle2"`)
 
 * * *
 
-### [TestingScenarioClickOnSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L627-L632)
+### [TestingScenarioClickOnSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L627-L632)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -888,7 +890,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioTypeOnSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L657-L660)
+### [TestingScenarioTypeOnSelectorOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L657-L660)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -896,22 +898,26 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioPageEmulateConfig](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L939-L943)
+### [TestingScenarioPageEmulateConfigViewport](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L930-L938)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
--   `viewport` **[TestingScenarioPageEmulateConfigViewport](#testingscenariopageemulateconfigviewport)** viewport options
--   `userAgent` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** user agent definition
+-   `width` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** page width in pixels.
+-   `height` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** page height in pixels.
+-   `deviceScaleFactor` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Specify device scale factor (can be thought of as dpr). Defaults to 1.
+-   `isMobile` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the meta viewport tag is taken into account. Defaults to false.
+-   `hasTouch` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Specifies if viewport supports touch events. Defaults to false
+-   `isLandscape` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Specifies if viewport is in landscape mode. Defaults to false.
 
 * * *
 
-### [TestingScenarioPageEmulateDeviceName](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L944-L946)
+### [TestingScenarioPageEmulateDeviceName](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L944-L946)
 
 Type: (`"Blackberry PlayBook"` \| `"Blackberry PlayBook landscape"` \| `"BlackBerry Z30"` \| `"BlackBerry Z30 landscape"` \| `"Galaxy Note 3"` \| `"Galaxy Note 3 landscape"` \| `"Galaxy Note II"` \| `"Galaxy Note II landscape"` \| `"Galaxy S III"` \| `"Galaxy S III landscape"` \| `"Galaxy S5"` \| `"Galaxy S5 landscape"` \| `"iPad"` \| `"iPad landscape"` \| `"iPad Mini"` \| `"iPad Mini landscape"` \| `"iPad Pro"` \| `"iPad Pro landscape"` \| `"iPhone 4"` \| `"iPhone 4 landscape"` \| `"iPhone 5"` \| `"iPhone 5 landscape"` \| `"iPhone 6"` \| `"iPhone 6 landscape"` \| `"iPhone 6 Plus"` \| `"iPhone 6 Plus landscape"` \| `"iPhone 7"` \| `"iPhone 7 landscape"` \| `"iPhone 7 Plus"` \| `"iPhone 7 Plus landscape"` \| `"iPhone 8"` \| `"iPhone 8 landscape"` \| `"iPhone 8 Plus"` \| `"iPhone 8 Plus landscape"` \| `"iPhone SE"` \| `"iPhone SE landscape"` \| `"iPhone X"` \| `"iPhone X landscape"` \| `"iPhone XR"` \| `"iPhone XR landscape"` \| `"JioPhone 2"` \| `"JioPhone 2 landscape"` \| `"Kindle Fire HDX"` \| `"Kindle Fire HDX landscape"` \| `"LG Optimus L70"` \| `"LG Optimus L70 landscape"` \| `"Microsoft Lumia 550"` \| `"Microsoft Lumia 950"` \| `"Microsoft Lumia 950 landscape"` \| `"Nexus 10"` \| `"Nexus 10 landscape"` \| `"Nexus 4"` \| `"Nexus 4 landscape"` \| `"Nexus 5"` \| `"Nexus 5 landscape"` \| `"Nexus 5X"` \| `"Nexus 5X landscape"` \| `"Nexus 6"` \| `"Nexus 6 landscape"` \| `"Nexus 6P"` \| `"Nexus 6P landscape"` \| `"Nexus 7"` \| `"Nexus 7 landscape"` \| `"Nokia Lumia 520"` \| `"Nokia Lumia 520 landscape"` \| `"Nokia N9"` \| `"Nokia N9 landscape"` \| `"Pixel 2"` \| `"Pixel 2 landscape"` \| `"Pixel 2 XL"` \| `"Pixel 2 XL landscape"`)
 
 * * *
 
-### [TestingScenarioPageEmulateDeviceConfig](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L948-L953)
+### [TestingScenarioPageEmulateDeviceConfig](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L948-L953)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -921,7 +927,27 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioPageEmulateDeviceConfigOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L955-L973)
+### [TestingScenarioPageEmulateCallbackResult](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L955-L962)
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+-   `_errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)>** errors emitted during test
+-   `_skipped` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of operations that were skipped in test, cause can be an emitted error
+-   `_warns` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of operations that got warnings
+-   `_failed` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** number of operations that failed
+-   `_fallenDevices` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[TestingScenarioPageEmulateDeviceConfigOptions](#testingscenariopageemulatedeviceconfigoptions)>** list if devices that failed test
+
+* * *
+
+### [TestingScenarioPageEmulateCallback](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L964-L967)
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+-   `result` **[TestingScenarioPageEmulateCallbackResult](#testingscenariopageemulatecallbackresult)** 
+
+* * *
+
+### [TestingScenarioPageEmulateDeviceConfigOptions](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L969-L987)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -944,20 +970,16 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 * * *
 
-### [TestingScenarioPageEmulateConfigViewport](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L930-L938)
+### [TestingScenarioPageEmulateConfig](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L939-L943)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
--   `width` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** page width in pixels.
--   `height` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** page height in pixels.
--   `deviceScaleFactor` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Specify device scale factor (can be thought of as dpr). Defaults to 1.
--   `isMobile` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the meta viewport tag is taken into account. Defaults to false.
--   `hasTouch` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Specifies if viewport supports touch events. Defaults to false
--   `isLandscape` **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Specifies if viewport is in landscape mode. Defaults to false.
+-   `viewport` **[TestingScenarioPageEmulateConfigViewport](#testingscenariopageemulateconfigviewport)** viewport options
+-   `userAgent` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** user agent definition
 
 * * *
 
-### [TestingScenarioItHandlerCallback](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1124-L1130)
+### [TestingScenarioItHandlerCallback](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1138-L1144)
 
 Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
@@ -966,7 +988,7 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 * * *
 
-### [assert](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1360-L1383)
+### [assert](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1386-L1409)
 
 Type: `function (expectValue, value, message, isNegated, comparingFunction)`
 
@@ -978,7 +1000,7 @@ Type: `function (expectValue, value, message, isNegated, comparingFunction)`
 
 * * *
 
-### [expect](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1520-L1524)
+### [expect](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1546-L1550)
 
 Type: `function (value)`
 
@@ -986,13 +1008,13 @@ Type: `function (value)`
 
 * * *
 
-#### [to](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1529-L1531)
+#### [to](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1555-L1557)
 
 Type: `function (): expectTo`
 
 * * *
 
-### [expectTo](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1534-L1534)
+### [expectTo](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1560-L1560)
 
 Type: `function (value)`
 
@@ -1000,13 +1022,13 @@ Type: `function (value)`
 
 * * *
 
-#### [be](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1539-L1541)
+#### [be](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1565-L1567)
 
 Type: `function (): expectToBe`
 
 * * *
 
-### [expectToBe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1544-L1544)
+### [expectToBe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1570-L1570)
 
 Type: `function (value)`
 
@@ -1014,34 +1036,34 @@ Type: `function (value)`
 
 * * *
 
-### [ExpectedType](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1546-L1548)
+### [ExpectedType](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1572-L1574)
 
 Type: (`"string"` \| `"number"` \| `"boolean"` \| `"function"` \| `"object"` \| `"array"` \| `"null"` \| `"NaN"` \| `"NUMBER_FINITE"` \| `"NUMBER_SAFE_INTEGER"` \| `"INFINITY"` \| `"POSITIVE_INFINITY"` \| `"NEGATIVE_INFINITY"`)
 
 * * *
 
-### [Expect.to.be.a](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1555-L1595)
+### [Expect.to.be.a](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1581-L1621)
 
 -   `type` **[ExpectedType](#expectedtype)** 
 -   `message` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** what to show wen conditions are not meet
 
 * * *
 
-### [Expect.to.be.notA](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1603-L1605)
+### [Expect.to.be.notA](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1629-L1631)
 
 -   `type` **[ExpectedType](#expectedtype)** 
 -   `message` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** what to show wen conditions are not meet
 
 * * *
 
-### [Expect.to.be.instanceOf](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1613-L1616)
+### [Expect.to.be.instanceOf](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1639-L1642)
 
 -   `instanceType` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) | any)** 
 -   `message` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** what to show wen conditions are not meet
 
 * * *
 
-### [expectValueDescribe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/442138cf82cb60e1c11dc8b9e7eb32a7c0ec5507/index.js#L1621-L1621)
+### [expectValueDescribe](https://git@labs.sgapps.io/:open-source/sgapps.io-testing-platform/blob/786205815c16e7d9b659e952a1b104645397d08f/index.js#L1647-L1647)
 
 Type: `function (value)`
 

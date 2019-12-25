@@ -953,6 +953,20 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
  */
 
 /**
+ * @typedef {Object} TestingScenarioPageEmulateCallbackResult
+ * @property {Error[]} _errors errors emitted during test
+ * @property {Number}  _skipped number of operations that were skipped in test, cause can be an emitted error
+ * @property {Number}  _warns number of operations that got warnings
+ * @property {Number}  _failed number of operations that failed
+ * @property {TestingScenarioPageEmulateDeviceConfigOptions[]} _fallenDevices list if devices that failed test
+ */
+
+/**
+ * @callback TestingScenarioPageEmulateCallback
+ * @param {TestingScenarioPageEmulateCallbackResult} result
+ */
+
+/**
  * @typedef {Object} TestingScenarioPageEmulateDeviceConfigOptions
  * @property {boolean} ignoreHTTPSErrors Whether to ignore HTTPS errors during navigation. Defaults to `false`.
  * @property {boolean} headless Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
@@ -1303,20 +1317,28 @@ TestingScenario.prototype.close = function () {
 
 /**
  * Run your tests under specific environment
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} device
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device2]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device3]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device4]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device5]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device6]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device7]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device8]
- * @param {(TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [devices]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} device
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device2]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device3]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device4]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device5]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device6]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device7]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [device8]
+ * @param {(TestingScenarioPageEmulateCallback|TestingScenarioPageEmulateDeviceConfig|TestingScenarioPageEmulateDeviceName)} [devices]
  */
 TestingScenario.prototype.run = function (device, device2, device3, device4, device5, device6, device7, device8, ...otherDevices) {
 	let _path = require('path');
 	let _self = this;
+	let _callbacks = [];
 	let devices    = Array.prototype.slice.call(arguments);
+	devices = devices.filter(device => {
+		if (typeof(device) === "function") {
+			_callbacks.push(device);
+			return false;
+		}
+		return true;
+	})
 	new ApplicationBuilder({
 		onready : async function () {
 			let app = this;
@@ -1337,7 +1359,11 @@ TestingScenario.prototype.run = function (device, device2, device3, device4, dev
 
 			let runner  = await app.require('runner');
 
-			runner(devices, _self);
+			runner(devices, _self, function (result) {
+				_callbacks.forEach(callback => {
+					callback(result);
+				});
+			});
 		}
 	});
 };
