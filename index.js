@@ -767,6 +767,8 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
+					let done = reject;
+					eval('pageFunction = ' + pageFunction.toString().replace('{', '{\ntry {').replace(/\}([^\}]*$)/, '} catch (err) { done(err) }\n}$1'));
 					page.evaluate(pageFunction, (variables || {})).then(
 						(result) => {
 							if (!handler) {
