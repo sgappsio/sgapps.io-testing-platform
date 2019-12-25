@@ -774,7 +774,13 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables,
 								resolve();
 							} else {
 								try {
-									handler(result).then(resolve, reject).catch(reject);
+									let response = handler(result);
+									
+									if (response && response.then) {
+										response.then(resolve, reject).catch(reject);
+									} else {
+										resolve();
+									}
 								} catch (err) {
 									reject(err);
 								}
