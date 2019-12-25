@@ -879,6 +879,8 @@ TestingScenario.prototype.evaluateOnSelectorAll = function (selector, pageFuncti
 		name : 'evaluateOnSelectorAll',
 		args : arguments
 	});
+
+	return this;
 };
 
 /**
@@ -925,6 +927,8 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
 		name : 'evaluateOnSelectorOnlyOne',
 		args : arguments
 	});
+
+	return this;
 };
 
 /**
@@ -1424,14 +1428,14 @@ assert.notStrictEqual = function (expectValue, value, message) {
 	return new assert(expectValue, value, message, false, (a, b) => a !== b);
 }
 
-assert.typeof = function (expectValue, value, message) {
+assert.typeof = function (expectValue, typeName, message) {
 	let logArguments = require('./modules/reporter').logArguments;
-	return new assert(typeof(expectValue), value, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m to be {{value}}"), false, (a, b) => a === b);
+	return new assert(typeof(expectValue), typeName, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m to be {{value}}"), false, (a, b) => a === b);
 }
 
-assert.notTypeof = function (expectValue, value, message) {
+assert.notTypeof = function (expectValue, typeName, message) {
 	let logArguments = require('./modules/reporter').logArguments;
-	return new assert(typeof(expectValue), value, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m not to be {{value}}"), false, (a, b) => a != b);
+	return new assert(typeof(expectValue), typeName, (message || "Expect typeof " + logArguments(expectValue) + "\\33[31m not to be {{value}}"), false, (a, b) => a != b);
 }
 
 assert.lengthOf = function (expectValue, value, message) {
