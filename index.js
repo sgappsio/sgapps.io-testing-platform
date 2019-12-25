@@ -767,14 +767,17 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
-					let done = reject;
-					eval('pageFunction = ' + pageFunction.toString().replace('{', '{\ntry {').replace(/\}([^\}]*$)/, '} catch (err) { done(err) }\n}$1'));
+					eval('pageFunction = ' + pageFunction.toString().replace('{', '{\ntry {').replace(/\}([^\}]*$)/, '} catch (err) { reject(err) }\n}$1'));
 					page.evaluate(pageFunction, (variables || {})).then(
 						(result) => {
 							if (!handler) {
 								resolve();
 							} else {
-								handler(result).then(resolve, reject);
+								try {
+									handler(result).then(resolve, reject).catch(reject);
+								} catch (err) {
+									reject(err);
+								}
 							}
 						},
 						reject
@@ -917,7 +920,7 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
 		return nodes.map(function (element, index, arr) {
 			if (index) throw Error('Detected more than one element with selector ["' + variables.selector + '"]');
 			return pageFunction(element, value, index, arr);
-		});
+		})[0];
 	};
 
 	this.evaluate(wrapper, handler, {
