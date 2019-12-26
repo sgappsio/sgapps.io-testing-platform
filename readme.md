@@ -1,28 +1,11 @@
 # 🐙 SGApps.IO Testing Platform
 
-<div class="page-header">
 <em>Easy way to build testing scenarios</em>
 
 🐙 SGApps.IO Testing Platform
 
 <em>easy and intuitive functional testing based on <u>puppeteer</u></em>
 
-</div>
-
-<style>
-    .page-header::first-letter {
-        font-size: 45px;
-    }
-    .page-header {
-        background: #ff204030;
-        padding: 80px 60px;
-        font-size: 27px;
-    }
-    .page-header em {
-        font-size: 14px;
-        float: right;
-    }
-</style>
 
 ## Emulation mode
 
