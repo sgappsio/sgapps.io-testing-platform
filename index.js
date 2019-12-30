@@ -767,19 +767,29 @@ TestingScenario.prototype.evaluate = function (pageFunction, handler, variables,
 		operation : function (instance) {
 			return new Promise((resolve, reject) => {
 				_self._getPage(instance).then(page => {
-					eval('pageFunction = ' + pageFunction.toString().replace('{', '{\ntry {').replace(/\}([^\}]*$)/, '} catch (err) { reject(err) }\n}$1'));
-					page.evaluate(pageFunction, (variables || {})).then(
+					eval('pageFunction = function () { try { return { error: null, data: ( ' + pageFunction.toString() + ' ).apply({}, arguments) } } catch (err) { return { error: { message: err.message, stack: err.stack } } } }');
+					page.evaluate(pageFunction, (variables || {}), reject).then(
 						(result) => {
 							if (!handler) {
 								resolve();
 							} else {
 								try {
-									let response = handler(result);
-									
-									if (response && response.then) {
-										response.then(resolve, reject).catch(reject);
+									if (result.error) {
+										let err = new Error(
+											"Browser Context: " + (
+												result.error.message || "Unknown Error"
+											)
+										);
+										err.stack = result.stack;
+										reject(err);
 									} else {
-										resolve();
+										let response = handler(result);
+										
+										if (response && response.then) {
+											response.then(resolve, reject).catch(reject);
+										} else {
+											resolve();
+										}
 									}
 								} catch (err) {
 									reject(err);
