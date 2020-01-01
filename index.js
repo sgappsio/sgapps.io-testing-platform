@@ -873,7 +873,7 @@ TestingScenario.prototype.evaluateOnSelectorAll = function (selector, pageFuncti
 	}
 
 	if (typeof(pageFunction) === "string") {
-		pageFunction = 'function (element, value, index, arr) { return eval("' + escape(pageFunction) + '"); }';
+		pageFunction = 'function (element, value, index, arr) { return eval(unescape("' + escape(pageFunction) + '")); }';
 	} else {
 		pageFunction = pageFunction.toString();
 	}
@@ -920,7 +920,7 @@ TestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFu
 	}
 
 	if (typeof(pageFunction) === "string") {
-		pageFunction = 'function (element, value, index, arr) { return eval("' + escape(pageFunction) + '"); }';
+		pageFunction = 'function (element, value, index, arr) { return eval(unescape("' + escape(pageFunction) + '")); }';
 	} else {
 		pageFunction = pageFunction.toString();
 	}
