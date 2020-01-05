@@ -55,7 +55,7 @@ repo_sync_github:
 npm_publish:
   stage: publish
   only:
-    - /^v\d.*$/
+    - /^v.*$/
   except:
     - branches
   before_script:
