@@ -81,8 +81,9 @@ Scenario
 ![Run Same Scenario on multiple devices](docs/images/testing-verbose-mode.png)
 
 ### Examples
-    - [Simple Test](./test.js)
-    - [Mocha Integration](./examples/mocha/index.js)
+
+- [Simple Test](./test.js)
+- [Mocha Integration](./examples/mocha/index.js)
 
 ## API
 
