@@ -1,0 +1,14 @@
+{
+  "name": "mocha-scenario-example",
+  "version": "1.0.0",
+  "description": "Mocha Scenario Example for SGApps.IO Testing Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergiu Gordienco <sergiu.gordienco@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^7.0.0"
+  }
+}

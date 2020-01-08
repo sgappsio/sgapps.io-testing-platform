@@ -1,14 +1,47 @@
 {
   "name": "sgapps.io-testing-platform",
-  "version": "1.1.14",
-  "description": "",
+  "version": "1.1.15",
+  "description": "Testing Platform based on puppeteer and puppeteer-firefox. Offers possibility to define a scenario and run it under both browsers.",
+  "keywords": [
+    "testing platform",
+    "test",
+    "tests",
+    "testing",
+    "puppeteer",
+    "puppeteer-firefox",
+    "scenario",
+    "sgapps.io",
+    "sgappsio",
+    "selenium",
+    "alternative",
+    "webdriver",
+    "webdriverjs",
+    "selenium-webdriver",
+    "mocha"
+  ],
   "main": "index.js",
   "scripts": {
     "jsdoc": "./node_modules/update-markdown-jsdoc/index.js -f index.js -r readme.md -S -s API",
     "test": "node test.js"
   },
-  "author": "Sergiu Gordienco",
-  "license": "Apache License v2.0",
+  "homepage": "https://labs.sgapps.io/open-source/sgapps.io-testing-platform#readme",
+  "author": {
+    "name" : "Sergiu Gordienco",
+    "email" : "sergiu.gordienco@gmail.com",
+    "url" : "https://www.linkedin.com/in/sergiu-gordienco/"
+  },
+  "contributors": [
+    "Alina Gordienco <alina.gordienco@sgapps.io> (https://www.linkedin.com/in/alina-gordienco-95a309157/)"
+  ],
+  "license": "Apache-2.0",
+  "bugs" : {
+    "url" : "https://github.com/sgappsio/sgapps.io-testing-platform/issues",
+    "email" : "contact+project--sgapps.io-testing-platform@sgapps.io"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/sgappsio/sgapps.io-testing-platform.git"
+  },
   "dependencies": {
     "application-prototype": "^1.24.6",
     "puppeteer": "^2.0.0",
