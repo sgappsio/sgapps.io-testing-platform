@@ -1,6 +1,6 @@
 {
   "name": "sgapps.io-testing-platform",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "Testing Platform based on puppeteer and puppeteer-firefox. Offers possibility to define a scenario and run it under both browsers.",
   "keywords": [
     "testing platform",
@@ -21,7 +21,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "jsdoc": "./node_modules/update-markdown-jsdoc/index.js -f index.js -r readme.md -S -s API",
+    "jsdoc": "./node_modules/update-markdown-jsdoc/index.js -f index.js -r readme.md -S -s API ; cat readme.md | sed -r 's/\\]\\(https\\:\\/\\/git@labs.sgapps.io\\/\\:/\\]\\(https\\:\\/\\/labs.sgapps.io\\//' | sed -r 's/(\\.js\\x23L[0-9]+)-L[0-9]+\\)/\\1)/' | tee readme.md",
     "test": "node test.js"
   },
   "homepage": "https://labs.sgapps.io/open-source/sgapps.io-testing-platform#readme",
