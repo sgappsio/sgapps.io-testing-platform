@@ -1,0 +1,80 @@
+{
+	"tags": {
+		"allowUnknownTags": false
+	},
+	"source": {
+		"include": [
+			"./index.d.ts",
+			"./index.js",
+			"./test.js",
+			"./modules"
+		],
+		"includePattern": "\\.js$",
+		"excludePattern": "node_modules/sgapps-server/(index.d.ts|resources/thirdparty|node_modules)"
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"opts": {
+		"template": "node_modules/docdash",
+		"encoding": "utf8",
+		"destination": "documentation/backend",
+		"recurse": true,
+		"verbose": true
+	},
+	"templates": {
+		"cleverLinks": true,
+		"monospaceLinks": true,
+		"default": {
+			"includeDate": false
+		}
+	},
+	"docdash": {
+		"static": true,
+		"sort": true,
+		"search": true,
+		"collapse": true,
+		"sectionOrder": [
+			"Modules",
+			"Classes",
+			"Externals",
+			"Events",
+			"Namespaces",
+			"Mixins",
+			"Tutorials",
+			"Interfaces"
+		],
+		"disqus": "SGApps Testing Scenario by SGApps.IO",
+		"openGraph": {
+			"title": "SGApps.IO - Backend",
+			"type": "website",
+			"image": "",
+			"site_name": "",
+			"url": "https://sgapps.io"
+		},
+		"meta": {
+			"title": "SGApps Testing Scenario",
+			"description": "SGApps Testing Scenario used as testing framework",
+			"keyword": "javascript, js, application-prototype, prototype"
+		},
+		"wrap": true,
+		"typedefs": true,
+		"navLevel": 1,
+		"private": false,
+		"removeQuotes": "none",
+		"scripts": [
+			"https://sgapps.io/components/sgapps-labs-examples/toolbar/loader.js"
+		],
+		"menu": {
+			"Project Website": {
+				"href":"https://sgapps.io/",
+				"target":"_blank",
+				"class":"menu-item",
+				"id":"website_link"
+			}
+		},
+		"scopeInOutputPath": true,
+		"nameInOutputPath": true,
+		"versionInOutputPath": true
+	}
+}

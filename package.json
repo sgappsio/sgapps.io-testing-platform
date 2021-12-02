@@ -1,6 +1,7 @@
 {
   "name": "sgapps.io-testing-platform",
   "version": "1.1.16",
+  "types": "index.d.ts",
   "description": "Testing Platform based on puppeteer and puppeteer-firefox. Offers possibility to define a scenario and run it under both browsers.",
   "keywords": [
     "testing platform",
@@ -22,32 +23,52 @@
   "main": "index.js",
   "scripts": {
     "jsdoc": "./node_modules/update-markdown-jsdoc/index.js -f index.js -r readme.md -S -s API ; cat readme.md | sed -r 's/\\]\\(https\\:\\/\\/git@labs.sgapps.io\\/\\:/\\]\\(https\\:\\/\\/labs.sgapps.io\\//' | sed -r 's/(\\.js\\x23L[0-9]+)-L[0-9]+\\)/\\1)/' | tee readme.md",
-    "test": "node test.js"
+    "test": "node test.js",
+    "start": "NODE_ENV=production node index.js",
+    "deploy": "rm -rf ./node_modules ; rm -rf package-lock.json ; npm i --only=prod && rm -rf ./node_modules/*/.git/ && npm i --local --only=prod bower && ./node_modules/bower/bin/bower --allow-root --silent install && ./node_modules/bower/bin/bower --allow-root --silent update",
+    "docs": "rm -rf ./documentation/* ; jsdoc -c jsdoc.json ",
+    "docs-dictionary": "jsdoc -c jsdoc.json -t node_modules/tsd-jsdoc/dist -r -d . ; echo '' > index.d.ts ; cat 'node_modules/@types/puppeteer/index.d.ts' >> index.d.ts ; cat types.d.ts >> index.d.ts ; rm types.d.ts",
+    "docs-dictionary-dev": "npm run docs-dictionary; while true; do find . -not -path './documentation' | entr -pd npm run docs-dictionary; done",
+    "docs-build": "npm run docs ; npm run docs-dictionary",
+    "docs-dev": "npm run docs-build ; while true; do find . -not -path './documentation' | entr -pd npm run docs-build ; done",
+    "docs-preview": "live-server --wait=5500 --no-browser documentation",
+    "preinstall": "rm -rf ./node_modules"
   },
   "homepage": "https://labs.sgapps.io/open-source/sgapps.io-testing-platform#readme",
   "author": {
-    "name" : "Sergiu Gordienco",
-    "email" : "sergiu.gordienco@gmail.com",
-    "url" : "https://www.linkedin.com/in/sergiu-gordienco/"
+    "name": "Sergiu Gordienco",
+    "email": "sergiu.gordienco@gmail.com",
+    "url": "https://www.linkedin.com/in/sergiu-gordienco/"
   },
   "contributors": [
     "Alina Gordienco <alina.gordienco@sgapps.io> (https://www.linkedin.com/in/alina-gordienco-95a309157/)"
   ],
   "license": "Apache-2.0",
-  "bugs" : {
-    "url" : "https://github.com/sgappsio/sgapps.io-testing-platform/issues",
-    "email" : "contact+project--sgapps.io-testing-platform@sgapps.io"
+  "bugs": {
+    "url": "https://github.com/sgappsio/sgapps.io-testing-platform/issues",
+    "email": "contact+project--sgapps.io-testing-platform@sgapps.io"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/sgappsio/sgapps.io-testing-platform.git"
+    "type": "git",
+    "url": "https://github.com/sgappsio/sgapps.io-testing-platform.git"
+  },
+  "jshintConfig": {
+    "-W014": true,
+    "-W104": true,
+    "-W119": true
   },
   "dependencies": {
     "application-prototype": "^1.24.6",
     "puppeteer": "^2.0.0",
-    "puppeteer-firefox": "^0.5.0"
+    "puppeteer-firefox": "^0.5.0",
+    "sgapps-server": "0.0.23"
   },
   "devDependencies": {
+    "@types/puppeteer": "^5.4.4",
+    "bower": "^1.8.13",
+    "docdash": "^1.2.0",
+    "jsdoc": "^3.6.7",
+    "tsd-jsdoc": "^2.5.0",
     "update-markdown-jsdoc": "^1.0.11"
   }
 }

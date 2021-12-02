@@ -1,12 +1,12 @@
-let TestScenario = require('./index');
-// let expect       = TestScenario.expect;
-let assert       = TestScenario.assert;
+let SGAppsTestScenario = require('./index');
+let expect       = SGAppsTestScenario.expect;
+let assert       = SGAppsTestScenario.assert;
 
-let Scenario = new TestScenario();
+let Scenario = new SGAppsTestScenario();
 
 Scenario
-	.isHeadLess(true)
-	.isVerbose(false) // enable to view detailed step logs
+	.setOption('headless', true)
+	.setOption('verbose', true) // enable to view detailed step logs
 	.getPage()
 	.goto('http://google.com', { waitUntil: "domcontentloaded" })
 	.wait(1000)

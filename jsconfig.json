@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"module": "commonJS",
+		"target": "es2015",
+		"typeRoots": [
+			"./"
+		]
+	},
+	"include": [
+		"./index.d.ts",
+		"./index.js",
+		"./test.js",
+		"./modules",
+	],
+	"exclude": [
+		"./examples"
+	]
+}

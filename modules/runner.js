@@ -1,7 +1,7 @@
 let puppeteerFirefox = Application.NodeInterface().require('puppeteer-firefox');
 let puppeteer        = Application.NodeInterface().require('puppeteer');
 
-module.exports = async (devices, /** @type {import('../index')} */ Scenario, callback) => {
+module.exports = async (devices, /*** @type {import('../index')} */ Scenario, callback) => {
 
 	console.info('🐙 \x1b[1m SGApps.IO - Testing Platform » Running Tests');
 
@@ -60,7 +60,7 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 							((arr[index + 1] || {}).labels || []).indexOf('__ScenarioGroupClose') !== -1
 						);
 
-						if (!isLast && !Scenario.isVerbose()) {
+						if (!isLast && !Scenario.getOption('verbose')) {
 							let found = false;
 							for (let i=index + 1;i<arr.length;i++) {
 								if (
@@ -95,14 +95,14 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 							if (item.message) {
 								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \x1b[2;1mDeactivated: \x1b[0;2m ' + item.message);
 							} else {
-								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \x1b[2;1mDeactivated: \x1b[0;2m ' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[0;36m(\x1b[0m', reporter.logArguments(item.params),'\x1b[36m)\x1b[0m');
+								console.log(indentValue(isLast).replace(/(\u2500|\u251c)/g, '╌') + '📴  \x1b[2;1mDeactivated: \x1b[0;2m ' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[0;36m(\x1b[0m', reporter.prettyCliRow(item.params),'\x1b[36m)\x1b[0m');
 							}
 							return next();
 						} else if (item.message) {
 							console.log(indentValue(isLast) + '🔖  ' + item.message);
 						}
-						if (Scenario.isVerbose()) {
-							console.log(indentValue(isLast) + '' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[36m(\x1b[0m', reporter.logArguments(item.params),'\x1b[36m)\x1b[0m');
+						if (Scenario.getOption('verbose')) {
+							console.log(indentValue(isLast) + '' + (index + 1) + '. \x1b[32m' + item.name + ' \x1b[36m(\x1b[0m', reporter.prettyCliRow(item.params),'\x1b[36m)\x1b[0m');
 						}
 						
 						try {
@@ -157,11 +157,12 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 			};
 			let options = device.options || {};
 			if (!("headless" in options)) {
-				options.headless = !!_self.isHeadLess();
-			};
+				//@ts-ignore
+				options.headless = !!_self.getOption('headless');
+			}
 			(device.type === "firefox" ? puppeteerFirefox : puppeteer).launch(
 				options
-			).then(function (/** @type {import('puppeteer').Browser} */ instance) {
+			).then(function (/*** @type {import('puppeteer').Browser} */ instance) {
 				_self._getPage(instance)
 					.then(page => {
 						let config = device.emulate;
@@ -286,4 +287,4 @@ module.exports = async (devices, /** @type {import('../index')} */ Scenario, cal
 		console.error(err);
 		Application.consoleOptions({ file: false });
 	});
-}
+};

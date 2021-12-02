@@ -1,4 +1,4 @@
-let puppeteer  = Application.NodeInterface().require('puppeteer');
+let puppeteer  = require('puppeteer');
 
 module.exports = function (devices) {
 	if (!Array.isArray(devices)) {
@@ -73,4 +73,4 @@ module.exports = function (devices) {
 	}
 
 	return devices;
-}
+};

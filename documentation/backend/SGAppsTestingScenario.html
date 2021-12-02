@@ -1,0 +1,8395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>SGAppsTestingScenario - SGApps Testing Scenario</title>
+    
+    <meta name="description" content="SGApps Testing Scenario used as testing framework" />
+    
+        <meta name="keywords" content="javascript, js, application-prototype, prototype" />
+        <meta name="keyword" content="javascript, js, application-prototype, prototype" />
+    
+    
+    
+    <meta property="og:title" content="SGApps.IO - Backend"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content="https://sgapps.io"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://sgapps.io/" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Classes</h3><ul><li><a href="SGAppsTestingAssert.html">SGAppsTestingAssert</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.equal">equal</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isAtLeast">isAtLeast</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isAtMost">isAtMost</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isBelow">isBelow</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isFalse">isFalse</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isFalsy">isFalsy</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotFalse">isNotFalse</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotNull">isNotNull</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotTrue">isNotTrue</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNull">isNull</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isTrue">isTrue</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isTruthy">isTruthy</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.lengthOf">lengthOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notEqual">notEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notLengthOf">notLengthOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notStrictEqual">notStrictEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notTypeof">notTypeof</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.strictEqual">strictEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.typeof">typeof</a></li></ul></li><li><a href="SGAppsTestingAssert.AssertError.html">AssertError</a></li><li><a href="SGAppsTestingExpect.html">SGAppsTestingExpect</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpect.html#to">to</a></li></ul></li><li><a href="SGAppsTestingExpectDescribe.html">SGAppsTestingExpectDescribe</a></li><li><a href="SGAppsTestingExpectTo.html">SGAppsTestingExpectTo</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectTo.html#be">be</a></li></ul></li><li><a href="SGAppsTestingExpectToBe.html">SGAppsTestingExpectToBe</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.a">a</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.instanceOf">instanceOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.notA">notA</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a><ul class='members'><li data-type='member' style='display: none;'><a href="SGAppsTestingScenario.html#.operations">operations</a></li></ul><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.clearPermissionOverrides">clearPermissionOverrides</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.clickOnSelector">clickOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.close">close</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.deactivate">deactivate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.describe">describe</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.describeClose">describeClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluate">evaluate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluateOnSelectorAll">evaluateOnSelectorAll</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluateOnSelectorOnlyOne">evaluateOnSelectorOnlyOne</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.focusOnSelector">focusOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.fork">fork</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.getPage">getPage</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.goto">goto</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.group">group</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.groupClose">groupClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.groupClose">groupClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.hoverOnSelector">hoverOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.it">it</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.message">message</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.operationLabels">operationLabels</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.operationLabelsRemove">operationLabelsRemove</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.overridePermissions">overridePermissions</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageClose">pageClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageContent">pageContent</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageEmulate">pageEmulate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageEventWait">pageEventWait</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageReload">pageReload</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageSetLabel">pageSetLabel</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.setViewport">setViewport</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.tapOnSelector">tapOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.typeOnSelector">typeOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.userAgent">userAgent</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.wait">wait</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForFileChooser">waitForFileChooser</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForFunction">waitForFunction</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForNavigation">waitForNavigation</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForSelector">waitForSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForXPath">waitForXPath</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#_getPage">_getPage</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#getOption">getOption</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#getScenarioName">getScenarioName</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#run">run</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#setOption">setOption</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#setScenarioName">setScenarioName</a></li></ul></li><li><a href="SGAppsTestingScenarioOperations.html">SGAppsTestingScenarioOperations</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.last">last</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.list">list</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.push">push</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SGAppsTestingScenarioClickOnSelectorOptions">SGAppsTestingScenarioClickOnSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateHandlerCallback">SGAppsTestingScenarioEvaluateHandlerCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback">SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback">SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluatePageFunctionCallback">SGAppsTestingScenarioEvaluatePageFunctionCallback</a></li><li><a href="global.html#SGAppsTestingScenarioGotoOptions">SGAppsTestingScenarioGotoOptions</a></li><li><a href="global.html#SGAppsTestingScenarioOperation">SGAppsTestingScenarioOperation</a></li><li><a href="global.html#SGAppsTestingScenarioPageCloseOptions">SGAppsTestingScenarioPageCloseOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageContentCallback">SGAppsTestingScenarioPageContentCallback</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateCallbackResult">SGAppsTestingScenarioPageEmulateCallbackResult</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateConfig">SGAppsTestingScenarioPageEmulateConfig</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateConfigViewport">SGAppsTestingScenarioPageEmulateConfigViewport</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfigOptions">SGAppsTestingScenarioPageEmulateDeviceConfigOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></li><li><a href="global.html#SGAppsTestingScenarioPageReloadOptions">SGAppsTestingScenarioPageReloadOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageReloadOptionsWaitUntil">SGAppsTestingScenarioPageReloadOptionsWaitUntil</a></li><li><a href="global.html#SGAppsTestingScenarioSetViewportOptions">SGAppsTestingScenarioSetViewportOptions</a></li><li><a href="global.html#SGAppsTestingScenarioTypeOnSelectorOptions">SGAppsTestingScenarioTypeOnSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForFunctionOptions">SGAppsTestingScenarioWaitForFunctionOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForNavigationOptions">SGAppsTestingScenarioWaitForNavigationOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForSelectorOptions">SGAppsTestingScenarioWaitForSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForXPathOptions">SGAppsTestingScenarioWaitForXPathOptions</a></li><li><a href="global.html#TestingScenarioItHandlerCallback">TestingScenarioItHandlerCallback</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">SGAppsTestingScenario</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        SGAppsTestingScenario
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".operations"><span class="type-signature">(static) </span>operations<span class="type-signature"> :<a href="SGAppsTestingScenarioOperations.html">SGAppsTestingScenarioOperations</a></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="SGAppsTestingScenarioOperations.html">SGAppsTestingScenarioOperations</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".clearPermissionOverrides"><span class="type-signature">(static) </span>clearPermissionOverrides<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line560">line 560</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Clears all permission overrides for the browser context.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".clickOnSelector"><span class="type-signature">(static) </span>clickOnSelector<span class="signature">(selector, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line743">line 743</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>This method fetches an element with selector, scrolls it into view if needed, and then uses page.mouse to click in the center of the element. If there's no element matching selector, the method throws an error.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioClickOnSelectorOptions">SGAppsTestingScenarioClickOnSelectorOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".close"><span class="type-signature">(static) </span>close<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1524">line 1524</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Close device Instance</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".deactivate"><span class="type-signature">(static) </span>deactivate<span class="signature">(status)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1271">line 1271</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>activate or deactivate operation by adding or removing operation label <code>&quot;__Deactivated&quot;</code></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if status is true than operation will be deactivated</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".describe"><span class="type-signature">(static) </span>describe<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1285">line 1285</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Describe a section of testing scenario</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the message that will describe the Scenario Section</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".describeClose"><span class="type-signature">(static) </span>describeClose<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1299">line 1299</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Close Describe section of testing scenario</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>message on succeed</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".evaluate"><span class="type-signature">(static) </span>evaluate<span class="signature">(pageFunction, handler<span class="signature-attributes">opt</span>, variables<span class="signature-attributes">opt</span>, meta<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line893">line 893</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pageFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluatePageFunctionCallback">SGAppsTestingScenarioEvaluatePageFunctionCallback</a></span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Function to be evaluated in the page context</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluateHandlerCallback">SGAppsTestingScenarioEvaluateHandlerCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>function that receives serializable data from <code>pageFunction</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>variables</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>context passed to <code>pageFunction</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>meta</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>meta of operation</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'evaluate'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>name of operation</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;any></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>arguments of operation</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".evaluateOnSelectorAll"><span class="type-signature">(static) </span>evaluateOnSelectorAll<span class="signature">(selector, pageFunction, handler<span class="signature-attributes">opt</span>, value<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line970">line 970</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of string `pageFunction`.</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll('a[href]', 'element.click()');</code></pre>
+
+        <p class="code-caption">Example usage of string `pageFunction` with `handler`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll('input[type="text"]', 'element.value', function (value) {
+    console.log(value);
+});</code></pre>
+
+        <p class="code-caption">Example usage of string `pageFunction` and `context`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll('input[type="email"]', 'element.value = value', 'user.email@example.com');</code></pre>
+
+        <p class="code-caption">Example usage of string `pageFunction` with handler and `context`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll('input[type="checkbox"]', 'element.value = value; element.checked', function (isChecked) {
+    console.log('isChecked')
+} 'On');</code></pre>
+
+        <p class="code-caption">Example usage of `pageFunction`.</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll('a[href]', function (element) { element.click() });</code></pre>
+
+        <p class="code-caption">Example usage of `pageFunction` with `handler`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll(
+    'input[type="text"]',
+    function (element) {
+        return element.value;
+    }, function (value) {
+        console.log(value);
+    }
+);</code></pre>
+
+        <p class="code-caption">Example usage of `pageFunction` and `context`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll(
+    'input[type="email"]',
+    function (element, value) {
+        element.value = value;
+    },
+    'user.email@example.com'
+);</code></pre>
+
+        <p class="code-caption">Example usage of `pageFunction` with handler and `context`</p>
+    
+    <pre class="prettyprint"><code>test.evaluateOnSelectorAll(
+    'input[type="checkbox"]',
+    function (element, value) {
+        element.value = value;
+        return element.checked;
+    },
+    function (isChecked) {
+        console.log('isChecked');
+    },
+    'On'
+);</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A selector for an selecting element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback">SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback</a></span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Function to be evaluated in the page context</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback">SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>function that receives serializable data from <code>pageFunction</code>, this parameter can be skipped</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>context passed to <code>pageFunction</code></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".evaluateOnSelectorOnlyOne"><span class="type-signature">(static) </span>evaluateOnSelectorOnlyOne<span class="signature">(selector, pageFunction, handler<span class="signature-attributes">opt</span>, value<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1073">line 1073</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Similar with evaluateOnSelectorAll but throws an error if detected more than one element</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A selector for an selecting element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback">SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback</a></span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Function to be evaluated in the page context</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioEvaluateHandlerCallback">SGAppsTestingScenarioEvaluateHandlerCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>function that receives serializable data from <code>pageFunction</code>, this parameter can be skipped</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>context passed to <code>pageFunction</code></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".focusOnSelector"><span class="type-signature">(static) </span>focusOnSelector<span class="signature">(selector)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line834">line 834</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>This method fetches an element with <code>selector</code> and focuses it. If there's no element matching <code>selector</code>, the method throws an error.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".fork"><span class="type-signature">(static) </span>fork<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1507">line 1507</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Fork or Clone Testing Scenario</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getPage"><span class="type-signature">(static) </span>getPage<span class="signature">(index<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line205">line 205</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Select from instance a page with specific index</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">'next'</span>
+|
+
+<span class="param-type">'prev'</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>(instance.currentPage._getLabelName || 0)</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Page's index or 'next', 'prev', 'last' or 'first' or pages label</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".goto"><span class="type-signature">(static) </span>goto<span class="signature">(url, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line272">line 272</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Opens an URL</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>URL to navigate page to. The url should include scheme, e.g. https://.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioGotoOptions">SGAppsTestingScenarioGotoOptions</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Navigation parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".group"><span class="type-signature">(static) </span>group<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1313">line 1313</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Describe a group of testing scenario similar to <code>TestingScenario.describe</code></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the name of group the Scenario Section</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".groupClose"><span class="type-signature">(static) </span>groupClose<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1327">line 1327</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Close Group section of testing scenario</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>message on succeed</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".groupClose"><span class="type-signature">(static) </span>groupClose<span class="signature">(Scenario)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1341">line 1341</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Inject other testing Scenario on specific step</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Scenario</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".hoverOnSelector"><span class="type-signature">(static) </span>hoverOnSelector<span class="signature">(selector)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line858">line 858</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses page.mouse to hover over the center of the element. If there's no element matching <code>selector</code>, the method throws an error.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector to search for element to hover. If there are multiple elements satisfying the selector, the first will be hovered.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".it"><span class="type-signature">(static) </span>it<span class="signature">(handler, message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1360">line 1360</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Assert some functionality from test</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>test.goto('http://example.com')
+   .describe('Testing Page')
+       .describe('Testing Title')
+           .it((done, evaluate, assert, expect) => {
+               let title = evaluate('document.title');
+               expect(title).to().be().eq('Page Title', 'default page title - message shown on error');
+               done();
+           })
+       .describeClose()
+       // check if using some browsers api
+       .describe('Testing Title')
+           .it(async (done, evaluate, assert, expect) => {
+               let title = await evaluate(
+                   () => {
+                       return document.title
+                   }
+               );
+               assert.isNotNull(title);
+               done();
+           })
+       .describeClose()
+   .describeClose()</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#TestingScenarioItHandlerCallback">TestingScenarioItHandlerCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".message"><span class="type-signature">(static) </span>message<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1216">line 1216</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Add a specific message to last operation</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".operationLabels"><span class="type-signature">(static) </span>operationLabels<span class="signature">(labels)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1230">line 1230</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Add labels to operation</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>labels</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;String></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".operationLabelsRemove"><span class="type-signature">(static) </span>operationLabelsRemove<span class="signature">(labels)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1249">line 1249</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Remove labels from operation</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>labels</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;String></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".overridePermissions"><span class="type-signature">(static) </span>overridePermissions<span class="signature">(origin, permissions)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line579">line 579</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Override permissions for the browser context.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>origin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The origin to grant permissions to, e.g. &quot;https://example.com&quot;.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;('geolocation'|'midi'|'midi-sysex'|'notifications'|'push'|'camera'|'microphone'|'background-sync'|'ambient-light-sensor'|'accelerometer'|'gyroscope'|'magnetometer'|'accessibility-events'|'clipboard-read'|'clipboard-write'|'payment-handler')></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array of permissions to grant. All permissions that are not listed here will be automatically denied.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageClose"><span class="type-signature">(static) </span>pageClose<span class="signature">(options<span class="signature-attributes">opt</span>, index<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line604">line 604</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Close a page from instance</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageCloseOptions">SGAppsTestingScenarioPageCloseOptions</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>set of options</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>page's index</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageContent"><span class="type-signature">(static) </span>pageContent<span class="signature">(handler)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line708">line 708</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Handle page Content of instance</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageContentCallback">SGAppsTestingScenarioPageContentCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if parameter is present will handle page content value</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageEmulate"><span class="type-signature">(static) </span>pageEmulate<span class="signature">(config)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1184">line 1184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Emulates specific configuration of device</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateConfig">SGAppsTestingScenarioPageEmulateConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageEventWait"><span class="type-signature">(static) </span>pageEventWait<span class="signature">(eventName, handler<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Wait until a page will reach an event</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>eventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">'close'</span>
+|
+
+<span class="param-type">'console'</span>
+|
+
+<span class="param-type">'dialog'</span>
+|
+
+<span class="param-type">'domcontentloaded'</span>
+|
+
+<span class="param-type">'error'</span>
+|
+
+<span class="param-type">'frameattached'</span>
+|
+
+<span class="param-type">'framedetached'</span>
+|
+
+<span class="param-type">'framenavigated'</span>
+|
+
+<span class="param-type">'load'</span>
+|
+
+<span class="param-type">'metrics'</span>
+|
+
+<span class="param-type">'pageerror'</span>
+|
+
+<span class="param-type">'popup'</span>
+|
+
+<span class="param-type">'request'</span>
+|
+
+<span class="param-type">'requestfailed'</span>
+|
+
+<span class="param-type">'requestfinished'</span>
+|
+
+<span class="param-type">'response'</span>
+|
+
+<span class="param-type">'workercreated'</span>
+|
+
+<span class="param-type">'workerdestroyed'</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>a function that can execute specific operations with data obtained on event</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageReload"><span class="type-signature">(static) </span>pageReload<span class="signature">(index, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line677">line 677</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Close a page from instance</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>page's index</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageReloadOptions">SGAppsTestingScenarioPageReloadOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>set of options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".pageSetLabel"><span class="type-signature">(static) </span>pageSetLabel<span class="signature">(label)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line630">line 630</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Set page label, for easier selecting using .getPage(label)</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>label that will be set on current page</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setViewport"><span class="type-signature">(static) </span>setViewport<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line234">line 234</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Applying specific viewport for device</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioSetViewportOptions">SGAppsTestingScenarioSetViewportOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".tapOnSelector"><span class="type-signature">(static) </span>tapOnSelector<span class="signature">(selector)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line810">line 810</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses <code>page.touchscreen</code> to tap in the center of the element. If there's no element matching <code>selector</code>, the method throws an error.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector to search for element to tap. If there are multiple elements satisfying the selector, the first will be tapped.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".typeOnSelector"><span class="type-signature">(static) </span>typeOnSelector<span class="signature">(selector, text, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line781">line 781</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Sends a <code>keydown</code>, <code>keypress/input</code>, and <code>keyup</code> event for each character in the text.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector of an element to type into. If there are multiple elements satisfying the selector, the first will be used.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A text to type into a focused element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioTypeOnSelectorOptions">SGAppsTestingScenarioTypeOnSelectorOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".userAgent"><span class="type-signature">(static) </span>userAgent<span class="signature">(handler)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line534">line 534</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Handle User agent of instance</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handler</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SGAppsTestingScenarioUserAgentHandler</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if parameter is present will handle UserAgent value</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".wait"><span class="type-signature">(static) </span>wait<span class="signature">(timeMs<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line303">line 303</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>wait a period of specified milliseconds</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>timeMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>0</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>number of milliseconds</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".waitForFileChooser"><span class="type-signature">(static) </span>waitForFileChooser<span class="signature">(files, selector)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line357">line 357</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>add a files to input[type=&quot;file&quot;] in instance's page</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>files</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>list of file paths to be added to input</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>CSS Selector used to identify input[type=&quot;file&quot;]</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".waitForFunction"><span class="type-signature">(static) </span>waitForFunction<span class="signature">(pageFunction, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line399">line 399</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>wait until browser will pageFunction will return true value</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pageFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to be evaluated in browser context</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioWaitForFunctionOptions">SGAppsTestingScenarioWaitForFunctionOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional waiting parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".waitForNavigation"><span class="type-signature">(static) </span>waitForNavigation<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line438">line 438</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>wait specific navigation state</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioWaitForNavigationOptions">SGAppsTestingScenarioWaitForNavigationOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional waiting parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".waitForSelector"><span class="type-signature">(static) </span>waitForSelector<span class="signature">(selector, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line470">line 470</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Wait for the selector to appear in page. If at the moment of calling the method the selector already exists, the method will return immediately. If the selector doesn't appear after the timeout milliseconds of waiting, the function will throw.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A selector of an element to wait for</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioWaitForSelectorOptions">SGAppsTestingScenarioWaitForSelectorOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional waiting parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".waitForXPath"><span class="type-signature">(static) </span>waitForXPath<span class="signature">(xpath, options)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line502">line 502</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>xpath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A xpath of an element to wait for</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioWaitForXPathOptions">SGAppsTestingScenarioWaitForXPathOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Optional waiting parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_getPage"><span class="type-signature"></span>_getPage<span class="signature">(instance, index<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Page>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Select from instance a page with specific index</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>instance</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Browser</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">'next'</span>
+|
+
+<span class="param-type">'prev'</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>(instance.currentPage._getLabelName || 0)</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Page's index or 'next', 'prev', 'last' or 'first' or pages label</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Puppeteers page</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Page></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getOption"><span class="type-signature"></span>getOption<span class="signature">(optionName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>optionName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">'headless'</span>
+|
+
+<span class="param-type">'verbose'</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getScenarioName"><span class="type-signature"></span>getScenarioName<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="run"><span class="type-signature"></span>run<span class="signature">(device, device2<span class="signature-attributes">opt</span>, device3<span class="signature-attributes">opt</span>, device4<span class="signature-attributes">opt</span>, device5<span class="signature-attributes">opt</span>, device6<span class="signature-attributes">opt</span>, device7<span class="signature-attributes">opt</span>, device8<span class="signature-attributes">opt</span>, &hellip;otherDevices)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1555">line 1555</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Run your tests under specific environment</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>device</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device3</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device4</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device5</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device6</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device7</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>device8</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>otherDevices</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></span>
+|
+
+<span class="param-type"><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setOption"><span class="type-signature"></span>setOption<span class="signature">(optionName, value)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>optionName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">'headless'</span>
+|
+
+<span class="param-type">'verbose'</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setScenarioName"><span class="type-signature"></span>setScenarioName<span class="signature">(name<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Specify Current Scenario Name</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>if parameter is not passed function will return current <code>name</code></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id=".SGAppsTestingScenarioUserAgentHandler"><span class="type-signature"></span>SGAppsTestingScenarioUserAgentHandler<span class="signature">(userAgent)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line528">line 528</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userAgent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+    <div id="disqus_thread"></div>
+    <script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//SGApps Testing Scenario by SGApps.IO.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <script src="https://sgapps.io/components/sgapps-labs-examples/toolbar/loader.js"></script>
+    
+</body>
+</html>

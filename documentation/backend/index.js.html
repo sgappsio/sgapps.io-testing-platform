@@ -1,4 +1,62 @@
-//@ts-ignore
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>index.js - SGApps Testing Scenario</title>
+    
+    <meta name="description" content="SGApps Testing Scenario used as testing framework" />
+    
+        <meta name="keywords" content="javascript, js, application-prototype, prototype" />
+        <meta name="keyword" content="javascript, js, application-prototype, prototype" />
+    
+    
+    
+    <meta property="og:title" content="SGApps.IO - Backend"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content="https://sgapps.io"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://sgapps.io/" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Classes</h3><ul><li><a href="SGAppsTestingAssert.html">SGAppsTestingAssert</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.equal">equal</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isAtLeast">isAtLeast</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isAtMost">isAtMost</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isBelow">isBelow</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isFalse">isFalse</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isFalsy">isFalsy</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotFalse">isNotFalse</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotNull">isNotNull</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNotTrue">isNotTrue</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isNull">isNull</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isTrue">isTrue</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.isTruthy">isTruthy</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.lengthOf">lengthOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notEqual">notEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notLengthOf">notLengthOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notStrictEqual">notStrictEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.notTypeof">notTypeof</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.strictEqual">strictEqual</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingAssert.html#.typeof">typeof</a></li></ul></li><li><a href="SGAppsTestingAssert.AssertError.html">AssertError</a></li><li><a href="SGAppsTestingExpect.html">SGAppsTestingExpect</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpect.html#to">to</a></li></ul></li><li><a href="SGAppsTestingExpectDescribe.html">SGAppsTestingExpectDescribe</a></li><li><a href="SGAppsTestingExpectTo.html">SGAppsTestingExpectTo</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectTo.html#be">be</a></li></ul></li><li><a href="SGAppsTestingExpectToBe.html">SGAppsTestingExpectToBe</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.a">a</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.instanceOf">instanceOf</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingExpectToBe.html#.notA">notA</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="SGAppsTestingScenario.html">SGAppsTestingScenario</a><ul class='members'><li data-type='member' style='display: none;'><a href="SGAppsTestingScenario.html#.operations">operations</a></li></ul><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.clearPermissionOverrides">clearPermissionOverrides</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.clickOnSelector">clickOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.close">close</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.deactivate">deactivate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.describe">describe</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.describeClose">describeClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluate">evaluate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluateOnSelectorAll">evaluateOnSelectorAll</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.evaluateOnSelectorOnlyOne">evaluateOnSelectorOnlyOne</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.focusOnSelector">focusOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.fork">fork</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.getPage">getPage</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.goto">goto</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.group">group</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.groupClose">groupClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.groupClose">groupClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.hoverOnSelector">hoverOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.it">it</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.message">message</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.operationLabels">operationLabels</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.operationLabelsRemove">operationLabelsRemove</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.overridePermissions">overridePermissions</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageClose">pageClose</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageContent">pageContent</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageEmulate">pageEmulate</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageEventWait">pageEventWait</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageReload">pageReload</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.pageSetLabel">pageSetLabel</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.setViewport">setViewport</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.tapOnSelector">tapOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.typeOnSelector">typeOnSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.userAgent">userAgent</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.wait">wait</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForFileChooser">waitForFileChooser</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForFunction">waitForFunction</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForNavigation">waitForNavigation</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForSelector">waitForSelector</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#.waitForXPath">waitForXPath</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#_getPage">_getPage</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#getOption">getOption</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#getScenarioName">getScenarioName</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#run">run</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#setOption">setOption</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenario.html#setScenarioName">setScenarioName</a></li></ul></li><li><a href="SGAppsTestingScenarioOperations.html">SGAppsTestingScenarioOperations</a><ul class='methods'><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.last">last</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.list">list</a></li><li data-type='method' style='display: none;'><a href="SGAppsTestingScenarioOperations.html#.push">push</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SGAppsTestingScenarioClickOnSelectorOptions">SGAppsTestingScenarioClickOnSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateHandlerCallback">SGAppsTestingScenarioEvaluateHandlerCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback">SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback">SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback</a></li><li><a href="global.html#SGAppsTestingScenarioEvaluatePageFunctionCallback">SGAppsTestingScenarioEvaluatePageFunctionCallback</a></li><li><a href="global.html#SGAppsTestingScenarioGotoOptions">SGAppsTestingScenarioGotoOptions</a></li><li><a href="global.html#SGAppsTestingScenarioOperation">SGAppsTestingScenarioOperation</a></li><li><a href="global.html#SGAppsTestingScenarioPageCloseOptions">SGAppsTestingScenarioPageCloseOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageContentCallback">SGAppsTestingScenarioPageContentCallback</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateCallback">SGAppsTestingScenarioPageEmulateCallback</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateCallbackResult">SGAppsTestingScenarioPageEmulateCallbackResult</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateConfig">SGAppsTestingScenarioPageEmulateConfig</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateConfigViewport">SGAppsTestingScenarioPageEmulateConfigViewport</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfig">SGAppsTestingScenarioPageEmulateDeviceConfig</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceConfigOptions">SGAppsTestingScenarioPageEmulateDeviceConfigOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageEmulateDeviceName">SGAppsTestingScenarioPageEmulateDeviceName</a></li><li><a href="global.html#SGAppsTestingScenarioPageReloadOptions">SGAppsTestingScenarioPageReloadOptions</a></li><li><a href="global.html#SGAppsTestingScenarioPageReloadOptionsWaitUntil">SGAppsTestingScenarioPageReloadOptionsWaitUntil</a></li><li><a href="global.html#SGAppsTestingScenarioSetViewportOptions">SGAppsTestingScenarioSetViewportOptions</a></li><li><a href="global.html#SGAppsTestingScenarioTypeOnSelectorOptions">SGAppsTestingScenarioTypeOnSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForFunctionOptions">SGAppsTestingScenarioWaitForFunctionOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForNavigationOptions">SGAppsTestingScenarioWaitForNavigationOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForSelectorOptions">SGAppsTestingScenarioWaitForSelectorOptions</a></li><li><a href="global.html#SGAppsTestingScenarioWaitForXPathOptions">SGAppsTestingScenarioWaitForXPathOptions</a></li><li><a href="global.html#TestingScenarioItHandlerCallback">TestingScenarioItHandlerCallback</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-ignore
 global.ApplicationPrototype = require('application-prototype').application;
 //@ts-ignore
 global.ApplicationBuilder   = require('application-prototype').builder;
@@ -69,7 +127,7 @@ function SGAppsTestingScenario() {
 	 * @returns {SGAppsTestingScenario}
 	 */
 	this.setScenarioName = function (name) {
-		if (name && typeof(name) === "string") {
+		if (name &amp;&amp; typeof(name) === "string") {
 			_name = name;
 		}
 		return this;
@@ -142,7 +200,7 @@ function SGAppsTestingScenario() {
 	 * @method _getPage
 	 * @param {Browser} instance
 	 * @param {(number|'next'|'prev'|string)} [index=(instance.currentPage._getLabelName || 0)] Page's index or 'next', 'prev', 'last' or 'first' or pages label
-	 * @returns {Promise<Page>} Puppeteers page
+	 * @returns {Promise&lt;Page>} Puppeteers page
 	 */
 	this._getPage = function (instance, index) {
 		//@ts-ignore
@@ -157,7 +215,7 @@ function SGAppsTestingScenario() {
 				return Promise.reject(Error('Unable to increment page index...'));
 			}
 		} else if (index === 'prev') {
-			if (typeof(index) === "number" && index) {
+			if (typeof(index) === "number" &amp;&amp; index) {
 				index = index - 1;
 			} else {
 				return Promise.reject(Error('Unable to decrement page index...'));
@@ -581,7 +639,7 @@ SGAppsTestingScenario.prototype.clearPermissionOverrides = function () {
  * @memberof SGAppsTestingScenario
  * @method overridePermissions
  * @param {String} origin The origin to grant permissions to, e.g. "https://example.com".
- * @param {Array<('geolocation'|'midi'|'midi-sysex'|'notifications'|'push'|'camera'|'microphone'|'background-sync'|'ambient-light-sensor'|'accelerometer'|'gyroscope'|'magnetometer'|'accessibility-events'|'clipboard-read'|'clipboard-write'|'payment-handler')>} permissions An array of permissions to grant. All permissions that are not listed here will be automatically denied.
+ * @param {Array&lt;('geolocation'|'midi'|'midi-sysex'|'notifications'|'push'|'camera'|'microphone'|'background-sync'|'ambient-light-sensor'|'accelerometer'|'gyroscope'|'magnetometer'|'accessibility-events'|'clipboard-read'|'clipboard-write'|'payment-handler')>} permissions An array of permissions to grant. All permissions that are not listed here will be automatically denied.
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.overridePermissions = function (origin, permissions) {
@@ -933,7 +991,7 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
 										//@ts-ignore
 										let response = handler(result);
 										
-										if (response && response.then) {
+										if (response &amp;&amp; response.then) {
 											response.then(resolve, reject).catch(reject);
 										} else {
 											resolve();
@@ -970,26 +1028,26 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
 /**
  * If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.
  *
- * @example <caption>Example usage of string `pageFunction`.</caption>
+ * @example &lt;caption>Example usage of string `pageFunction`.&lt;/caption>
  * test.evaluateOnSelectorAll('a[href]', 'element.click()');
  *
- * @example <caption>Example usage of string `pageFunction` with `handler`</caption>
+ * @example &lt;caption>Example usage of string `pageFunction` with `handler`&lt;/caption>
  * test.evaluateOnSelectorAll('input[type="text"]', 'element.value', function (value) {
  *     console.log(value);
  * });
  *
- * @example <caption>Example usage of string `pageFunction` and `context`</caption>
+ * @example &lt;caption>Example usage of string `pageFunction` and `context`&lt;/caption>
  * test.evaluateOnSelectorAll('input[type="email"]', 'element.value = value', 'user.email@example.com');
  *
- * @example <caption>Example usage of string `pageFunction` with handler and `context`</caption>
+ * @example &lt;caption>Example usage of string `pageFunction` with handler and `context`&lt;/caption>
  * test.evaluateOnSelectorAll('input[type="checkbox"]', 'element.value = value; element.checked', function (isChecked) {
  *     console.log('isChecked')
  * } 'On');
  *
- * @example <caption>Example usage of `pageFunction`.</caption>
+ * @example &lt;caption>Example usage of `pageFunction`.&lt;/caption>
  * test.evaluateOnSelectorAll('a[href]', function (element) { element.click() });
  *
- * @example <caption>Example usage of `pageFunction` with `handler`</caption>
+ * @example &lt;caption>Example usage of `pageFunction` with `handler`&lt;/caption>
  * test.evaluateOnSelectorAll(
  *     'input[type="text"]',
  *     function (element) {
@@ -999,7 +1057,7 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
  *     }
  * );
  *
- * @example <caption>Example usage of `pageFunction` and `context`</caption>
+ * @example &lt;caption>Example usage of `pageFunction` and `context`&lt;/caption>
  * test.evaluateOnSelectorAll(
  *     'input[type="email"]',
  *     function (element, value) {
@@ -1008,7 +1066,7 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
  *     'user.email@example.com'
  * );
  *
- * @example <caption>Example usage of `pageFunction` with handler and `context`</caption>
+ * @example &lt;caption>Example usage of `pageFunction` with handler and `context`&lt;/caption>
  * test.evaluateOnSelectorAll(
  *     'input[type="checkbox"]',
  *     function (element, value) {
@@ -1030,7 +1088,7 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.evaluateOnSelectorAll = function (selector, pageFunction, handler, value) {
-	if (!value && typeof(handler) !== "function") {
+	if (!value &amp;&amp; typeof(handler) !== "function") {
 		value = handler;
 		handler = null;
 	}
@@ -1082,7 +1140,7 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorAll = function (selector, page
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, pageFunction, handler, value) {
-	if (!value && typeof(handler) !== "function") {
+	if (!value &amp;&amp; typeof(handler) !== "function") {
 		value = handler;
 		handler = null;
 	}
@@ -1237,7 +1295,7 @@ SGAppsTestingScenario.prototype.message = function (message) {
  SGAppsTestingScenario.prototype.operationLabels = function (...labels) {
 	let operation = this.operations.last();
 	labels.filter(label => {
-		return label && typeof(label) === "string";
+		return label &amp;&amp; typeof(label) === "string";
 	}).forEach(label => {
 		if (operation.labels.indexOf(label) === -1) {
 			operation.labels.push(label);
@@ -1256,7 +1314,7 @@ SGAppsTestingScenario.prototype.message = function (message) {
 SGAppsTestingScenario.prototype.operationLabelsRemove = function (...labels) {
 	let operation = this.operations.last();
 	labels.filter(label => {
-		return label && typeof(label) === "string";
+		return label &amp;&amp; typeof(label) === "string";
 	}).forEach(label => {
 		if (operation.labels.indexOf(label) !== -1) {
 			operation.labels = operation.labels.filter(
@@ -1452,19 +1510,19 @@ SGAppsTestingScenario.prototype.it = function (handler, message) {
 // page.metrics()
 /**
  *
-    Timestamp <number> The timestamp when the metrics sample was taken.
-    Documents <number> Number of documents in the page.
-    Frames <number> Number of frames in the page.
-    JSEventListeners <number> Number of events in the page.
-    Nodes <number> Number of DOM nodes in the page.
-    LayoutCount <number> Total number of full or partial page layout.
-    RecalcStyleCount <number> Total number of page style recalculations.
-    LayoutDuration <number> Combined durations of all page layouts.
-    RecalcStyleDuration <number> Combined duration of all page style recalculations.
-    ScriptDuration <number> Combined duration of JavaScript execution.
-    TaskDuration <number> Combined duration of all tasks performed by the browser.
-    JSHeapUsedSize <number> Used JavaScript heap size.
-    JSHeapTotalSize <number> Total JavaScript heap size.
+    Timestamp &lt;number> The timestamp when the metrics sample was taken.
+    Documents &lt;number> Number of documents in the page.
+    Frames &lt;number> Number of frames in the page.
+    JSEventListeners &lt;number> Number of events in the page.
+    Nodes &lt;number> Number of DOM nodes in the page.
+    LayoutCount &lt;number> Total number of full or partial page layout.
+    RecalcStyleCount &lt;number> Total number of page style recalculations.
+    LayoutDuration &lt;number> Combined durations of all page layouts.
+    RecalcStyleDuration &lt;number> Combined duration of all page style recalculations.
+    ScriptDuration &lt;number> Combined duration of JavaScript execution.
+    TaskDuration &lt;number> Combined duration of all tasks performed by the browser.
+    JSHeapUsedSize &lt;number> Used JavaScript heap size.
+    JSHeapTotalSize &lt;number> Total JavaScript heap size.
 
  */
 
@@ -1601,3 +1659,45 @@ SGAppsTestingScenario.expect = function (value) {
 SGAppsTestingScenario.assert = SGAppsTestingAssert;
 
 module.exports = SGAppsTestingScenario;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+    <div id="disqus_thread"></div>
+    <script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//SGApps Testing Scenario by SGApps.IO.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <script src="https://sgapps.io/components/sgapps-labs-examples/toolbar/loader.js"></script>
+    
+</body>
+</html>

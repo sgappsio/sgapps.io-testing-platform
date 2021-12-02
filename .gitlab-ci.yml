@@ -3,6 +3,7 @@ variables:
 
 stages:
   - reposync
+  - documentation
   - publish
 
 
@@ -19,6 +20,17 @@ before_script:
   - nvm install --no-progress 10.17.0 > /dev/null
   - npm install
 
+pages:
+  stage: documentation
+  script:
+    - mkdir .public
+    - cp -r documentation/* .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
 
 repo_sync_github:
   stage: reposync
