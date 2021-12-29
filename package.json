@@ -27,7 +27,7 @@
     "start": "NODE_ENV=production node index.js",
     "deploy": "rm -rf ./node_modules ; rm -rf package-lock.json ; npm i --only=prod && rm -rf ./node_modules/*/.git/ && npm i --local --only=prod bower && ./node_modules/bower/bin/bower --allow-root --silent install && ./node_modules/bower/bin/bower --allow-root --silent update",
     "docs": "rm -rf ./documentation/* ; jsdoc -c jsdoc.json ",
-    "docs-dictionary": "jsdoc -c jsdoc.json -t node_modules/tsd-jsdoc/dist -r -d . ; echo '' > index.d.ts ; cat 'node_modules/@types/puppeteer/index.d.ts' >> index.d.ts ; cat types.d.ts >> index.d.ts ; rm types.d.ts",
+    "docs-dictionary": "jsdoc -c jsdoc.json -t node_modules/tsd-jsdoc/dist -r -d . ; echo '' > index.d.ts ; cat 'node_modules/@types/puppeteer/index.d.ts' >> index.d.ts ; cat types.d.ts >> index.d.ts ; cat ./resources/types/suffix.ts >> index.d.ts ; rm types.d.ts",
     "docs-dictionary-dev": "npm run docs-dictionary; while true; do find . -not -path './documentation' | entr -pd npm run docs-dictionary; done",
     "docs-build": "npm run docs ; npm run docs-dictionary",
     "docs-dev": "npm run docs-build ; while true; do find . -not -path './documentation' | entr -pd npm run docs-build ; done",

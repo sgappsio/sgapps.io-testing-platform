@@ -85,13 +85,15 @@ function SGAppsTestingScenario() {
 	};
 
 	/**
+	 * @class
+	 * @name SGAppsTestingScenarioOperations
+	 */
+	/**
 	 * @typedef {object} SGAppsTestingScenarioOperation
+	 * @memberof SGAppsTestingScenarioOperations
 	 * @property {string} name
 	 * @property {any[]} params
 	 * @property {function(SGAppsTestingScenario): Promise} operation
-	 */
-	/**
-	 * @interface SGAppsTestingScenarioOperations
 	 */
 	/**
 	 * @memberof SGAppsTestingScenarioOperations
@@ -101,12 +103,12 @@ function SGAppsTestingScenario() {
 	/**
 	 * @memberof SGAppsTestingScenarioOperations
 	 * @method last
-	 * @returns {SGAppsTestingScenarioOperation}
+	 * @returns {SGAppsTestingScenarioOperations.SGAppsTestingScenarioOperation}
 	 */
 	/**
 	 * @memberof SGAppsTestingScenarioOperations
 	 * @method list
-	 * @returns {SGAppsTestingScenarioOperation[]}
+	 * @returns {SGAppsTestingScenarioOperations.SGAppsTestingScenarioOperation[]}
 	 */
 	/**
 	 * @memberof SGAppsTestingScenario
@@ -204,7 +206,7 @@ function SGAppsTestingScenario() {
 
 /**
  * Select from instance a page with specific index
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method getPage
  * @param {(number|'next'|'prev'|string)} [index=(instance.currentPage._getLabelName || 0)] Page's index or 'next', 'prev', 'last' or 'first' or pages label
  * @returns {SGAppsTestingScenario}
@@ -223,6 +225,7 @@ SGAppsTestingScenario.prototype.getPage = function (index) {
 
 /**
  * @typedef {Object} SGAppsTestingScenarioSetViewportOptions
+ * @memberof SGAppsTestingScenario
  * @property {number} [width] device width in pixels. Default value is `1920`
  * @property {number} [height] device height in pixels. Default value is `1080`
  * @property {number} [deviceScaleFactor] Device Scale Factor. Default value is `1`
@@ -233,7 +236,7 @@ SGAppsTestingScenario.prototype.getPage = function (index) {
 
 /**
  * Applying specific viewport for device
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method setViewport
  * @param {SGAppsTestingScenarioSetViewportOptions} options
  * @returns {SGAppsTestingScenario}
@@ -264,6 +267,7 @@ SGAppsTestingScenario.prototype.setViewport = function (options) {
 
 /**
  * @typedef {Object} SGAppsTestingScenarioGotoOptions
+ * @memberof SGAppsTestingScenario
  * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil] When to consider navigation succeeded, defaults to `'load'`. Given an array of event strings, navigation is considered to be successful after all events have been fired. Default value is `'domcontentloaded'`
  * @property {Number} [timeout] Maximum navigation time in milliseconds, defaults to 30 seconds, pass 0 to disable timeout. The default value can be changed by using the page.setDefaultNavigationTimeout(timeout) or page.setDefaultTimeout(timeout) methods. Default value is `30`
  * @property {String} [referer] Referer header value. If provided it will take preference over the referer header value set by page.setExtraHTTPHeaders().
@@ -271,13 +275,13 @@ SGAppsTestingScenario.prototype.setViewport = function (options) {
 
 /**
  * Opens an URL
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method goto
  * @param {String} url URL to navigate page to. The url should include scheme, e.g. https://.
  * @param {SGAppsTestingScenarioGotoOptions} [options] Navigation parameters
  * @returns {SGAppsTestingScenario}
  */
- SGAppsTestingScenario.prototype.goto = function (url, options) {
+SGAppsTestingScenario.prototype.goto = function (url, options) {
 	options = options || {};
 	options.waitUntil = options.waitUntil || 'domcontentloaded';
 
@@ -302,7 +306,7 @@ SGAppsTestingScenario.prototype.setViewport = function (options) {
 
 /**
  * wait a period of specified milliseconds
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method wait
  * @param {number} [timeMs=0] number of milliseconds
  * @returns {SGAppsTestingScenario}
@@ -325,7 +329,7 @@ SGAppsTestingScenario.prototype.wait = function (timeMs) {
 
 /**
  * Wait until a page will reach an event
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageEventWait
  * @param {('close'|'console'|'dialog'|'domcontentloaded'|'error'|'frameattached'|'framedetached'|'framenavigated'|'load'|'metrics'|'pageerror'|'popup'|'request'|'requestfailed'|'requestfinished'|'response'|'workercreated'|'workerdestroyed')} eventName
  * @param {function(any): Promise} [handler] a function that can execute specific operations with data obtained on event
@@ -356,7 +360,7 @@ SGAppsTestingScenario.prototype.pageEventWait = function (eventName, handler) {
 
 /**
  * add a files to input[type="file"] in instance's page
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method waitForFileChooser
  * @param {string[]} files list of file paths to be added to input
  * @param {string} selector CSS Selector used to identify input[type="file"]
@@ -391,6 +395,7 @@ SGAppsTestingScenario.prototype.waitForFileChooser = function (files, selector) 
 
 /**
  * @typedef {Object} SGAppsTestingScenarioWaitForFunctionOptions
+ * @memberof SGAppsTestingScenario
  * @property {('raf'|'polling'|'mutation')} [polling] An interval at which the pageFunction is executed, defaults to `'raf'`. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values:
     - `raf` - to constantly execute pageFunction in requestAnimationFrame callback. This is the tightest polling mode which is suitable to observe styling changes.
     - `mutation` - to execute pageFunction on every DOM mutation.
@@ -398,7 +403,7 @@ SGAppsTestingScenario.prototype.waitForFileChooser = function (files, selector) 
  */
 /**
  * wait until browser will pageFunction will return true value
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method waitForFunction
  * @param {string|function} pageFunction Function to be evaluated in browser context
  * @param {SGAppsTestingScenarioWaitForFunctionOptions} options Optional waiting parameters
@@ -426,6 +431,7 @@ SGAppsTestingScenario.prototype.waitForFunction = function (pageFunction, option
 
 /**
  * @typedef {Object} SGAppsTestingScenarioWaitForNavigationOptions
+ * @memberof SGAppsTestingScenario
  * @property {('load'|'domcontentloaded'|'networkidle0'|'networkidle2')} [waitUntil] When to consider navigation succeeded, defaults to `'load'`. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:
 
 - `load` - consider navigation to be finished when the load event is fired.
@@ -437,7 +443,7 @@ SGAppsTestingScenario.prototype.waitForFunction = function (pageFunction, option
  */
 /**
  * wait specific navigation state
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method waitForNavigation
  * @param {SGAppsTestingScenarioWaitForNavigationOptions} options Optional waiting parameters
  * @returns {SGAppsTestingScenario}
@@ -463,16 +469,17 @@ SGAppsTestingScenario.prototype.waitForNavigation = function (options) {
 
 /**
  * @typedef {Object} SGAppsTestingScenarioWaitForSelectorOptions
+ * @memberof SGAppsTestingScenario
  * @property {Boolean} [visible] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
  * @property {Boolean} [hidden] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
  * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * Wait for the selector to appear in page. If at the moment of calling the method the selector already exists, the method will return immediately. If the selector doesn't appear after the timeout milliseconds of waiting, the function will throw.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method waitForSelector
  * @param {String} selector A selector of an element to wait for
- * @param {SGAppsTestingScenarioWaitForSelectorOptions} options Optional waiting parameters
+ * @param {SGAppsTestingScenarioWaitForSelectorOptions} [options] Optional waiting parameters
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.waitForSelector = function (selector, options) {
@@ -495,16 +502,17 @@ SGAppsTestingScenario.prototype.waitForSelector = function (selector, options) {
 
 /**
  * @typedef {Object} SGAppsTestingScenarioWaitForXPathOptions
+ * @memberof SGAppsTestingScenario
  * @property {Boolean} [visible] wait for element to be present in DOM and to be visible, i.e. to not have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
  * @property {Boolean} [hidden] wait for element to not be found in the DOM or to be hidden, i.e. have `display: none` or `visibility: hidden` CSS properties. Defaults to `false`.
  * @property {Number} [timeout] maximum time to wait for in milliseconds, Defaults to `30000` (30 seconds). Pass 0 to disable timeout.
  */
 /**
  * Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method waitForXPath
  * @param {String} xpath A xpath of an element to wait for
- * @param {SGAppsTestingScenarioWaitForXPathOptions} options Optional waiting parameters
+ * @param {SGAppsTestingScenarioWaitForXPathOptions} [options] Optional waiting parameters
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.waitForXPath = function (xpath, options) {
@@ -533,7 +541,7 @@ SGAppsTestingScenario.prototype.waitForXPath = function (xpath, options) {
  */
 /**
  * Handle User agent of instance
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method userAgent
  * @param {SGAppsTestingScenarioUserAgentHandler} handler if parameter is present will handle UserAgent value
  * @returns {SGAppsTestingScenario}
@@ -559,7 +567,7 @@ SGAppsTestingScenario.prototype.userAgent = function (handler) {
 
 /**
  * Clears all permission overrides for the browser context.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method clearPermissionOverrides
  * @returns {SGAppsTestingScenario}
  */
@@ -578,7 +586,7 @@ SGAppsTestingScenario.prototype.clearPermissionOverrides = function () {
 
 /**
  * Override permissions for the browser context.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method overridePermissions
  * @param {String} origin The origin to grant permissions to, e.g. "https://example.com".
  * @param {Array<('geolocation'|'midi'|'midi-sysex'|'notifications'|'push'|'camera'|'microphone'|'background-sync'|'ambient-light-sensor'|'accelerometer'|'gyroscope'|'magnetometer'|'accessibility-events'|'clipboard-read'|'clipboard-write'|'payment-handler')>} permissions An array of permissions to grant. All permissions that are not listed here will be automatically denied.
@@ -603,7 +611,7 @@ SGAppsTestingScenario.prototype.overridePermissions = function (origin, permissi
  */
 /**
  * Close a page from instance
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageClose
  * @param {SGAppsTestingScenarioPageCloseOptions} [options] set of options
  * @param {String} [index] page's index
@@ -629,7 +637,7 @@ SGAppsTestingScenario.prototype.pageClose = function (options, index) {
 
 /**
  * Set page label, for easier selecting using .getPage(label)
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageSetLabel
  * @param {string} label label that will be set on current page
  * @returns {SGAppsTestingScenario}
@@ -676,10 +684,10 @@ SGAppsTestingScenario.prototype.pageSetLabel = function (label) {
  */
 /**
  * Close a page from instance
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageReload
  * @param {String} index page's index
- * @param {SGAppsTestingScenarioPageReloadOptions} options set of options
+ * @param {SGAppsTestingScenarioPageReloadOptions} [options] set of options
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.pageReload = function (index, options) {
@@ -707,7 +715,7 @@ SGAppsTestingScenario.prototype.pageReload = function (index, options) {
  */
 /**
  * Handle page Content of instance
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageContent
  * @param {SGAppsTestingScenarioPageContentCallback} handler if parameter is present will handle page content value
  * @returns {(SGAppsTestingScenario)}
@@ -742,10 +750,10 @@ SGAppsTestingScenario.prototype.pageContent = function (handler) {
  */
 /**
  * This method fetches an element with selector, scrolls it into view if needed, and then uses page.mouse to click in the center of the element. If there's no element matching selector, the method throws an error.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method clickOnSelector
  * @param {String} selector A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.
- * @param {SGAppsTestingScenarioClickOnSelectorOptions} options Optional parameters
+ * @param {SGAppsTestingScenarioClickOnSelectorOptions} [options] Optional parameters
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.clickOnSelector = function (selector, options) {
@@ -780,11 +788,11 @@ SGAppsTestingScenario.prototype.clickOnSelector = function (selector, options) {
  */
 /**
  * Sends a `keydown`, `keypress/input`, and `keyup` event for each character in the text.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method typeOnSelector
  * @param {string} selector A selector of an element to type into. If there are multiple elements satisfying the selector, the first will be used.
  * @param {string} text A text to type into a focused element.
- * @param {SGAppsTestingScenarioTypeOnSelectorOptions} options Optional parameters
+ * @param {SGAppsTestingScenarioTypeOnSelectorOptions} [options] Optional parameters
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.typeOnSelector = function (selector, text, options) {
@@ -809,7 +817,7 @@ SGAppsTestingScenario.prototype.typeOnSelector = function (selector, text, optio
 
 /**
  * This method fetches an element with `selector`, scrolls it into view if needed, and then uses `page.touchscreen` to tap in the center of the element. If there's no element matching `selector`, the method throws an error.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method tapOnSelector
  * @param {String} selector A selector to search for element to tap. If there are multiple elements satisfying the selector, the first will be tapped.
  * @returns {SGAppsTestingScenario}
@@ -833,7 +841,7 @@ SGAppsTestingScenario.prototype.tapOnSelector = function (selector) {
 
 /**
  * This method fetches an element with `selector` and focuses it. If there's no element matching `selector`, the method throws an error.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method focusOnSelector
  * @param {String} selector A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.
  * @returns {SGAppsTestingScenario}
@@ -857,7 +865,7 @@ SGAppsTestingScenario.prototype.focusOnSelector = function (selector) {
 
 /**
  * This method fetches an element with `selector`, scrolls it into view if needed, and then uses page.mouse to hover over the center of the element. If there's no element matching `selector`, the method throws an error.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method hoverOnSelector
  * @param {String} selector A selector to search for element to hover. If there are multiple elements satisfying the selector, the first will be hovered.
  * @returns {SGAppsTestingScenario}
@@ -892,7 +900,7 @@ SGAppsTestingScenario.prototype.hoverOnSelector = function (selector) {
  */
 /**
  * If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method evaluate
  * @param {(SGAppsTestingScenarioEvaluatePageFunctionCallback|String)} pageFunction Function to be evaluated in the page context
  * @param {SGAppsTestingScenarioEvaluateHandlerCallback} [handler] function that receives serializable data from `pageFunction`
@@ -1021,7 +1029,7 @@ SGAppsTestingScenario.prototype.evaluate = function (pageFunction, handler, vari
  *     'On'
  * );
  *
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method evaluateOnSelectorAll
  * @param {String} selector A selector for an selecting element
  * @param {SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback|String} pageFunction Function to be evaluated in the page context
@@ -1073,11 +1081,11 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorAll = function (selector, page
 /**
  * Similar with evaluateOnSelectorAll but throws an error if detected more than one element
  *
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method evaluateOnSelectorOnlyOne
  * @param {String} selector A selector for an selecting element
  * @param {SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback|String} pageFunction Function to be evaluated in the page context
- * @param {SGAppsTestingScenarioEvaluateHandlerCallback} [handler] function that receives serializable data from `pageFunction`, this parameter can be skipped
+ * @param {SGAppsTestingScenarioEvaluateHandlerCallback|Object<any,any>|string|number} [handler] function that receives serializable data from `pageFunction`, this parameter can be skipped
  * @param {*} [value] context passed to `pageFunction`
  * @returns {SGAppsTestingScenario}
  */
@@ -1125,6 +1133,7 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, 
 
 /**
  * @typedef {Object} SGAppsTestingScenarioPageEmulateConfigViewport
+ * @memberof SGAppsTestingScenario
  * @property {Number} width  page width in pixels.
  * @property {Number} height  page height in pixels.
  * @property {Number} deviceScaleFactor  Specify device scale factor (can be thought of as dpr). Defaults to 1.
@@ -1134,7 +1143,8 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, 
  */
 /**
  * @typedef {Object} SGAppsTestingScenarioPageEmulateConfig
- * @property {SGAppsTestingScenarioPageEmulateConfigViewport} viewport viewport options
+ * @memberof SGAppsTestingScenario
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateConfigViewport} viewport viewport options
  * @property {String} userAgent user agent definition
  */
 /**
@@ -1143,32 +1153,36 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, 
 
 /**
  * @typedef {Object} SGAppsTestingScenarioPageEmulateDeviceConfig
+ * @memberof SGAppsTestingScenario
  * @property {("chrome"|"firefox"|"ch"|"c"|"ff"|"f")} [type] Browser Type Firefox or Chrome, Default value is `"chrome"`
- * @property {SGAppsTestingScenarioPageEmulateDeviceName} [emulate] emulate device name, if not set will run as in simple browser, Default value is `null`.
- * @property {SGAppsTestingScenarioPageEmulateDeviceConfigOptions} [options] Browser's options, Set of configurable options to set on the browser.
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceName} [emulate] emulate device name, if not set will run as in simple browser, Default value is `null`.
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceConfigOptions} [options] Browser's options, Set of configurable options to set on the browser.
  */
 
 /**
  * @typedef {Object} SGAppsTestingScenarioPageEmulateCallbackResult
+ * @memberof SGAppsTestingScenario
  * @property {Error[]} _errors errors emitted during test
  * @property {Number}  _skipped number of operations that were skipped in test, cause can be an emitted error
  * @property {Number}  _warns number of operations that got warnings
  * @property {Number}  _failed number of operations that failed
- * @property {SGAppsTestingScenarioPageEmulateDeviceConfigOptions[]} _fallenDevices list if devices that failed test
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceConfigOptions[]} _fallenDevices list if devices that failed test
  */
 
 /**
  * @callback SGAppsTestingScenarioPageEmulateCallback
+ * @memberof SGAppsTestingScenario
  * @param {SGAppsTestingScenarioPageEmulateCallbackResult} result
  */
 
 /**
  * @typedef {object} SGAppsTestingScenarioPageEmulateDeviceConfigOptions
+ * @memberof SGAppsTestingScenario
  * @property {boolean} ignoreHTTPSErrors Whether to ignore HTTPS errors during navigation. Defaults to `false`.
  * @property {boolean} headless Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
  * @property {string} executablePath Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd).
  * @property {number} slowMo Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.
- * @property {SGAppsTestingScenarioSetViewportOptions} defaultViewport Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions} defaultViewport Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
  * @property {string[]} args Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).
  * @property {(boolean|string[])} ignoreDefaultArgs If `true`, then do not use [`puppeteer.defaultArgs()`](#puppeteerdefaultargs-options). If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to `false`.
  * @property {boolean} handleSIGINT Close the browser process on Ctrl-C. Defaults to `true`.
@@ -1183,7 +1197,7 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, 
  */
 /**
  * Emulates specific configuration of device
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method pageEmulate
  * @param {(SGAppsTestingScenarioPageEmulateConfig|SGAppsTestingScenarioPageEmulateDeviceName)} config 
  * @returns {SGAppsTestingScenario}
@@ -1215,7 +1229,7 @@ SGAppsTestingScenario.prototype.pageEmulate = function (config) {
 
 /**
  * Add a specific message to last operation
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method message
  * @param {String} message
  * @returns {SGAppsTestingScenario}
@@ -1229,7 +1243,7 @@ SGAppsTestingScenario.prototype.message = function (message) {
 
 /**
  * Add labels to operation
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method operationLabels
  * @param {String[]} labels
  * @returns {SGAppsTestingScenario}
@@ -1248,7 +1262,7 @@ SGAppsTestingScenario.prototype.message = function (message) {
 
 /**
  * Remove labels from operation
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method operationLabelsRemove
  * @param {String[]} labels
  * @returns {SGAppsTestingScenario}
@@ -1270,7 +1284,7 @@ SGAppsTestingScenario.prototype.operationLabelsRemove = function (...labels) {
 
 /**
  * activate or deactivate operation by adding or removing operation label `"__Deactivated"`
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method deactivate
  * @param {Boolean} status - if status is true than operation will be deactivated
  * @returns {SGAppsTestingScenario}
@@ -1284,7 +1298,7 @@ SGAppsTestingScenario.prototype.deactivate = function (status) {
 
 /**
  * Describe a section of testing scenario
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method describe
  * @param {String} message the message that will describe the Scenario Section
  * @returns {SGAppsTestingScenario}
@@ -1298,9 +1312,9 @@ SGAppsTestingScenario.prototype.describe = function (message) {
 
 /**
  * Close Describe section of testing scenario
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method describeClose
- * @param {String} message message on succeed
+ * @param {String} [message] message on succeed
  * @returns {SGAppsTestingScenario}
  */
 SGAppsTestingScenario.prototype.describeClose = function (message) {
@@ -1312,7 +1326,7 @@ SGAppsTestingScenario.prototype.describeClose = function (message) {
 
 /**
  * Describe a group of testing scenario similar to `TestingScenario.describe`
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method group
  * @param {String} message the name of group the Scenario Section
  * @returns {SGAppsTestingScenario}
@@ -1326,7 +1340,7 @@ SGAppsTestingScenario.prototype.group = function (message) {
 
 /**
  * Close Group section of testing scenario
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method groupClose
  * @param {String} message message on succeed
  * @returns {SGAppsTestingScenario}
@@ -1340,7 +1354,7 @@ SGAppsTestingScenario.prototype.groupClose = function (message) {
 
 /**
  * Inject other testing Scenario on specific step
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method groupClose
  * @param {SGAppsTestingScenario} Scenario
  * @returns {SGAppsTestingScenario}
@@ -1384,7 +1398,7 @@ SGAppsTestingScenario.prototype.injectScenario = function (Scenario) {
  *            })
  *        .describeClose()
  *    .describeClose()
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method it
  * @param {TestingScenarioItHandlerCallback} handler
  * @param {String} message
@@ -1506,7 +1520,7 @@ puppeteer.launch().then(async browser => {
 
 /**
  * Fork or Clone Testing Scenario
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method fork
  * @returns {SGAppsTestingScenario}
  */
@@ -1523,7 +1537,7 @@ SGAppsTestingScenario.prototype.fork = function () {
 
 /**
  * Close device Instance
- * @memberof SGAppsTestingScenario
+ * @memberof SGAppsTestingScenario#
  * @method close
  * @returns {SGAppsTestingScenario}
  */
@@ -1595,9 +1609,11 @@ SGAppsTestingScenario.prototype.close = function () {
 };
 
 
-SGAppsTestingScenario.expect = function (value) {
-	return new SGAppsTestingExpect(value);
-};
-SGAppsTestingScenario.assert = SGAppsTestingAssert;
 
-module.exports = SGAppsTestingScenario;
+module.exports = {
+	TestingScenario: SGAppsTestingScenario,
+	expect: function (value) {
+		return new SGAppsTestingExpect(value);
+	},
+	assert: SGAppsTestingAssert
+};

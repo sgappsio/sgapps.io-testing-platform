@@ -1,3 +1,4 @@
+//@ts-check
 
 // Type definitions for puppeteer 5.4
 // Project: https://github.com/GoogleChrome/puppeteer#readme
@@ -2423,125 +2424,297 @@ export {};
 declare namespace SGAppsTestingScenario {
     var operations: SGAppsTestingScenarioOperations;
     /**
+     * @property [width] - <p>device width in pixels. Default value is <code>1920</code></p>
+     * @property [height] - <p>device height in pixels. Default value is <code>1080</code></p>
+     * @property [deviceScaleFactor] - <p>Device Scale Factor. Default value is <code>1</code></p>
+     * @property [hasTouch] - <p>Emulate touch instead of click. Default value is <code>false</code></p>
+     * @property [isLandscape] - <p>is device in landscape mode. Default value is <code>true</code></p>
+     * @property [isMobile] - <p>is mobile device. Default value is <code>false</code></p>
+     */
+    type SGAppsTestingScenarioSetViewportOptions = {
+        width?: number;
+        height?: number;
+        deviceScaleFactor?: number;
+        hasTouch?: boolean;
+        isLandscape?: boolean;
+        isMobile?: boolean;
+    };
+    /**
+     * @property [waitUntil] - <p>When to consider navigation succeeded, defaults to <code>'load'</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Default value is <code>'domcontentloaded'</code></p>
+     * @property [timeout] - <p>Maximum navigation time in milliseconds, defaults to 30 seconds, pass 0 to disable timeout. The default value can be changed by using the page.setDefaultNavigationTimeout(timeout) or page.setDefaultTimeout(timeout) methods. Default value is <code>30</code></p>
+     * @property [referer] - <p>Referer header value. If provided it will take preference over the referer header value set by page.setExtraHTTPHeaders().</p>
+     */
+    type SGAppsTestingScenarioGotoOptions = {
+        waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
+        timeout?: number;
+        referer?: string;
+    };
+    /**
+     * @property [polling] - <p>An interval at which the pageFunction is executed, defaults to <code>'raf'</code>. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values:
+     * - <code>raf</code> - to constantly execute pageFunction in requestAnimationFrame callback. This is the tightest polling mode which is suitable to observe styling changes.
+     * - <code>mutation</code> - to execute pageFunction on every DOM mutation.</p>
+     * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
+     */
+    type SGAppsTestingScenarioWaitForFunctionOptions = {
+        polling?: 'raf' | 'polling' | 'mutation';
+        timeout?: number;
+    };
+    /**
+     * @property [waitUntil] - <p>When to consider navigation succeeded, defaults to <code>'load'</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:</p>
+     * <ul>
+     * <li><code>load</code> - consider navigation to be finished when the load event is fired.</li>
+     * <li><code>domcontentloaded</code> - consider navigation to be finished when the DOMContentLoaded event is fired.</li>
+     * <li><code>networkidle0</code> - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.</li>
+     * <li><code>networkidle2</code> - consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.</li>
+     * </ul>
+     * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
+     */
+    type SGAppsTestingScenarioWaitForNavigationOptions = {
+        waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
+        timeout?: number;
+    };
+    /**
+     * @property [visible] - <p>wait for element to be present in DOM and to be visible, i.e. to not have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
+     * @property [hidden] - <p>wait for element to not be found in the DOM or to be hidden, i.e. have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
+     * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
+     */
+    type SGAppsTestingScenarioWaitForSelectorOptions = {
+        visible?: boolean;
+        hidden?: boolean;
+        timeout?: number;
+    };
+    /**
+     * @property [visible] - <p>wait for element to be present in DOM and to be visible, i.e. to not have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
+     * @property [hidden] - <p>wait for element to not be found in the DOM or to be hidden, i.e. have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
+     * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
+     */
+    type SGAppsTestingScenarioWaitForXPathOptions = {
+        visible?: boolean;
+        hidden?: boolean;
+        timeout?: number;
+    };
+    type SGAppsTestingScenarioUserAgentHandler = (userAgent: string) => Promise;
+    /**
+     * @property width - <p>page width in pixels.</p>
+     * @property height - <p>page height in pixels.</p>
+     * @property deviceScaleFactor - <p>Specify device scale factor (can be thought of as dpr). Defaults to 1.</p>
+     * @property isMobile - <p>Whether the meta viewport tag is taken into account. Defaults to false.</p>
+     * @property hasTouch - <p>Specifies if viewport supports touch events. Defaults to false</p>
+     * @property isLandscape - <p>Specifies if viewport is in landscape mode. Defaults to false.</p>
+     */
+    type SGAppsTestingScenarioPageEmulateConfigViewport = {
+        width: number;
+        height: number;
+        deviceScaleFactor: number;
+        isMobile: boolean;
+        hasTouch: boolean;
+        isLandscape: boolean;
+    };
+    /**
+     * @property viewport - <p>viewport options</p>
+     * @property userAgent - <p>user agent definition</p>
+     */
+    type SGAppsTestingScenarioPageEmulateConfig = {
+        viewport: SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateConfigViewport;
+        userAgent: string;
+    };
+    /**
+     * @property [type] - <p>Browser Type Firefox or Chrome, Default value is <code>&quot;chrome&quot;</code></p>
+     * @property [emulate] - <p>emulate device name, if not set will run as in simple browser, Default value is <code>null</code>.</p>
+     * @property [options] - <p>Browser's options, Set of configurable options to set on the browser.</p>
+     */
+    type SGAppsTestingScenarioPageEmulateDeviceConfig = {
+        type?: "chrome" | "firefox" | "ch" | "c" | "ff" | "f";
+        emulate?: SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceName;
+        options?: SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceConfigOptions;
+    };
+    /**
+     * @property _errors - <p>errors emitted during test</p>
+     * @property _skipped - <p>number of operations that were skipped in test, cause can be an emitted error</p>
+     * @property _warns - <p>number of operations that got warnings</p>
+     * @property _failed - <p>number of operations that failed</p>
+     * @property _fallenDevices - <p>list if devices that failed test</p>
+     */
+    type SGAppsTestingScenarioPageEmulateCallbackResult = {
+        _errors: Error[];
+        _skipped: number;
+        _warns: number;
+        _failed: number;
+        _fallenDevices: SGAppsTestingScenario.SGAppsTestingScenarioPageEmulateDeviceConfigOptions[];
+    };
+    type SGAppsTestingScenarioPageEmulateCallback = (result: SGAppsTestingScenarioPageEmulateCallbackResult) => void;
+    /**
+     * @property ignoreHTTPSErrors - <p>Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</p>
+     * @property headless - <p>Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</p>
+     * @property executablePath - <p>Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>.</p>
+     * @property slowMo - <p>Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</p>
+     * @property defaultViewport - <p>Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.</p>
+     * @property args - <p>Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</p>
+     * @property ignoreDefaultArgs - <p>If <code>true</code>, then do not use <a href="#puppeteerdefaultargs-options"><code>puppeteer.defaultArgs()</code></a>. If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to <code>false</code>.</p>
+     * @property handleSIGINT - <p>Close the browser process on Ctrl-C. Defaults to <code>true</code>.</p>
+     * @property handleSIGTERM - <p>Close the browser process on SIGTERM. Defaults to <code>true</code>.</p>
+     * @property handleSIGHUP - <p>Close the browser process on SIGHUP. Defaults to <code>true</code>.</p>
+     * @property timeout - <p>Maximum time in milliseconds to wait for the browser instance to start. Defaults to <code>30000</code> (30 seconds). Pass <code>0</code> to disable timeout.</p>
+     * @property dumpio - <p>Whether to pipe the browser process stdout and stderr into <code>process.stdout</code> and <code>process.stderr</code>. Defaults to <code>false</code>.</p>
+     * @property userDataDir - <p>Path to a <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md">User Data Directory</a>.</p>
+     * @property env - <p>Specify environment variables that will be visible to the browser. Defaults to <code>process.env</code>.</p>
+     * @property devtools - <p>Whether to auto-open a DevTools panel for each tab. If this option is <code>true</code>, the <code>headless</code> option will be set <code>false</code>.</p>
+     * @property pipe - <p>Connects to the browser over a pipe instead of a WebSocket. Defaults to <code>false</code>.</p>
+     */
+    type SGAppsTestingScenarioPageEmulateDeviceConfigOptions = {
+        ignoreHTTPSErrors: boolean;
+        headless: boolean;
+        executablePath: string;
+        slowMo: number;
+        defaultViewport: SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions;
+        args: string[];
+        ignoreDefaultArgs: boolean | string[];
+        handleSIGINT: boolean;
+        handleSIGTERM: boolean;
+        handleSIGHUP: boolean;
+        timeout: number;
+        dumpio: boolean;
+        userDataDir: string;
+        env: any;
+        devtools: boolean;
+        pipe: boolean;
+    };
+}
+
+declare interface SGAppsTestingScenario {
+    setOption(optionName: 'headless' | 'verbose', value: boolean): SGAppsTestingScenario;
+    getOption(optionName: 'headless' | 'verbose'): boolean;
+    /**
+     * <p>Specify Current Scenario Name</p>
+     * @param [name] - <p>if parameter is not passed function will return current <code>name</code></p>
+     */
+    setScenarioName(name?: string): SGAppsTestingScenario;
+    getScenarioName(): string;
+    /**
+     * <p>Select from instance a page with specific index</p>
+     * @param [index = (instance.currentPage._getLabelName || 0)] - <p>Page's index or 'next', 'prev', 'last' or 'first' or pages label</p>
+     * @returns <p>Puppeteers page</p>
+     */
+    _getPage(instance: Browser, index?: number | 'next' | 'prev' | string): Promise<Page>;
+    /**
      * <p>Select from instance a page with specific index</p>
      * @param [index = (instance.currentPage._getLabelName || 0)] - <p>Page's index or 'next', 'prev', 'last' or 'first' or pages label</p>
      */
-    function getPage(index?: number | 'next' | 'prev' | string): SGAppsTestingScenario;
+    getPage(index?: number | 'next' | 'prev' | string): SGAppsTestingScenario;
     /**
      * <p>Applying specific viewport for device</p>
      */
-    function setViewport(options: SGAppsTestingScenarioSetViewportOptions): SGAppsTestingScenario;
+    setViewport(options: SGAppsTestingScenarioSetViewportOptions): SGAppsTestingScenario;
     /**
      * <p>Opens an URL</p>
      * @param url - <p>URL to navigate page to. The url should include scheme, e.g. https://.</p>
      * @param [options] - <p>Navigation parameters</p>
      */
-    function goto(url: string, options?: SGAppsTestingScenarioGotoOptions): SGAppsTestingScenario;
+    goto(url: string, options?: SGAppsTestingScenarioGotoOptions): SGAppsTestingScenario;
     /**
      * <p>wait a period of specified milliseconds</p>
      * @param [timeMs = 0] - <p>number of milliseconds</p>
      */
-    function wait(timeMs?: number): SGAppsTestingScenario;
+    wait(timeMs?: number): SGAppsTestingScenario;
     /**
      * <p>Wait until a page will reach an event</p>
      * @param [handler] - <p>a function that can execute specific operations with data obtained on event</p>
      */
-    function pageEventWait(eventName: 'close' | 'console' | 'dialog' | 'domcontentloaded' | 'error' | 'frameattached' | 'framedetached' | 'framenavigated' | 'load' | 'metrics' | 'pageerror' | 'popup' | 'request' | 'requestfailed' | 'requestfinished' | 'response' | 'workercreated' | 'workerdestroyed', handler?: (...params: any[]) => any): SGAppsTestingScenario;
+    pageEventWait(eventName: 'close' | 'console' | 'dialog' | 'domcontentloaded' | 'error' | 'frameattached' | 'framedetached' | 'framenavigated' | 'load' | 'metrics' | 'pageerror' | 'popup' | 'request' | 'requestfailed' | 'requestfinished' | 'response' | 'workercreated' | 'workerdestroyed', handler?: (...params: any[]) => any): SGAppsTestingScenario;
     /**
      * <p>add a files to input[type=&quot;file&quot;] in instance's page</p>
      * @param files - <p>list of file paths to be added to input</p>
      * @param selector - <p>CSS Selector used to identify input[type=&quot;file&quot;]</p>
      */
-    function waitForFileChooser(files: string[], selector: string): SGAppsTestingScenario;
+    waitForFileChooser(files: string[], selector: string): SGAppsTestingScenario;
     /**
      * <p>wait until browser will pageFunction will return true value</p>
      * @param pageFunction - <p>Function to be evaluated in browser context</p>
      * @param options - <p>Optional waiting parameters</p>
      */
-    function waitForFunction(pageFunction: string | ((...params: any[]) => any), options: SGAppsTestingScenarioWaitForFunctionOptions): SGAppsTestingScenario;
+    waitForFunction(pageFunction: string | ((...params: any[]) => any), options: SGAppsTestingScenarioWaitForFunctionOptions): SGAppsTestingScenario;
     /**
      * <p>wait specific navigation state</p>
      * @param options - <p>Optional waiting parameters</p>
      */
-    function waitForNavigation(options: SGAppsTestingScenarioWaitForNavigationOptions): SGAppsTestingScenario;
+    waitForNavigation(options: SGAppsTestingScenarioWaitForNavigationOptions): SGAppsTestingScenario;
     /**
      * <p>Wait for the selector to appear in page. If at the moment of calling the method the selector already exists, the method will return immediately. If the selector doesn't appear after the timeout milliseconds of waiting, the function will throw.</p>
      * @param selector - <p>A selector of an element to wait for</p>
-     * @param options - <p>Optional waiting parameters</p>
+     * @param [options] - <p>Optional waiting parameters</p>
      */
-    function waitForSelector(selector: string, options: SGAppsTestingScenarioWaitForSelectorOptions): SGAppsTestingScenario;
+    waitForSelector(selector: string, options?: SGAppsTestingScenarioWaitForSelectorOptions): SGAppsTestingScenario;
     /**
      * <p>Wait for the xpath to appear in page. If at the moment of calling the method the xpath already exists, the method will return immediately. If the xpath doesn't appear after the timeout milliseconds of waiting, the function will throw.</p>
      * @param xpath - <p>A xpath of an element to wait for</p>
-     * @param options - <p>Optional waiting parameters</p>
+     * @param [options] - <p>Optional waiting parameters</p>
      */
-    function waitForXPath(xpath: string, options: SGAppsTestingScenarioWaitForXPathOptions): SGAppsTestingScenario;
-    type SGAppsTestingScenarioUserAgentHandler = (userAgent: string) => Promise;
+    waitForXPath(xpath: string, options?: SGAppsTestingScenarioWaitForXPathOptions): SGAppsTestingScenario;
     /**
      * <p>Handle User agent of instance</p>
      * @param handler - <p>if parameter is present will handle UserAgent value</p>
      */
-    function userAgent(handler: SGAppsTestingScenarioUserAgentHandler): SGAppsTestingScenario;
+    userAgent(handler: SGAppsTestingScenarioUserAgentHandler): SGAppsTestingScenario;
     /**
      * <p>Clears all permission overrides for the browser context.</p>
      */
-    function clearPermissionOverrides(): SGAppsTestingScenario;
+    clearPermissionOverrides(): SGAppsTestingScenario;
     /**
      * <p>Override permissions for the browser context.</p>
      * @param origin - <p>The origin to grant permissions to, e.g. &quot;https://example.com&quot;.</p>
      * @param permissions - <p>An array of permissions to grant. All permissions that are not listed here will be automatically denied.</p>
      */
-    function overridePermissions(origin: string, permissions: ('geolocation' | 'midi' | 'midi-sysex' | 'notifications' | 'push' | 'camera' | 'microphone' | 'background-sync' | 'ambient-light-sensor' | 'accelerometer' | 'gyroscope' | 'magnetometer' | 'accessibility-events' | 'clipboard-read' | 'clipboard-write' | 'payment-handler')[]): SGAppsTestingScenario;
+    overridePermissions(origin: string, permissions: ('geolocation' | 'midi' | 'midi-sysex' | 'notifications' | 'push' | 'camera' | 'microphone' | 'background-sync' | 'ambient-light-sensor' | 'accelerometer' | 'gyroscope' | 'magnetometer' | 'accessibility-events' | 'clipboard-read' | 'clipboard-write' | 'payment-handler')[]): SGAppsTestingScenario;
     /**
      * <p>Close a page from instance</p>
      * @param [options] - <p>set of options</p>
      * @param [index] - <p>page's index</p>
      */
-    function pageClose(options?: SGAppsTestingScenarioPageCloseOptions, index?: string): SGAppsTestingScenario;
+    pageClose(options?: SGAppsTestingScenarioPageCloseOptions, index?: string): SGAppsTestingScenario;
     /**
      * <p>Set page label, for easier selecting using .getPage(label)</p>
      * @param label - <p>label that will be set on current page</p>
      */
-    function pageSetLabel(label: string): SGAppsTestingScenario;
+    pageSetLabel(label: string): SGAppsTestingScenario;
     /**
      * <p>Close a page from instance</p>
      * @param index - <p>page's index</p>
-     * @param options - <p>set of options</p>
+     * @param [options] - <p>set of options</p>
      */
-    function pageReload(index: string, options: SGAppsTestingScenarioPageReloadOptions): SGAppsTestingScenario;
+    pageReload(index: string, options?: SGAppsTestingScenarioPageReloadOptions): SGAppsTestingScenario;
     /**
      * <p>Handle page Content of instance</p>
      * @param handler - <p>if parameter is present will handle page content value</p>
      */
-    function pageContent(handler: SGAppsTestingScenarioPageContentCallback): SGAppsTestingScenario;
+    pageContent(handler: SGAppsTestingScenarioPageContentCallback): SGAppsTestingScenario;
     /**
      * <p>This method fetches an element with selector, scrolls it into view if needed, and then uses page.mouse to click in the center of the element. If there's no element matching selector, the method throws an error.</p>
      * @param selector - <p>A selector to search for element to click. If there are multiple elements satisfying the selector, the first will be clicked.</p>
-     * @param options - <p>Optional parameters</p>
+     * @param [options] - <p>Optional parameters</p>
      */
-    function clickOnSelector(selector: string, options: SGAppsTestingScenarioClickOnSelectorOptions): SGAppsTestingScenario;
+    clickOnSelector(selector: string, options?: SGAppsTestingScenarioClickOnSelectorOptions): SGAppsTestingScenario;
     /**
      * <p>Sends a <code>keydown</code>, <code>keypress/input</code>, and <code>keyup</code> event for each character in the text.</p>
      * @param selector - <p>A selector of an element to type into. If there are multiple elements satisfying the selector, the first will be used.</p>
      * @param text - <p>A text to type into a focused element.</p>
-     * @param options - <p>Optional parameters</p>
+     * @param [options] - <p>Optional parameters</p>
      */
-    function typeOnSelector(selector: string, text: string, options: SGAppsTestingScenarioTypeOnSelectorOptions): SGAppsTestingScenario;
+    typeOnSelector(selector: string, text: string, options?: SGAppsTestingScenarioTypeOnSelectorOptions): SGAppsTestingScenario;
     /**
      * <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses <code>page.touchscreen</code> to tap in the center of the element. If there's no element matching <code>selector</code>, the method throws an error.</p>
      * @param selector - <p>A selector to search for element to tap. If there are multiple elements satisfying the selector, the first will be tapped.</p>
      */
-    function tapOnSelector(selector: string): SGAppsTestingScenario;
+    tapOnSelector(selector: string): SGAppsTestingScenario;
     /**
      * <p>This method fetches an element with <code>selector</code> and focuses it. If there's no element matching <code>selector</code>, the method throws an error.</p>
      * @param selector - <p>A selector of an element to focus. If there are multiple elements satisfying the selector, the first will be focused.</p>
      */
-    function focusOnSelector(selector: string): SGAppsTestingScenario;
+    focusOnSelector(selector: string): SGAppsTestingScenario;
     /**
      * <p>This method fetches an element with <code>selector</code>, scrolls it into view if needed, and then uses page.mouse to hover over the center of the element. If there's no element matching <code>selector</code>, the method throws an error.</p>
      * @param selector - <p>A selector to search for element to hover. If there are multiple elements satisfying the selector, the first will be hovered.</p>
      */
-    function hoverOnSelector(selector: string): SGAppsTestingScenario;
+    hoverOnSelector(selector: string): SGAppsTestingScenario;
     /**
      * <p>If the function passed to the page.evaluate returns a non-Serializable value, then page.evaluate resolves to undefined. DevTools Protocol also supports transferring some additional values that are not serializable by JSON: -0, NaN, Infinity, -Infinity, and bigint literals.</p>
      * @param pageFunction - <p>Function to be evaluated in the page context</p>
@@ -2551,7 +2724,7 @@ declare namespace SGAppsTestingScenario {
      * @param [meta.name = 'evaluate'] - <p>name of operation</p>
      * @param [meta.args] - <p>arguments of operation</p>
      */
-    function evaluate(pageFunction: SGAppsTestingScenarioEvaluatePageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateHandlerCallback, variables?: any, meta?: {
+    evaluate(pageFunction: SGAppsTestingScenarioEvaluatePageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateHandlerCallback, variables?: any, meta?: {
         name?: string;
         args?: any[];
     }): SGAppsTestingScenario;
@@ -2613,7 +2786,7 @@ declare namespace SGAppsTestingScenario {
      * @param [handler] - <p>function that receives serializable data from <code>pageFunction</code>, this parameter can be skipped</p>
      * @param [value] - <p>context passed to <code>pageFunction</code></p>
      */
-    function evaluateOnSelectorAll(selector: string, pageFunction: SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback, value?: any): SGAppsTestingScenario;
+    evaluateOnSelectorAll(selector: string, pageFunction: SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback, value?: any): SGAppsTestingScenario;
     /**
      * <p>Similar with evaluateOnSelectorAll but throws an error if detected more than one element</p>
      * @param selector - <p>A selector for an selecting element</p>
@@ -2621,53 +2794,55 @@ declare namespace SGAppsTestingScenario {
      * @param [handler] - <p>function that receives serializable data from <code>pageFunction</code>, this parameter can be skipped</p>
      * @param [value] - <p>context passed to <code>pageFunction</code></p>
      */
-    function evaluateOnSelectorOnlyOne(selector: string, pageFunction: SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateHandlerCallback, value?: any): SGAppsTestingScenario;
+    evaluateOnSelectorOnlyOne(selector: string, pageFunction: SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback | string, handler?: SGAppsTestingScenarioEvaluateHandlerCallback | {
+        [key: string]: any;
+    } | string | number, value?: any): SGAppsTestingScenario;
     /**
      * <p>Emulates specific configuration of device</p>
      */
-    function pageEmulate(config: SGAppsTestingScenarioPageEmulateConfig | SGAppsTestingScenarioPageEmulateDeviceName): SGAppsTestingScenario;
+    pageEmulate(config: SGAppsTestingScenarioPageEmulateConfig | SGAppsTestingScenarioPageEmulateDeviceName): SGAppsTestingScenario;
     /**
      * <p>Add a specific message to last operation</p>
      */
-    function message(message: string): SGAppsTestingScenario;
+    message(message: string): SGAppsTestingScenario;
     /**
      * <p>Add labels to operation</p>
      */
-    function operationLabels(labels: String[]): SGAppsTestingScenario;
+    operationLabels(labels: String[]): SGAppsTestingScenario;
     /**
      * <p>Remove labels from operation</p>
      */
-    function operationLabelsRemove(labels: String[]): SGAppsTestingScenario;
+    operationLabelsRemove(labels: String[]): SGAppsTestingScenario;
     /**
      * <p>activate or deactivate operation by adding or removing operation label <code>&quot;__Deactivated&quot;</code></p>
      * @param status - <p>if status is true than operation will be deactivated</p>
      */
-    function deactivate(status: boolean): SGAppsTestingScenario;
+    deactivate(status: boolean): SGAppsTestingScenario;
     /**
      * <p>Describe a section of testing scenario</p>
      * @param message - <p>the message that will describe the Scenario Section</p>
      */
-    function describe(message: string): SGAppsTestingScenario;
+    describe(message: string): SGAppsTestingScenario;
     /**
      * <p>Close Describe section of testing scenario</p>
-     * @param message - <p>message on succeed</p>
+     * @param [message] - <p>message on succeed</p>
      */
-    function describeClose(message: string): SGAppsTestingScenario;
+    describeClose(message?: string): SGAppsTestingScenario;
     /**
      * <p>Describe a group of testing scenario similar to <code>TestingScenario.describe</code></p>
      * @param message - <p>the name of group the Scenario Section</p>
      */
-    function group(message: string): SGAppsTestingScenario;
+    group(message: string): SGAppsTestingScenario;
     /**
      * <p>Close Group section of testing scenario</p>
      * @param message - <p>message on succeed</p>
      */
-    function groupClose(message: string): SGAppsTestingScenario;
+    groupClose(message: string): SGAppsTestingScenario;
     /**
      * <p>Close Group section of testing scenario</p>
      * @param message - <p>message on succeed</p>
      */
-    function groupClose(message: string): SGAppsTestingScenario;
+    groupClose(message: string): SGAppsTestingScenario;
     /**
      * <p>Assert some functionality from test</p>
      * @example
@@ -2694,128 +2869,34 @@ declare namespace SGAppsTestingScenario {
      *        .describeClose()
      *    .describeClose()
      */
-    function it(handler: TestingScenarioItHandlerCallback, message: string): SGAppsTestingScenario;
+    it(handler: TestingScenarioItHandlerCallback, message: string): SGAppsTestingScenario;
     /**
      * <p>Fork or Clone Testing Scenario</p>
      */
-    function fork(): SGAppsTestingScenario;
+    fork(): SGAppsTestingScenario;
     /**
      * <p>Close device Instance</p>
      */
-    function close(): SGAppsTestingScenario;
-}
-
-declare interface SGAppsTestingScenario {
-    setOption(optionName: 'headless' | 'verbose', value: boolean): SGAppsTestingScenario;
-    getOption(optionName: 'headless' | 'verbose'): boolean;
-    /**
-     * <p>Specify Current Scenario Name</p>
-     * @param [name] - <p>if parameter is not passed function will return current <code>name</code></p>
-     */
-    setScenarioName(name?: string): SGAppsTestingScenario;
-    getScenarioName(): string;
-    /**
-     * <p>Select from instance a page with specific index</p>
-     * @param [index = (instance.currentPage._getLabelName || 0)] - <p>Page's index or 'next', 'prev', 'last' or 'first' or pages label</p>
-     * @returns <p>Puppeteers page</p>
-     */
-    _getPage(instance: Browser, index?: number | 'next' | 'prev' | string): Promise<Page>;
+    close(): SGAppsTestingScenario;
     /**
      * <p>Run your tests under specific environment</p>
      */
     run(device: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device2?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device3?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device4?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device5?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device6?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device7?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, device8?: SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName, ...otherDevices: (SGAppsTestingScenarioPageEmulateCallback | SGAppsTestingScenarioPageEmulateDeviceConfig | SGAppsTestingScenarioPageEmulateDeviceName)[]): void;
 }
 
-declare type SGAppsTestingScenarioOperation = {
-    name: string;
-    params: any[];
-    operation: (...params: any[]) => any;
-};
+declare class SGAppsTestingScenarioOperations {
+    static push(operation: SGAppsTestingScenarioOperation): void;
+    static last(): SGAppsTestingScenarioOperations.SGAppsTestingScenarioOperation;
+    static list(): SGAppsTestingScenarioOperations.SGAppsTestingScenarioOperation[];
+}
 
 declare namespace SGAppsTestingScenarioOperations {
-    function push(operation: SGAppsTestingScenarioOperation): void;
-    function last(): SGAppsTestingScenarioOperation;
-    function list(): SGAppsTestingScenarioOperation[];
+    type SGAppsTestingScenarioOperation = {
+        name: string;
+        params: any[];
+        operation: (...params: any[]) => any;
+    };
 }
-
-declare interface SGAppsTestingScenarioOperations {
-}
-
-/**
- * @property [width] - <p>device width in pixels. Default value is <code>1920</code></p>
- * @property [height] - <p>device height in pixels. Default value is <code>1080</code></p>
- * @property [deviceScaleFactor] - <p>Device Scale Factor. Default value is <code>1</code></p>
- * @property [hasTouch] - <p>Emulate touch instead of click. Default value is <code>false</code></p>
- * @property [isLandscape] - <p>is device in landscape mode. Default value is <code>true</code></p>
- * @property [isMobile] - <p>is mobile device. Default value is <code>false</code></p>
- */
-declare type SGAppsTestingScenarioSetViewportOptions = {
-    width?: number;
-    height?: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-};
-
-/**
- * @property [waitUntil] - <p>When to consider navigation succeeded, defaults to <code>'load'</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Default value is <code>'domcontentloaded'</code></p>
- * @property [timeout] - <p>Maximum navigation time in milliseconds, defaults to 30 seconds, pass 0 to disable timeout. The default value can be changed by using the page.setDefaultNavigationTimeout(timeout) or page.setDefaultTimeout(timeout) methods. Default value is <code>30</code></p>
- * @property [referer] - <p>Referer header value. If provided it will take preference over the referer header value set by page.setExtraHTTPHeaders().</p>
- */
-declare type SGAppsTestingScenarioGotoOptions = {
-    waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
-    timeout?: number;
-    referer?: string;
-};
-
-/**
- * @property [polling] - <p>An interval at which the pageFunction is executed, defaults to <code>'raf'</code>. If polling is a number, then it is treated as an interval in milliseconds at which the function would be executed. If polling is a string, then it can be one of the following values:
- * - <code>raf</code> - to constantly execute pageFunction in requestAnimationFrame callback. This is the tightest polling mode which is suitable to observe styling changes.
- * - <code>mutation</code> - to execute pageFunction on every DOM mutation.</p>
- * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
- */
-declare type SGAppsTestingScenarioWaitForFunctionOptions = {
-    polling?: 'raf' | 'polling' | 'mutation';
-    timeout?: number;
-};
-
-/**
- * @property [waitUntil] - <p>When to consider navigation succeeded, defaults to <code>'load'</code>. Given an array of event strings, navigation is considered to be successful after all events have been fired. Events can be either:</p>
- * <ul>
- * <li><code>load</code> - consider navigation to be finished when the load event is fired.</li>
- * <li><code>domcontentloaded</code> - consider navigation to be finished when the DOMContentLoaded event is fired.</li>
- * <li><code>networkidle0</code> - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.</li>
- * <li><code>networkidle2</code> - consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.</li>
- * </ul>
- * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
- */
-declare type SGAppsTestingScenarioWaitForNavigationOptions = {
-    waitUntil?: 'load' | 'domcontentloaded' | 'networkidle0' | 'networkidle2';
-    timeout?: number;
-};
-
-/**
- * @property [visible] - <p>wait for element to be present in DOM and to be visible, i.e. to not have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
- * @property [hidden] - <p>wait for element to not be found in the DOM or to be hidden, i.e. have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
- * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
- */
-declare type SGAppsTestingScenarioWaitForSelectorOptions = {
-    visible?: boolean;
-    hidden?: boolean;
-    timeout?: number;
-};
-
-/**
- * @property [visible] - <p>wait for element to be present in DOM and to be visible, i.e. to not have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
- * @property [hidden] - <p>wait for element to not be found in the DOM or to be hidden, i.e. have <code>display: none</code> or <code>visibility: hidden</code> CSS properties. Defaults to <code>false</code>.</p>
- * @property [timeout] - <p>maximum time to wait for in milliseconds, Defaults to <code>30000</code> (30 seconds). Pass 0 to disable timeout.</p>
- */
-declare type SGAppsTestingScenarioWaitForXPathOptions = {
-    visible?: boolean;
-    hidden?: boolean;
-    timeout?: number;
-};
 
 /**
  * @property runBeforeUnload - <p>Defaults to <code>false</code>. Whether to run the before unload page handlers.</p>
@@ -2881,98 +2962,7 @@ declare type SGAppsTestingScenarioEvaluateOnSelectorAllPageFunctionCallback = (e
 
 declare type SGAppsTestingScenarioEvaluateOnSelectorAllHandlerCallback = (results: any[]) => Promise | any;
 
-/**
- * @property width - <p>page width in pixels.</p>
- * @property height - <p>page height in pixels.</p>
- * @property deviceScaleFactor - <p>Specify device scale factor (can be thought of as dpr). Defaults to 1.</p>
- * @property isMobile - <p>Whether the meta viewport tag is taken into account. Defaults to false.</p>
- * @property hasTouch - <p>Specifies if viewport supports touch events. Defaults to false</p>
- * @property isLandscape - <p>Specifies if viewport is in landscape mode. Defaults to false.</p>
- */
-declare type SGAppsTestingScenarioPageEmulateConfigViewport = {
-    width: number;
-    height: number;
-    deviceScaleFactor: number;
-    isMobile: boolean;
-    hasTouch: boolean;
-    isLandscape: boolean;
-};
-
-/**
- * @property viewport - <p>viewport options</p>
- * @property userAgent - <p>user agent definition</p>
- */
-declare type SGAppsTestingScenarioPageEmulateConfig = {
-    viewport: SGAppsTestingScenarioPageEmulateConfigViewport;
-    userAgent: string;
-};
-
 declare type SGAppsTestingScenarioPageEmulateDeviceName = "Blackberry PlayBook" | "Blackberry PlayBook landscape" | "BlackBerry Z30" | "BlackBerry Z30 landscape" | "Galaxy Note 3" | "Galaxy Note 3 landscape" | "Galaxy Note II" | "Galaxy Note II landscape" | "Galaxy S III" | "Galaxy S III landscape" | "Galaxy S5" | "Galaxy S5 landscape" | "iPad" | "iPad landscape" | "iPad Mini" | "iPad Mini landscape" | "iPad Pro" | "iPad Pro landscape" | "iPhone 4" | "iPhone 4 landscape" | "iPhone 5" | "iPhone 5 landscape" | "iPhone 6" | "iPhone 6 landscape" | "iPhone 6 Plus" | "iPhone 6 Plus landscape" | "iPhone 7" | "iPhone 7 landscape" | "iPhone 7 Plus" | "iPhone 7 Plus landscape" | "iPhone 8" | "iPhone 8 landscape" | "iPhone 8 Plus" | "iPhone 8 Plus landscape" | "iPhone SE" | "iPhone SE landscape" | "iPhone X" | "iPhone X landscape" | "iPhone XR" | "iPhone XR landscape" | "JioPhone 2" | "JioPhone 2 landscape" | "Kindle Fire HDX" | "Kindle Fire HDX landscape" | "LG Optimus L70" | "LG Optimus L70 landscape" | "Microsoft Lumia 550" | "Microsoft Lumia 950" | "Microsoft Lumia 950 landscape" | "Nexus 10" | "Nexus 10 landscape" | "Nexus 4" | "Nexus 4 landscape" | "Nexus 5" | "Nexus 5 landscape" | "Nexus 5X" | "Nexus 5X landscape" | "Nexus 6" | "Nexus 6 landscape" | "Nexus 6P" | "Nexus 6P landscape" | "Nexus 7" | "Nexus 7 landscape" | "Nokia Lumia 520" | "Nokia Lumia 520 landscape" | "Nokia N9" | "Nokia N9 landscape" | "Pixel 2" | "Pixel 2 landscape" | "Pixel 2 XL" | "Pixel 2 XL landscape";
-
-/**
- * @property [type] - <p>Browser Type Firefox or Chrome, Default value is <code>&quot;chrome&quot;</code></p>
- * @property [emulate] - <p>emulate device name, if not set will run as in simple browser, Default value is <code>null</code>.</p>
- * @property [options] - <p>Browser's options, Set of configurable options to set on the browser.</p>
- */
-declare type SGAppsTestingScenarioPageEmulateDeviceConfig = {
-    type?: "chrome" | "firefox" | "ch" | "c" | "ff" | "f";
-    emulate?: SGAppsTestingScenarioPageEmulateDeviceName;
-    options?: SGAppsTestingScenarioPageEmulateDeviceConfigOptions;
-};
-
-/**
- * @property _errors - <p>errors emitted during test</p>
- * @property _skipped - <p>number of operations that were skipped in test, cause can be an emitted error</p>
- * @property _warns - <p>number of operations that got warnings</p>
- * @property _failed - <p>number of operations that failed</p>
- * @property _fallenDevices - <p>list if devices that failed test</p>
- */
-declare type SGAppsTestingScenarioPageEmulateCallbackResult = {
-    _errors: Error[];
-    _skipped: number;
-    _warns: number;
-    _failed: number;
-    _fallenDevices: SGAppsTestingScenarioPageEmulateDeviceConfigOptions[];
-};
-
-declare type SGAppsTestingScenarioPageEmulateCallback = (result: SGAppsTestingScenarioPageEmulateCallbackResult) => void;
-
-/**
- * @property ignoreHTTPSErrors - <p>Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</p>
- * @property headless - <p>Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</p>
- * @property executablePath - <p>Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>.</p>
- * @property slowMo - <p>Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</p>
- * @property defaultViewport - <p>Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.</p>
- * @property args - <p>Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</p>
- * @property ignoreDefaultArgs - <p>If <code>true</code>, then do not use <a href="#puppeteerdefaultargs-options"><code>puppeteer.defaultArgs()</code></a>. If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to <code>false</code>.</p>
- * @property handleSIGINT - <p>Close the browser process on Ctrl-C. Defaults to <code>true</code>.</p>
- * @property handleSIGTERM - <p>Close the browser process on SIGTERM. Defaults to <code>true</code>.</p>
- * @property handleSIGHUP - <p>Close the browser process on SIGHUP. Defaults to <code>true</code>.</p>
- * @property timeout - <p>Maximum time in milliseconds to wait for the browser instance to start. Defaults to <code>30000</code> (30 seconds). Pass <code>0</code> to disable timeout.</p>
- * @property dumpio - <p>Whether to pipe the browser process stdout and stderr into <code>process.stdout</code> and <code>process.stderr</code>. Defaults to <code>false</code>.</p>
- * @property userDataDir - <p>Path to a <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md">User Data Directory</a>.</p>
- * @property env - <p>Specify environment variables that will be visible to the browser. Defaults to <code>process.env</code>.</p>
- * @property devtools - <p>Whether to auto-open a DevTools panel for each tab. If this option is <code>true</code>, the <code>headless</code> option will be set <code>false</code>.</p>
- * @property pipe - <p>Connects to the browser over a pipe instead of a WebSocket. Defaults to <code>false</code>.</p>
- */
-declare type SGAppsTestingScenarioPageEmulateDeviceConfigOptions = {
-    ignoreHTTPSErrors: boolean;
-    headless: boolean;
-    executablePath: string;
-    slowMo: number;
-    defaultViewport: SGAppsTestingScenarioSetViewportOptions;
-    args: string[];
-    ignoreDefaultArgs: boolean | string[];
-    handleSIGINT: boolean;
-    handleSIGTERM: boolean;
-    handleSIGHUP: boolean;
-    timeout: number;
-    dumpio: boolean;
-    userDataDir: string;
-    env: any;
-    devtools: boolean;
-    pipe: boolean;
-};
 
 /**
  * @param done - <p>function that should be executed when check id done</p>
@@ -3041,3 +3031,9 @@ declare class SGAppsTestingExpectDescribe {
     constructor(value: any);
 }
 
+
+declare module "sgapps.io-testing-platform" {
+    function TestingScenario(): SGAppsTestingScenario;
+	function expect(value): SGAppsTestingExpect;
+	function assert(): SGAppsTestingAssert;
+}
