@@ -1,4 +1,3 @@
-//@ts-check
 
 // Type definitions for puppeteer 5.4
 // Project: https://github.com/GoogleChrome/puppeteer#readme
@@ -2421,6 +2420,8 @@ export function clearCustomQueryHandlers(): void;
 
 // Shut off  automatic exporting. See: https://github.com/Microsoft/dtslint/blob/master/docs/strict-export-declare-modifiers.md
 export {};
+
+declare module "sgapps.io-testing-platform" {
 declare namespace SGAppsTestingScenario {
     var operations: SGAppsTestingScenarioOperations;
     /**
@@ -2544,40 +2545,40 @@ declare namespace SGAppsTestingScenario {
     };
     type SGAppsTestingScenarioPageEmulateCallback = (result: SGAppsTestingScenarioPageEmulateCallbackResult) => void;
     /**
-     * @property ignoreHTTPSErrors - <p>Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</p>
-     * @property headless - <p>Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</p>
-     * @property executablePath - <p>Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>.</p>
-     * @property slowMo - <p>Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</p>
-     * @property defaultViewport - <p>Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.</p>
-     * @property args - <p>Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</p>
-     * @property ignoreDefaultArgs - <p>If <code>true</code>, then do not use <a href="#puppeteerdefaultargs-options"><code>puppeteer.defaultArgs()</code></a>. If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to <code>false</code>.</p>
-     * @property handleSIGINT - <p>Close the browser process on Ctrl-C. Defaults to <code>true</code>.</p>
-     * @property handleSIGTERM - <p>Close the browser process on SIGTERM. Defaults to <code>true</code>.</p>
-     * @property handleSIGHUP - <p>Close the browser process on SIGHUP. Defaults to <code>true</code>.</p>
-     * @property timeout - <p>Maximum time in milliseconds to wait for the browser instance to start. Defaults to <code>30000</code> (30 seconds). Pass <code>0</code> to disable timeout.</p>
-     * @property dumpio - <p>Whether to pipe the browser process stdout and stderr into <code>process.stdout</code> and <code>process.stderr</code>. Defaults to <code>false</code>.</p>
-     * @property userDataDir - <p>Path to a <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md">User Data Directory</a>.</p>
-     * @property env - <p>Specify environment variables that will be visible to the browser. Defaults to <code>process.env</code>.</p>
-     * @property devtools - <p>Whether to auto-open a DevTools panel for each tab. If this option is <code>true</code>, the <code>headless</code> option will be set <code>false</code>.</p>
-     * @property pipe - <p>Connects to the browser over a pipe instead of a WebSocket. Defaults to <code>false</code>.</p>
+     * @property [ignoreHTTPSErrors] - <p>Whether to ignore HTTPS errors during navigation. Defaults to <code>false</code>.</p>
+     * @property [headless] - <p>Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to <code>true</code> unless the <code>devtools</code> option is <code>true</code>.</p>
+     * @property [executablePath] - <p>Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If <code>executablePath</code> is a relative path, then it is resolved relative to <a href="https://nodejs.org/api/process.html#process_process_cwd">current working directory</a>.</p>
+     * @property [slowMo] - <p>Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.</p>
+     * @property [defaultViewport] - <p>Sets a consistent viewport for each page. Defaults to an 800x600 viewport. <code>null</code> disables the default viewport.</p>
+     * @property [args] - <p>Additional arguments to pass to the browser instance. The list of Chromium flags can be found <a href="http://peter.sh/experiments/chromium-command-line-switches/">here</a>.</p>
+     * @property [ignoreDefaultArgs] - <p>If <code>true</code>, then do not use <a href="#puppeteerdefaultargs-options"><code>puppeteer.defaultArgs()</code></a>. If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to <code>false</code>.</p>
+     * @property [handleSIGINT] - <p>Close the browser process on Ctrl-C. Defaults to <code>true</code>.</p>
+     * @property [handleSIGTERM] - <p>Close the browser process on SIGTERM. Defaults to <code>true</code>.</p>
+     * @property [handleSIGHUP] - <p>Close the browser process on SIGHUP. Defaults to <code>true</code>.</p>
+     * @property [timeout] - <p>Maximum time in milliseconds to wait for the browser instance to start. Defaults to <code>30000</code> (30 seconds). Pass <code>0</code> to disable timeout.</p>
+     * @property [dumpio] - <p>Whether to pipe the browser process stdout and stderr into <code>process.stdout</code> and <code>process.stderr</code>. Defaults to <code>false</code>.</p>
+     * @property [userDataDir] - <p>Path to a <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md">User Data Directory</a>.</p>
+     * @property [env] - <p>Specify environment variables that will be visible to the browser. Defaults to <code>process.env</code>.</p>
+     * @property [devtools] - <p>Whether to auto-open a DevTools panel for each tab. If this option is <code>true</code>, the <code>headless</code> option will be set <code>false</code>.</p>
+     * @property [pipe] - <p>Connects to the browser over a pipe instead of a WebSocket. Defaults to <code>false</code>.</p>
      */
     type SGAppsTestingScenarioPageEmulateDeviceConfigOptions = {
-        ignoreHTTPSErrors: boolean;
-        headless: boolean;
-        executablePath: string;
-        slowMo: number;
-        defaultViewport: SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions;
-        args: string[];
-        ignoreDefaultArgs: boolean | string[];
-        handleSIGINT: boolean;
-        handleSIGTERM: boolean;
-        handleSIGHUP: boolean;
-        timeout: number;
-        dumpio: boolean;
-        userDataDir: string;
-        env: any;
-        devtools: boolean;
-        pipe: boolean;
+        ignoreHTTPSErrors?: boolean;
+        headless?: boolean;
+        executablePath?: string;
+        slowMo?: number;
+        defaultViewport?: SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions;
+        args?: string[];
+        ignoreDefaultArgs?: boolean | string[];
+        handleSIGINT?: boolean;
+        handleSIGTERM?: boolean;
+        handleSIGHUP?: boolean;
+        timeout?: number;
+        dumpio?: boolean;
+        userDataDir?: string;
+        env?: any;
+        devtools?: boolean;
+        pipe?: boolean;
     };
 }
 
@@ -2972,6 +2973,8 @@ declare type SGAppsTestingScenarioPageEmulateDeviceName = "Blackberry PlayBook" 
  */
 declare type TestingScenarioItHandlerCallback = (done: (...params: any[]) => any, evaluate: (...params: any[]) => any, assert: SGAppsTestingAssert, expect: SGAppsTestingExpect) => void;
 
+declare module "SGAppsTestingScenario" { }
+
 declare class SGAppsTestingAssert {
     constructor(expectValue: any, value: any, message: string);
     static equal(expectValue: any, value: any, message: string): void;
@@ -3032,7 +3035,7 @@ declare class SGAppsTestingExpectDescribe {
 }
 
 
-declare module "sgapps.io-testing-platform" {
+
     function TestingScenario(): SGAppsTestingScenario;
 	function expect(value): SGAppsTestingExpect;
 	function assert(): SGAppsTestingAssert;

@@ -1178,22 +1178,22 @@ SGAppsTestingScenario.prototype.evaluateOnSelectorOnlyOne = function (selector, 
 /**
  * @typedef {object} SGAppsTestingScenarioPageEmulateDeviceConfigOptions
  * @memberof SGAppsTestingScenario
- * @property {boolean} ignoreHTTPSErrors Whether to ignore HTTPS errors during navigation. Defaults to `false`.
- * @property {boolean} headless Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
- * @property {string} executablePath Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd).
- * @property {number} slowMo Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.
- * @property {SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions} defaultViewport Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
- * @property {string[]} args Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).
- * @property {(boolean|string[])} ignoreDefaultArgs If `true`, then do not use [`puppeteer.defaultArgs()`](#puppeteerdefaultargs-options). If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to `false`.
- * @property {boolean} handleSIGINT Close the browser process on Ctrl-C. Defaults to `true`.
- * @property {boolean} handleSIGTERM Close the browser process on SIGTERM. Defaults to `true`.
- * @property {boolean} handleSIGHUP Close the browser process on SIGHUP. Defaults to `true`.
- * @property {number} timeout Maximum time in milliseconds to wait for the browser instance to start. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.
- * @property {boolean} dumpio Whether to pipe the browser process stdout and stderr into `process.stdout` and `process.stderr`. Defaults to `false`.
- * @property {string} userDataDir Path to a [User Data Directory](https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md).
- * @property {object} env Specify environment variables that will be visible to the browser. Defaults to `process.env`.
- * @property {boolean} devtools Whether to auto-open a DevTools panel for each tab. If this option is `true`, the `headless` option will be set `false`.
- * @property {boolean} pipe Connects to the browser over a pipe instead of a WebSocket. Defaults to `false`.
+ * @property {boolean} [ignoreHTTPSErrors] Whether to ignore HTTPS errors during navigation. Defaults to `false`.
+ * @property {boolean} [headless] Whether to run browser in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome). Defaults to `true` unless the `devtools` option is `true`.
+ * @property {string} [executablePath] Path to a Chromium or Chrome executable to run instead of the bundled Chromium. If `executablePath` is a relative path, then it is resolved relative to [current working directory](https://nodejs.org/api/process.html#process_process_cwd).
+ * @property {number} [slowMo] Slows down Puppeteer operations by the specified amount of milliseconds. Useful so that you can see what is going on.
+ * @property {SGAppsTestingScenario.SGAppsTestingScenarioSetViewportOptions} [defaultViewport] Sets a consistent viewport for each page. Defaults to an 800x600 viewport. `null` disables the default viewport.
+ * @property {string[]} [args] Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).
+ * @property {(boolean|string[])} [ignoreDefaultArgs] If `true`, then do not use [`puppeteer.defaultArgs()`](#puppeteerdefaultargs-options). If an array is given, then filter out the given default arguments. Dangerous option; use with care. Defaults to `false`.
+ * @property {boolean} [handleSIGINT] Close the browser process on Ctrl-C. Defaults to `true`.
+ * @property {boolean} [handleSIGTERM] Close the browser process on SIGTERM. Defaults to `true`.
+ * @property {boolean} [handleSIGHUP] Close the browser process on SIGHUP. Defaults to `true`.
+ * @property {number} [timeout] Maximum time in milliseconds to wait for the browser instance to start. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.
+ * @property {boolean} [dumpio] Whether to pipe the browser process stdout and stderr into `process.stdout` and `process.stderr`. Defaults to `false`.
+ * @property {string} [userDataDir] Path to a [User Data Directory](https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md).
+ * @property {object} [env] Specify environment variables that will be visible to the browser. Defaults to `process.env`.
+ * @property {boolean} [devtools] Whether to auto-open a DevTools panel for each tab. If this option is `true`, the `headless` option will be set `false`.
+ * @property {boolean} [pipe] Connects to the browser over a pipe instead of a WebSocket. Defaults to `false`.
  */
 /**
  * Emulates specific configuration of device
@@ -1608,7 +1608,9 @@ SGAppsTestingScenario.prototype.close = function () {
 	});
 };
 
-
+/**
+ * @exports SGAppsTestingScenario
+ */
 
 module.exports = {
 	TestingScenario: SGAppsTestingScenario,
