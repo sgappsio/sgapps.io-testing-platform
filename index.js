@@ -1612,8 +1612,10 @@ SGAppsTestingScenario.prototype.close = function () {
  * @exports SGAppsTestingScenario
  */
 
-module.exports = {
-	TestingScenario: SGAppsTestingScenario,
+ module.exports = {
+	TestingScenario: function () {
+		return new SGAppsTestingScenario();
+	},
 	expect: function (value) {
 		return new SGAppsTestingExpect(value);
 	},
