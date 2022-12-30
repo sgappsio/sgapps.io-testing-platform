@@ -9,6 +9,6 @@
   "author": "Sergiu Gordienco <sergiu.gordienco@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^7.0.0"
+    "mocha": "^10.2.0"
   }
 }
